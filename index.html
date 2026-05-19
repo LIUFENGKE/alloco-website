@@ -3069,6 +3069,11 @@ overflow: visible;
     }
 
   </style>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20220%20236%22%3E%0A%20%20%3Crect%20width%3D%22220%22%20height%3D%22236%22%20rx%3D%2248%22%20fill%3D%22%23050505%22/%3E%0A%20%20%3Cpath%20d%3D%22M1.72854%20189.498L110%200L49.683%20174.758C49.2281%20176.079%2050.3299%20177.41%2051.7249%20177.24L86.9629%20172.877L0%20236V196.013C0%20193.731%200.596398%20191.49%201.72854%20189.498Z%22%20fill%3D%22%23FFFFFF%22/%3E%0A%20%20%3Cpath%20d%3D%22M218.261%20189.498L110%200L170.317%20174.758C170.772%20176.079%20169.67%20177.41%20168.275%20177.24L133.037%20172.877L220%20236V196.013C220%20193.731%20219.404%20191.49%20218.261%20189.498Z%22%20fill%3D%22%23FFFFFF%22/%3E%0A%3C/svg%3E" />
+  <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20220%20236%22%3E%0A%20%20%3Crect%20width%3D%22220%22%20height%3D%22236%22%20rx%3D%2248%22%20fill%3D%22%23050505%22/%3E%0A%20%20%3Cpath%20d%3D%22M1.72854%20189.498L110%200L49.683%20174.758C49.2281%20176.079%2050.3299%20177.41%2051.7249%20177.24L86.9629%20172.877L0%20236V196.013C0%20193.731%200.596398%20191.49%201.72854%20189.498Z%22%20fill%3D%22%23FFFFFF%22/%3E%0A%20%20%3Cpath%20d%3D%22M218.261%20189.498L110%200L170.317%20174.758C170.772%20176.079%20169.67%20177.41%20168.275%20177.24L133.037%20172.877L220%20236V196.013C220%20193.731%20219.404%20191.49%20218.261%20189.498Z%22%20fill%3D%22%23FFFFFF%22/%3E%0A%3C/svg%3E" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20220%20236%22%3E%0A%20%20%3Crect%20width%3D%22220%22%20height%3D%22236%22%20rx%3D%2248%22%20fill%3D%22%23050505%22/%3E%0A%20%20%3Cpath%20d%3D%22M1.72854%20189.498L110%200L49.683%20174.758C49.2281%20176.079%2050.3299%20177.41%2051.7249%20177.24L86.9629%20172.877L0%20236V196.013C0%20193.731%200.596398%20191.49%201.72854%20189.498Z%22%20fill%3D%22%23FFFFFF%22/%3E%0A%20%20%3Cpath%20d%3D%22M218.261%20189.498L110%200L170.317%20174.758C170.772%20176.079%20169.67%20177.41%20168.275%20177.24L133.037%20172.877L220%20236V196.013C220%20193.731%20219.404%20191.49%20218.261%20189.498Z%22%20fill%3D%22%23FFFFFF%22/%3E%0A%3C/svg%3E" />
+  <meta name="theme-color" content="#050505" />
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress"></div>
@@ -3712,10 +3717,10 @@ overflow: visible;
     }
 
     function easeOutExpo(t) {
-      return t === 1 ? 1 : 1 - Math.pow(2, -8.5 * t);
+      return 1 - Math.pow(1 - t, 3.2);
     }
 
-    function animateToSection(section, duration = 1180) {
+    function animateToSection(section, duration = 860) {
       if (scrollAnimationFrame) cancelAnimationFrame(scrollAnimationFrame);
 
       const startY = window.scrollY;
@@ -3753,13 +3758,13 @@ overflow: visible;
       activeSnapIndex = targetIndex;
       document.body.classList.add('is-wheel-snapping');
 
-      await animateToSection(target, 1180);
+      await animateToSection(target, 860);
 
       window.clearTimeout(wheelSnapTimeout);
       wheelSnapTimeout = window.setTimeout(() => {
         isWheelSnapping = false;
         document.body.classList.remove('is-wheel-snapping');
-      }, 180);
+      }, 80);
     }
 
     function onSectionWheel(event) {
