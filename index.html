@@ -3119,7 +3119,84 @@ overflow: visible;
       }
     }
 
-  </style>
+  
+
+    /* ===== Cross-page navigation continuity ===== */
+    .nav {
+      will-change: transform, opacity, background, color, border-color, border-radius, box-shadow;
+      transform-origin: top center;
+    }
+
+    .brand,
+    .nav-links a,
+    .launch-app-link {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .brand {
+      text-decoration: none;
+      transition: opacity .24s ease, transform .24s ease;
+    }
+
+    .brand:hover {
+      opacity: .78;
+    }
+
+    .nav-links a {
+      position: relative;
+      transition: opacity .22s ease, transform .22s ease, color .22s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -8px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0;
+      transform: scaleX(.45);
+      transform-origin: center;
+      transition: opacity .22s ease, transform .22s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after,
+    .nav-links a.route-clicked::after {
+      opacity: .36;
+      transform: scaleX(1);
+    }
+
+    body.route-ready {
+      animation: routeEnter .62s cubic-bezier(.22,.72,.18,1) both;
+    }
+
+    body.route-leaving {
+      pointer-events: none;
+      opacity: 0;
+      transform: translate3d(0,-10px,0) scale(.992);
+      filter: blur(3px);
+      transition: opacity .42s ease, transform .42s cubic-bezier(.22,.72,.18,1), filter .42s ease;
+      transform-origin: top center;
+    }
+
+    body.route-leaving .nav {
+      opacity: .72;
+      transition: opacity .42s ease;
+    }
+
+    @keyframes routeEnter {
+      from { opacity: 0; transform: translate3d(0,14px,0) scale(.992); filter: blur(4px); }
+      to { opacity: 1; transform: translate3d(0,0,0) scale(1); filter: blur(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body.route-ready,
+      body.route-leaving { animation: none; transition: none; transform: none; filter: none; }
+      body.route-leaving .nav { transition: none; }
+    }
+</style>
 
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20220%20236%22%3E%0A%20%20%3Crect%20width%3D%22220%22%20height%3D%22236%22%20rx%3D%2248%22%20fill%3D%22%23050505%22/%3E%0A%20%20%3Cpath%20d%3D%22M1.72854%20189.498L110%200L49.683%20174.758C49.2281%20176.079%2050.3299%20177.41%2051.7249%20177.24L86.9629%20172.877L0%20236V196.013C0%20193.731%200.596398%20191.49%201.72854%20189.498Z%22%20fill%3D%22%23FFFFFF%22/%3E%0A%20%20%3Cpath%20d%3D%22M218.261%20189.498L110%200L170.317%20174.758C170.772%20176.079%20169.67%20177.41%20168.275%20177.24L133.037%20172.877L220%20236V196.013C220%20193.731%20219.404%20191.49%20218.261%20189.498Z%22%20fill%3D%22%23FFFFFF%22/%3E%0A%3C/svg%3E" />
   <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%20220%20236%22%3E%0A%20%20%3Crect%20width%3D%22220%22%20height%3D%22236%22%20rx%3D%2248%22%20fill%3D%22%23050505%22/%3E%0A%20%20%3Cpath%20d%3D%22M1.72854%20189.498L110%200L49.683%20174.758C49.2281%20176.079%2050.3299%20177.41%2051.7249%20177.24L86.9629%20172.877L0%20236V196.013C0%20193.731%200.596398%20191.49%201.72854%20189.498Z%22%20fill%3D%22%23FFFFFF%22/%3E%0A%20%20%3Cpath%20d%3D%22M218.261%20189.498L110%200L170.317%20174.758C170.772%20176.079%20169.67%20177.41%20168.275%20177.24L133.037%20172.877L220%20236V196.013C220%20193.731%20219.404%20191.49%20218.261%20189.498Z%22%20fill%3D%22%23FFFFFF%22/%3E%0A%3C/svg%3E" />
@@ -3129,14 +3206,14 @@ overflow: visible;
 <body>
   <div class="scroll-progress" id="scrollProgress"></div>
   <nav class="nav dark" id="nav">
-    <div class="brand">
+    <a class="brand" href="/" aria-label="Alloco Home">
   <svg class="brand-logo inline-logo alloco-nav-logo" viewBox="0 0 220 236" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Alloco">
     <path d="M1.72854 189.498L110 0L49.683 174.758C49.2281 176.079 50.3299 177.41 51.7249 177.24L86.9629 172.877L0 236V196.013C0 193.731 0.596398 191.49 1.72854 189.498Z" fill="currentColor"/>
     <path d="M218.261 189.498L110 0L170.317 174.758C170.772 176.079 169.67 177.41 168.275 177.24L133.037 172.877L220 236V196.013C220 193.731 219.404 191.49 218.261 189.498Z" fill="currentColor"/>
   </svg>
-</div>
+</a>
     <div class="nav-links">
-      <a href="#products">Products</a>
+      <a href="/product">Products</a>
       <a href="#resources">Resources</a>
       <a href="#about">About</a>
     </div>
@@ -3872,6 +3949,41 @@ overflow: visible;
       if (typeof updateSectionParallax === "function") updateSectionParallax();
     }, { passive: true });
 
-  </script>
+  
+
+    // Cross-page nav transition: keeps homepage and product page feeling connected.
+    (() => {
+      document.body.classList.add('route-ready');
+
+      const isModifiedClick = (event) => event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0;
+      const samePage = (url) => url.origin === window.location.origin && url.pathname === window.location.pathname;
+
+      document.querySelectorAll('a[href]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+          if (isModifiedClick(event)) return;
+          if (link.target === '_blank' || link.hasAttribute('download')) return;
+
+          const rawHref = link.getAttribute('href');
+          if (!rawHref || rawHref.startsWith('mailto:') || rawHref.startsWith('tel:')) return;
+
+          const url = new URL(rawHref, window.location.href);
+          if (url.origin !== window.location.origin) return;
+
+          if (samePage(url)) {
+            if (!url.hash) {
+              event.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            return;
+          }
+
+          event.preventDefault();
+          link.classList.add('route-clicked');
+          document.body.classList.add('route-leaving');
+          window.setTimeout(() => { window.location.href = url.href; }, 360);
+        });
+      });
+    })();
+</script>
 </body>
 </html>

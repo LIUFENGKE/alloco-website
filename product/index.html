@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alloco — Products</title>
+  <style>
+    :root {
+      --accent: #9BFF36;
+      --black: #050505;
+      --ink: #0f0f10;
+      --muted: #70757d;
+      --soft: #f6f7f4;
+      --line: rgba(0,0,0,.10);
+      --dark-line: rgba(255,255,255,.12);
+      --dark-muted: rgba(255,255,255,.62);
+      --white: #ffffff;
+      --radius-xl: 38px;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      width: 100%;
+      min-height: 100%;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      background: var(--black);
+      color: var(--ink);
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    body { scroll-snap-type: y mandatory; }
+    ::selection { background: var(--accent); color: #000; }
+
+    .nav {
+      position: fixed;
+      inset: 0 0 auto 0;
+      height: 76px;
+      z-index: 50;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 48px;
+      color: #fff;
+      background: rgba(5,5,5,.44);
+      border-bottom: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      transition: background .28s ease, color .28s ease, border-color .28s ease;
+    }
+    .nav.light {
+      color: #111;
+      background: rgba(255,255,255,.76);
+      border-color: rgba(0,0,0,.08);
+    }
+    .brand {
+      position: absolute;
+      left: 48px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: inline-flex;
+      align-items: center;
+      color: currentColor;
+    }
+    .brand svg { width: 28px; height: 30px; display: block; }
+    .nav-links {
+      display: flex;
+      gap: 48px;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: -.01em;
+    }
+    .nav-links a {
+      color: inherit;
+      text-decoration: none;
+      opacity: .72;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .nav-links a:hover,
+    .nav-links a.active { opacity: 1; transform: translateY(-1px); }
+
+    .launch-app-link {
+      position: absolute;
+      right: 48px;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 38px;
+      padding: 0 18px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.22);
+      background: rgba(255,255,255,.08);
+      color: inherit;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 560;
+      letter-spacing: -.01em;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      transition: transform .22s ease, background .22s ease, border-color .22s ease;
+    }
+    .nav.light .launch-app-link {
+      border-color: rgba(0,0,0,.14);
+      background: rgba(255,255,255,.42);
+    }
+    .launch-app-link:hover {
+      transform: translateY(-50%) scale(1.025);
+      background: rgba(255,255,255,.16);
+      border-color: rgba(255,255,255,.34);
+    }
+
+    .section {
+      position: relative;
+      min-height: 100svh;
+      scroll-snap-align: start;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 110px 56px 68px;
+    }
+    .section.light { background: #fff; color: var(--ink); }
+    .section.soft { background: var(--soft); color: var(--ink); }
+    .section.dark { background: var(--black); color: #fff; }
+
+    .container {
+      width: min(1240px, 100%);
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(360px, .82fr);
+      gap: clamp(56px, 8vw, 118px);
+      align-items: center;
+    }
+    .kicker {
+      font-size: 12px;
+      line-height: 1;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: currentColor;
+      opacity: .46;
+      font-weight: 620;
+      margin-bottom: 26px;
+    }
+    h1, h2, h3, p { margin: 0; }
+    .display {
+      font-size: clamp(54px, 7.2vw, 112px);
+      line-height: .92;
+      letter-spacing: -.075em;
+      font-weight: 560;
+      max-width: 1060px;
+    }
+    .title {
+      font-size: clamp(42px, 5.4vw, 78px);
+      line-height: .96;
+      letter-spacing: -.072em;
+      font-weight: 560;
+      max-width: 900px;
+    }
+    .lead {
+      margin-top: 30px;
+      max-width: 650px;
+      font-size: clamp(18px, 1.55vw, 23px);
+      line-height: 1.45;
+      letter-spacing: -.035em;
+      color: var(--muted);
+    }
+    .dark .lead { color: var(--dark-muted); }
+
+    .cta-row {
+      margin-top: 44px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn {
+      height: 48px;
+      padding: 0 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.06);
+      color: inherit;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 560;
+      letter-spacing: -.01em;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      transition: transform .22s ease, background .22s ease, border-color .22s ease;
+    }
+    .light .btn, .soft .btn {
+      border-color: rgba(0,0,0,.12);
+      background: rgba(255,255,255,.58);
+    }
+    .btn:hover { transform: translateY(-2px); background: rgba(255,255,255,.14); }
+    .light .btn:hover, .soft .btn:hover { background: #fff; }
+
+    .visual-card {
+      position: relative;
+      min-height: 520px;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(circle at 50% 42%, rgba(255,255,255,.08), transparent 38%),
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      box-shadow: 0 40px 110px rgba(0,0,0,.28);
+    }
+    .light .visual-card, .soft .visual-card {
+      border-color: rgba(0,0,0,.08);
+      background:
+        radial-gradient(circle at 50% 42%, rgba(0,0,0,.045), transparent 40%),
+        linear-gradient(180deg, rgba(255,255,255,.88), rgba(255,255,255,.48));
+      box-shadow: 0 34px 90px rgba(0,0,0,.08);
+    }
+    .visual-card svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+    .wire {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.2;
+      opacity: .20;
+      vector-effect: non-scaling-stroke;
+    }
+    .dark .wire { opacity: .28; }
+    .solid-wire {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.7;
+      opacity: .42;
+      vector-effect: non-scaling-stroke;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .accent-dot { fill: var(--accent); }
+    .flow-line { stroke-dasharray: 10 12; animation: dash 12s linear infinite; }
+    @keyframes dash { to { stroke-dashoffset: -260; } }
+
+    .float-a { animation: floatA 8s ease-in-out infinite; transform-origin: center; }
+    .float-b { animation: floatB 9.5s ease-in-out infinite; transform-origin: center; }
+    .float-c { animation: floatC 11s ease-in-out infinite; transform-origin: center; }
+    @keyframes floatA { 0%,100% { transform: translate3d(0,0,0) rotate(0deg); } 50% { transform: translate3d(12px,-18px,0) rotate(2deg); } }
+    @keyframes floatB { 0%,100% { transform: translate3d(0,0,0) rotate(0deg); } 50% { transform: translate3d(-14px,14px,0) rotate(-2deg); } }
+    @keyframes floatC { 0%,100% { transform: translate3d(0,0,0); } 50% { transform: translate3d(0,-16px,0); } }
+
+    .tiny-label {
+      position: absolute;
+      font-size: 11px;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      opacity: .44;
+      font-weight: 650;
+    }
+
+    .steps {
+      margin-top: 54px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      max-width: 980px;
+    }
+    .step {
+      min-height: 178px;
+      border-radius: 28px;
+      padding: 26px;
+      border: 1px solid rgba(0,0,0,.08);
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 22px 70px rgba(0,0,0,.05);
+    }
+    .dark .step {
+      border-color: rgba(255,255,255,.10);
+      background: rgba(255,255,255,.045);
+      box-shadow: none;
+    }
+    .step-number { font-size: 13px; opacity: .42; margin-bottom: 22px; font-weight: 650; }
+    .step h3 { font-size: 22px; letter-spacing: -.04em; margin-bottom: 12px; font-weight: 620; }
+    .step p { font-size: 15px; line-height: 1.45; color: var(--muted); letter-spacing: -.02em; }
+    .dark .step p { color: var(--dark-muted); }
+
+    .product-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      max-width: 560px;
+      margin-left: auto;
+    }
+    .product-row {
+      min-height: 110px;
+      border-radius: 28px;
+      padding: 24px 26px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.055);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      transition: transform .24s ease, background .24s ease;
+    }
+    .product-row:hover { transform: translateX(8px); background: rgba(255,255,255,.085); }
+    .product-row h3 { font-size: 22px; letter-spacing: -.045em; font-weight: 620; }
+    .product-row p { margin-top: 8px; color: var(--dark-muted); font-size: 14px; line-height: 1.35; }
+    .price { text-align: right; font-size: 20px; font-weight: 620; letter-spacing: -.04em; }
+    .price span { display: block; margin-top: 6px; font-size: 12px; color: var(--accent); font-weight: 560; }
+
+    .liquidity-map {
+      margin-top: 70px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      border-top: 1px solid var(--dark-line);
+      border-bottom: 1px solid var(--dark-line);
+    }
+    .liquidity-node {
+      min-height: 210px;
+      padding: 34px 30px;
+      border-right: 1px solid var(--dark-line);
+      position: relative;
+    }
+    .liquidity-node:last-child { border-right: 0; }
+    .liquidity-node::after {
+      content: "";
+      position: absolute;
+      right: -8px;
+      top: 50%;
+      width: 16px;
+      height: 16px;
+      transform: translateY(-50%) rotate(45deg);
+      border-top: 1px solid rgba(255,255,255,.20);
+      border-right: 1px solid rgba(255,255,255,.20);
+      background: #050505;
+    }
+    .liquidity-node:last-child::after { display: none; }
+    .liquidity-node h3 { font-size: 21px; letter-spacing: -.04em; font-weight: 620; margin-top: 36px; }
+    .liquidity-node p { margin-top: 12px; color: var(--dark-muted); font-size: 15px; line-height: 1.44; letter-spacing: -.02em; }
+    .liquidity-number { font-size: 13px; opacity: .42; font-weight: 650; }
+
+    .nav-lines { position: absolute; inset: 0; pointer-events: none; opacity: .9; }
+    .nav-lines svg { width: 100%; height: 100%; }
+    .nav-line-a, .nav-line-b {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.15;
+      opacity: .20;
+      vector-effect: non-scaling-stroke;
+      transform-origin: center;
+    }
+    .nav-line-a { animation: navMoveA 10s ease-in-out infinite; }
+    .nav-line-b { animation: navMoveB 12s ease-in-out infinite; }
+    @keyframes navMoveA { 0%,100% { transform: translateX(-22px); } 50% { transform: translateX(28px); } }
+    @keyframes navMoveB { 0%,100% { transform: translateX(34px); } 50% { transform: translateX(-26px); } }
+
+    .anchor-grid {
+      margin-top: 58px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      max-width: 860px;
+    }
+    .anchor-stat {
+      padding: 28px;
+      border-radius: 28px;
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.045);
+    }
+    .anchor-stat strong { display: block; font-size: 36px; letter-spacing: -.06em; font-weight: 560; }
+    .anchor-stat span { display: block; margin-top: 10px; font-size: 14px; color: var(--dark-muted); }
+
+    .final-orbit {
+      position: absolute;
+      inset: auto auto 7% 50%;
+      width: min(760px, 75vw);
+      height: min(760px, 75vw);
+      transform: translateX(-50%);
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.10);
+      opacity: .45;
+      pointer-events: none;
+    }
+    .final-orbit::before,
+    .final-orbit::after {
+      content: "";
+      position: absolute;
+      inset: 13%;
+      border: 1px solid rgba(255,255,255,.10);
+      border-radius: 42% 58% 55% 45%;
+      animation: spin 24s linear infinite;
+    }
+    .final-orbit::after {
+      inset: 28%;
+      animation-duration: 32s;
+      animation-direction: reverse;
+      border-radius: 55% 45% 40% 60%;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .center { text-align: center; }
+    .center .title, .center .display, .center .lead { margin-left: auto; margin-right: auto; }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px) scale(.985);
+      transition: opacity .78s ease, transform .78s cubic-bezier(.22,.72,.18,1);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    .section-progress {
+      position: fixed;
+      right: 22px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 60;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .section-progress button {
+      width: 6px;
+      height: 6px;
+      padding: 0;
+      border-radius: 999px;
+      border: 0;
+      background: rgba(255,255,255,.35);
+      cursor: pointer;
+      transition: transform .2s ease, background .2s ease, height .2s ease;
+    }
+    .section-progress button.active { height: 22px; background: var(--accent); transform: scale(1.08); }
+
+    @media (max-width: 980px) {
+      body { scroll-snap-type: none; }
+      .section { min-height: auto; padding: 120px 24px 88px; }
+      .grid-2, .steps, .liquidity-map, .anchor-grid { grid-template-columns: 1fr; }
+      .visual-card { min-height: 420px; }
+      .liquidity-node { border-right: 0; border-bottom: 1px solid var(--dark-line); }
+      .liquidity-node:last-child { border-bottom: 0; }
+      .liquidity-node::after { display: none; }
+      .brand { left: 22px; }
+      .launch-app-link { right: 22px; height: 34px; padding: 0 13px; font-size: 12px; }
+      .nav-links { gap: 24px; font-size: 13px; }
+      .section-progress { display: none; }
+    }
+    @media (max-width: 640px) {
+      .nav { padding: 0 22px; justify-content: center; }
+      .nav-links { gap: 18px; }
+      .launch-app-link { display: none; }
+      .brand svg { width: 24px; height: 26px; }
+      .display { font-size: 52px; }
+      .title { font-size: 42px; }
+    }
+  
+    /* ===== Product page Ondo-style redesign refinements ===== */
+    .nav {
+      top: 24px;
+      left: 50%;
+      right: auto;
+      bottom: auto;
+      width: min(1040px, calc(100vw - 56px));
+      height: 72px;
+      transform: translateX(-50%);
+      inset: 24px auto auto 50%;
+      border-radius: 18px;
+      padding: 0 18px 0 26px;
+      background: rgba(255,255,255,.88) !important;
+      color: #111 !important;
+      border: 1px solid rgba(0,0,0,.08) !important;
+      box-shadow: 0 18px 70px rgba(0,0,0,.11);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+    }
+
+    .nav.dark,
+    .nav.light {
+      background: rgba(255,255,255,.88) !important;
+      color: #111 !important;
+      border-color: rgba(0,0,0,.08) !important;
+    }
+
+    .brand {
+      left: 28px;
+    }
+
+    .brand svg {
+      width: 28px;
+      height: 30px;
+    }
+
+    .nav-links {
+      gap: 48px;
+      font-weight: 470;
+    }
+
+    .launch-app-link {
+      right: 18px;
+      height: 44px;
+      padding: 0 20px;
+      border-radius: 10px;
+      background: #111 !important;
+      color: #fff !important;
+      border-color: #111 !important;
+      font-weight: 540;
+    }
+
+    .launch-app-link:hover {
+      background: #242424 !important;
+      border-color: #242424 !important;
+      transform: translateY(-50%) scale(1.018);
+    }
+
+    .section {
+      padding-top: 132px;
+      padding-bottom: 78px;
+    }
+
+    .display,
+    .title {
+      font-weight: 690;
+      letter-spacing: -.045em;
+    }
+
+    .product-hero {
+      background: #fff;
+      color: #0d0d0e;
+      text-align: center;
+      align-items: center;
+    }
+
+    .product-hero .grid-2 {
+      display: block;
+    }
+
+    .product-hero .kicker {
+      margin-top: 46px;
+    }
+
+    .product-hero .display {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 1200px;
+      font-size: clamp(62px, 8vw, 126px);
+      line-height: .9;
+      letter-spacing: -.04em;
+    }
+
+    .product-hero .lead {
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 720px;
+      color: #6f747b;
+    }
+
+    .product-hero .cta-row {
+      justify-content: center;
+    }
+
+    .hero-band {
+      position: relative;
+      margin: clamp(64px, 9vh, 108px) auto 0;
+      width: min(1180px, 100%);
+      height: clamp(260px, 34vh, 390px);
+      border-radius: 44px;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,.08);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.92)),
+        radial-gradient(circle at 43% 34%, rgba(155,255,54,.16), transparent 28%),
+        linear-gradient(112deg, #050505 0%, #151515 38%, #edf1e8 39%, #fff 100%);
+      box-shadow: 0 34px 110px rgba(0,0,0,.10);
+    }
+
+    .hero-band::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(0,0,0,.055) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(0,0,0,.055) 1px, transparent 1px);
+      background-size: 96px 96px;
+      opacity: .50;
+      mask-image: linear-gradient(180deg, #000, transparent 82%);
+    }
+
+    .hero-band svg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+    }
+
+    .hero-line {
+      fill: none;
+      stroke: rgba(0,0,0,.28);
+      stroke-width: 1.2;
+      vector-effect: non-scaling-stroke;
+      stroke-linecap: round;
+      animation: productDrift 10s ease-in-out infinite;
+    }
+
+    .hero-line.soft-line {
+      stroke: rgba(0,0,0,.16);
+      animation-direction: reverse;
+      animation-duration: 12s;
+    }
+
+    .hero-dot {
+      fill: var(--accent);
+      animation: dotPulse 2.8s ease-in-out infinite;
+    }
+
+    .hero-arc {
+      position: absolute;
+      right: -120px;
+      bottom: -360px;
+      width: 660px;
+      height: 660px;
+      border: 1px solid rgba(0,0,0,.16);
+      border-radius: 999px;
+      z-index: 1;
+      animation: spin 30s linear infinite;
+    }
+
+    .hero-arc::before,
+    .hero-arc::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(0,0,0,.10);
+      border-radius: 44% 56% 58% 42%;
+    }
+
+    .hero-arc::before {
+      inset: 18%;
+    }
+
+    .hero-arc::after {
+      inset: 34%;
+      animation: spin 24s linear infinite reverse;
+    }
+
+    .hero-pill {
+      position: absolute;
+      z-index: 3;
+      min-width: 112px;
+      height: 44px;
+      border-radius: 16px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,.72);
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: 0 18px 46px rgba(0,0,0,.08);
+      font-size: 13px;
+      font-weight: 560;
+      letter-spacing: -.02em;
+      color: #111;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .hp-1 { left: 10%; bottom: 18%; animation: floatA 8s ease-in-out infinite; }
+    .hp-2 { left: 45%; top: 22%; animation: floatB 9s ease-in-out infinite; }
+    .hp-3 { right: 11%; bottom: 24%; animation: floatC 10s ease-in-out infinite; }
+
+    @keyframes productDrift {
+      0%, 100% { transform: translateX(-18px); }
+      50% { transform: translateX(28px); }
+    }
+
+    @keyframes dotPulse {
+      0%, 100% { opacity: .55; transform: scale(.92); }
+      50% { opacity: 1; transform: scale(1.14); }
+    }
+
+    .soft {
+      background:
+        radial-gradient(circle at 75% 18%, rgba(155,255,54,.10), transparent 24%),
+        #f7f8f5;
+    }
+
+    .dark {
+      background:
+        radial-gradient(circle at 70% 14%, rgba(155,255,54,.055), transparent 24%),
+        #050505;
+    }
+
+    .steps .step,
+    .visual-card,
+    .product-row,
+    .anchor-stat {
+      border-radius: 34px;
+    }
+
+    .visual-card {
+      border-radius: 46px;
+    }
+
+    .product-list {
+      background: #050505;
+      padding: 22px;
+      border-radius: 44px;
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 40px 120px rgba(0,0,0,.36);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .product-list::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 72% 20%, rgba(155,255,54,.10), transparent 24%),
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255,255,255,.045) 1px, transparent 1px);
+      background-size: auto, 88px 88px, 88px 88px;
+      opacity: .6;
+      pointer-events: none;
+    }
+
+    .product-row {
+      position: relative;
+      z-index: 1;
+      border-radius: 26px;
+    }
+
+    .liquidity-map {
+      margin-top: 82px;
+      border-radius: 44px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,.10);
+      background:
+        linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(255,255,255,.045) 1px, transparent 1px),
+        rgba(255,255,255,.025);
+      background-size: 92px 92px, 92px 92px, auto;
+      border-top: 1px solid rgba(255,255,255,.10);
+      border-bottom: 1px solid rgba(255,255,255,.10);
+    }
+
+    .liquidity-node {
+      min-height: 250px;
+      padding-top: 42px;
+      padding-bottom: 42px;
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+    .nav-lines {
+      opacity: .86;
+    }
+
+    .nav-line-a,
+    .nav-line-b {
+      opacity: .16;
+    }
+
+    .final-orbit {
+      opacity: .28;
+    }
+
+    @media (max-width: 980px) {
+      .nav {
+        width: calc(100vw - 28px);
+        top: 14px;
+        inset: 14px auto auto 50%;
+      }
+
+      .brand {
+        left: 20px;
+      }
+
+      .product-hero .kicker {
+        margin-top: 0;
+      }
+
+      .hero-band {
+        border-radius: 34px;
+      }
+    }
+
+  
+
+    /* ===== Cross-page navigation continuity ===== */
+    .nav {
+      will-change: transform, opacity, background, color, border-color, border-radius, box-shadow;
+      transform-origin: top center;
+    }
+
+    .brand,
+    .nav-links a,
+    .launch-app-link {
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .brand {
+      text-decoration: none;
+      transition: opacity .24s ease, transform .24s ease;
+    }
+
+    .brand:hover {
+      opacity: .78;
+    }
+
+    .nav-links a {
+      position: relative;
+      transition: opacity .22s ease, transform .22s ease, color .22s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -8px;
+      height: 1px;
+      background: currentColor;
+      opacity: 0;
+      transform: scaleX(.45);
+      transform-origin: center;
+      transition: opacity .22s ease, transform .22s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a.active::after,
+    .nav-links a.route-clicked::after {
+      opacity: .36;
+      transform: scaleX(1);
+    }
+
+    body.route-ready {
+      animation: routeEnter .62s cubic-bezier(.22,.72,.18,1) both;
+    }
+
+    body.route-leaving {
+      pointer-events: none;
+      opacity: 0;
+      transform: translate3d(0,-10px,0) scale(.992);
+      filter: blur(3px);
+      transition: opacity .42s ease, transform .42s cubic-bezier(.22,.72,.18,1), filter .42s ease;
+      transform-origin: top center;
+    }
+
+    body.route-leaving .nav {
+      opacity: .72;
+      transition: opacity .42s ease;
+    }
+
+    @keyframes routeEnter {
+      from { opacity: 0; transform: translate3d(0,14px,0) scale(.992); filter: blur(4px); }
+      to { opacity: 1; transform: translate3d(0,0,0) scale(1); filter: blur(0); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      body.route-ready,
+      body.route-leaving { animation: none; transition: none; transform: none; filter: none; }
+      body.route-leaving .nav { transition: none; }
+    }
+</style>
+</head>
+<body>
+  <nav class="nav dark" id="nav">
+    <a class="brand" href="/" aria-label="Alloco Home">
+      <svg viewBox="0 0 220 236" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M1.72854 189.498L110 0L49.683 174.758C49.2281 176.079 50.3299 177.41 51.7249 177.24L86.9629 172.877L0 236V196.013C0 193.731 0.596398 191.49 1.72854 189.498Z" fill="currentColor"/>
+        <path d="M218.261 189.498L110 0L170.317 174.758C170.772 176.079 169.67 177.41 168.275 177.24L133.037 172.877L220 236V196.013C220 193.731 219.404 191.49 218.261 189.498Z" fill="currentColor"/>
+      </svg>
+    </a>
+    <div class="nav-links">
+      <a href="/product" class="active" aria-current="page">Products</a>
+      <a href="/resources">Resources</a>
+      <a href="/about">About</a>
+    </div>
+    <a class="launch-app-link" href="https://app.allocofi.com/" target="_blank" rel="noopener noreferrer">Launch App</a>
+  </nav>
+
+  <div class="section-progress" id="progress"></div>
+
+  <section class="section light product-hero" data-theme="light" id="launch">
+    <div class="container grid-2">
+      <div class="reveal">
+        <div class="kicker">Product Layer</div>
+        <h1 class="display">Create markets from real-world ideas</h1>
+        <p class="lead">Alloco gives themes a clean path from thesis to product, with structure, transparency, and onchain access designed into the experience.</p>
+        <div class="cta-row">
+          <a class="btn" href="https://app.allocofi.com/" target="_blank" rel="noopener noreferrer">Start My Idea</a>
+          <a class="btn" href="#trade">Explore Products</a>
+        </div>
+      </div>
+      <div class="hero-band reveal" aria-hidden="true">
+        <div class="hero-arc"></div>
+        <svg viewBox="0 0 1100 360" preserveAspectRatio="none">
+          <path class="hero-line" d="M-40 250C180 86 310 210 460 112C620 8 760 160 1140 48"/>
+          <path class="hero-line soft-line" d="M-40 312C230 170 350 300 560 170C760 46 876 232 1160 138"/>
+          <circle class="hero-dot" cx="230" cy="198" r="5"/>
+          <circle class="hero-dot" cx="558" cy="166" r="5"/>
+          <circle class="hero-dot" cx="855" cy="162" r="5"/>
+        </svg>
+        <div class="hero-pill hp-1">Themes</div>
+        <div class="hero-pill hp-2">NAV</div>
+        <div class="hero-pill hp-3">Access</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light" data-theme="light" id="trade">
+    <div class="container grid-2">
+      <div class="reveal">
+        <div class="kicker">Trade Products</div>
+        <h2 class="title">A calm marketplace for investable themes</h2>
+        <p class="lead">Products are presented through story, exposure, NAV logic, and clear participation paths. Less terminal. More signal.</p>
+        <div class="steps">
+          <div class="step"><div class="step-number">01</div><h3>Discover</h3><p>Browse curated themes that map to the future people already care about.</p></div>
+          <div class="step"><div class="step-number">02</div><h3>Understand</h3><p>Read the story, basket, disclosures, and valuation logic before entering.</p></div>
+          <div class="step"><div class="step-number">03</div><h3>Access</h3><p>Move from insight to exposure through a clean, guided interface.</p></div>
+        </div>
+      </div>
+      <div class="product-list reveal">
+        <div class="product-row"><div><h3>AI Compute</h3><p>Chips, data centers, power, and physical infrastructure behind intelligence.</p></div><div class="price">$31.52<span>+1.08%</span></div></div>
+        <div class="product-row"><div><h3>Longevity</h3><p>Biotechnology, healthspan, and companies extending quality of life.</p></div><div class="price">$26.11<span>+0.74%</span></div></div>
+        <div class="product-row"><div><h3>Energy Future</h3><p>Clean energy, grid resilience, and strategic infrastructure.</p></div><div class="price">$28.64<span>+0.91%</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark" data-theme="dark" id="liquidity">
+    <div class="container reveal">
+      <div class="kicker">Liquidity</div>
+      <h2 class="title">Liquidity should feel invisible, not uncertain</h2>
+      <p class="lead">Alloco separates the user experience from the execution complexity behind it, so products can support different order sizes without making the interface noisy.</p>
+      <div class="liquidity-map">
+        <div class="liquidity-node"><div class="liquidity-number">01</div><h3>Onchain pool</h3><p>Small orders can route through visible onchain liquidity for fast access.</p></div>
+        <div class="liquidity-node"><div class="liquidity-number">02</div><h3>RFQ layer</h3><p>Mid-size flow can be matched with market makers for better execution.</p></div>
+        <div class="liquidity-node"><div class="liquidity-number">03</div><h3>Creation route</h3><p>Larger allocations can move through primary creation and redemption.</p></div>
+        <div class="liquidity-node"><div class="liquidity-number">04</div><h3>Clear settlement</h3><p>Users see estimated route, slippage, timing, and final shares before action.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark" data-theme="dark" id="nav-anchor">
+    <div class="nav-lines">
+      <svg viewBox="0 0 1440 900" preserveAspectRatio="none">
+        <path class="nav-line-a" d="M-80 560C220 380 420 480 640 350C870 215 1040 360 1520 160"/>
+        <path class="nav-line-b" d="M-60 640C260 470 520 610 760 410C980 226 1140 480 1500 280"/>
+        <path class="nav-line-a" d="M-80 720C260 540 520 700 790 520C1040 350 1180 590 1520 420" opacity=".5"/>
+      </svg>
+    </div>
+    <div class="container reveal">
+      <div class="kicker">NAV Anchor</div>
+      <h2 class="title">Trust is not claimed, it is calculated</h2>
+      <p class="lead">Products are designed around a valuation layer. Official NAV supports formal reporting. iNAV gives the market a live reference. The anchor is visible by default.</p>
+      <div class="anchor-grid">
+        <div class="anchor-stat"><strong>NAV</strong><span>Formal valuation and reporting reference.</span></div>
+        <div class="anchor-stat"><strong>iNAV</strong><span>Real-time market reference for participation.</span></div>
+        <div class="anchor-stat"><strong>Rules</strong><span>Pricing, basket, and methodology made legible.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section soft" data-theme="light" id="design">
+    <div class="container grid-2">
+      <div class="reveal">
+        <div class="kicker">Product Philosophy</div>
+        <h2 class="title">Finance should feel designed, not assembled</h2>
+        <p class="lead">A product is more than a contract. It is a story, a basket, a valuation method, a liquidity path, and a trust surface. Alloco makes these layers feel like one coherent experience.</p>
+      </div>
+      <div class="visual-card reveal">
+        <svg viewBox="0 0 560 560" preserveAspectRatio="xMidYMid meet">
+          <g class="float-a"><circle class="wire" cx="280" cy="280" r="180"/><circle class="wire" cx="280" cy="280" r="122"/></g>
+          <g class="float-b"><path class="solid-wire" d="M140 340L236 220L320 292L420 170"/><rect class="wire" x="168" y="150" width="224" height="260" rx="48"/></g>
+          <g class="float-c"><path class="solid-wire flow-line" d="M142 432C218 386 328 392 418 430"/><circle class="accent-dot" cx="142" cy="432" r="5"/><circle class="accent-dot" cx="282" cy="394" r="5"/><circle class="accent-dot" cx="418" cy="430" r="5"/></g>
+        </svg>
+        <div class="tiny-label" style="left: 54px; top: 54px;">Designed market</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section dark center" data-theme="dark" id="final">
+    <div class="final-orbit"></div>
+    <div class="container reveal">
+      <h2 class="title">Launch the market your idea deserves</h2>
+      <p class="lead">Start from a thesis. Shape the structure. Let the product become accessible.</p>
+      <div class="cta-row" style="justify-content:center;">
+        <a class="btn" href="https://app.allocofi.com/" target="_blank" rel="noopener noreferrer">Launch App</a>
+        <a class="btn" href="/">Back Home</a>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const sections = [...document.querySelectorAll('.section')];
+    const nav = document.getElementById('nav');
+    const progress = document.getElementById('progress');
+
+    sections.forEach((_, idx) => {
+      const dot = document.createElement('button');
+      dot.setAttribute('aria-label', `Go to section ${idx + 1}`);
+      dot.addEventListener('click', () => sections[idx].scrollIntoView({ behavior: 'smooth' }));
+      progress.appendChild(dot);
+    });
+
+    const progressDots = [...progress.querySelectorAll('button')];
+
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.22 });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const section = entry.target;
+        const idx = sections.indexOf(section);
+        const theme = section.dataset.theme;
+        nav.classList.toggle('light', theme === 'light');
+        nav.classList.toggle('dark', theme !== 'light');
+        progressDots.forEach((dot, i) => dot.classList.toggle('active', i === idx));
+      });
+    }, { threshold: 0.58 });
+
+    sections.forEach(section => sectionObserver.observe(section));
+
+    let locked = false;
+    let activeIndex = 0;
+    let lastWheelAt = 0;
+
+    function nearestSectionIndex() {
+      const mid = window.scrollY + window.innerHeight / 2;
+      let best = 0;
+      let dist = Infinity;
+      sections.forEach((s, i) => {
+        const center = s.offsetTop + s.offsetHeight / 2;
+        const d = Math.abs(center - mid);
+        if (d < dist) { dist = d; best = i; }
+      });
+      return best;
+    }
+
+    function ease(t) { return 1 - Math.pow(1 - t, 3.1); }
+
+    function animateTo(targetY, duration = 780) {
+      return new Promise(resolve => {
+        const startY = window.scrollY;
+        const delta = targetY - startY;
+        const start = performance.now();
+        function frame(now) {
+          const t = Math.min(1, (now - start) / duration);
+          window.scrollTo(0, startY + delta * ease(t));
+          if (t < 1) requestAnimationFrame(frame);
+          else resolve();
+        }
+        requestAnimationFrame(frame);
+      });
+    }
+
+    async function goToSection(index) {
+      if (index < 0 || index >= sections.length || locked) return;
+      locked = true;
+      activeIndex = index;
+      await animateTo(sections[index].offsetTop, 780);
+      setTimeout(() => { locked = false; }, 70);
+    }
+
+    window.addEventListener('wheel', (e) => {
+      if (window.innerWidth < 980) return;
+      const now = performance.now();
+      if (locked || now - lastWheelAt < 500) {
+        e.preventDefault();
+        return;
+      }
+      const abs = Math.abs(e.deltaY);
+      if (abs < 18) return;
+      e.preventDefault();
+      lastWheelAt = now;
+      activeIndex = nearestSectionIndex();
+      const direction = e.deltaY > 0 ? 1 : -1;
+      goToSection(activeIndex + direction);
+    }, { passive: false });
+  
+
+    // Cross-page nav transition: keeps homepage and product page feeling connected.
+    (() => {
+      document.body.classList.add('route-ready');
+
+      const isModifiedClick = (event) => event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0;
+      const samePage = (url) => url.origin === window.location.origin && url.pathname === window.location.pathname;
+
+      document.querySelectorAll('a[href]').forEach((link) => {
+        link.addEventListener('click', (event) => {
+          if (isModifiedClick(event)) return;
+          if (link.target === '_blank' || link.hasAttribute('download')) return;
+
+          const rawHref = link.getAttribute('href');
+          if (!rawHref || rawHref.startsWith('mailto:') || rawHref.startsWith('tel:')) return;
+
+          const url = new URL(rawHref, window.location.href);
+          if (url.origin !== window.location.origin) return;
+
+          if (samePage(url)) {
+            if (!url.hash) {
+              event.preventDefault();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            return;
+          }
+
+          event.preventDefault();
+          link.classList.add('route-clicked');
+          document.body.classList.add('route-leaving');
+          window.setTimeout(() => { window.location.href = url.href; }, 360);
+        });
+      });
+    })();
+</script>
+</body>
+</html>
