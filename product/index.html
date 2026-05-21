@@ -4264,6 +4264,553 @@
       }
     }
 
+  
+    /* ===== ETP Liquidity card title size refinement ===== */
+    .liquidity-card-title,
+    .etp-liquidity-card-title,
+    .liquidity-card h3,
+    .liquidity-flow-card h3,
+    .liquidity-grid h3,
+    .liquidity-section h3,
+    #liquidity h3,
+    #etp-liquidity h3,
+    [data-section="liquidity"] h3 {
+      font-size: clamp(24px, 2.55vw, 42px) !important;
+      line-height: 1.04 !important;
+      letter-spacing: -0.045em !important;
+    }
+
+    @media (max-width: 980px) {
+      .liquidity-card-title,
+      .etp-liquidity-card-title,
+      .liquidity-card h3,
+      .liquidity-flow-card h3,
+      .liquidity-grid h3,
+      .liquidity-section h3,
+      #liquidity h3,
+      #etp-liquidity h3,
+      [data-section="liquidity"] h3 {
+        font-size: clamp(22px, 5.2vw, 34px) !important;
+      }
+    }
+
+  
+
+    /* ===== Trust & Transparency: four-document layout + white preview panel ===== */
+    #product-documents .documents-panel {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      width: min(1120px, 100%) !important;
+    }
+
+    #product-documents .document-card {
+      min-height: 210px !important;
+    }
+
+    .legal-preview-panel {
+      right: 50% !important;
+      top: 50% !important;
+      width: min(1080px, calc(100vw - 64px)) !important;
+      max-height: min(86vh, 920px) !important;
+      transform: translate3d(50%, calc(-50% + 18px), 0) !important;
+      color: #111 !important;
+      border: 1px solid rgba(0,0,0,.12) !important;
+      background:
+        radial-gradient(circle at 80% 8%, rgba(155,255,54,.16), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,.98), rgba(246,247,244,.96)) !important;
+      box-shadow: 0 42px 130px rgba(0,0,0,.42) !important;
+      backdrop-filter: blur(28px) !important;
+      -webkit-backdrop-filter: blur(28px) !important;
+    }
+
+    .legal-preview-panel.is-active {
+      transform: translate3d(50%, -50%, 0) !important;
+    }
+
+    .legal-preview-header {
+      padding: 30px 34px 24px !important;
+      border-bottom: 1px solid rgba(0,0,0,.08) !important;
+    }
+
+    .legal-preview-label {
+      color: rgba(0,0,0,.46) !important;
+    }
+
+    .legal-preview-header h3 {
+      color: #0d0d0e !important;
+      font-size: clamp(34px, 3vw, 54px) !important;
+      font-weight: 460 !important;
+      letter-spacing: -.05em !important;
+    }
+
+    .legal-preview-intro {
+      color: rgba(0,0,0,.62) !important;
+      font-size: clamp(16px, 1.2vw, 19px) !important;
+      max-width: 860px !important;
+    }
+
+    .legal-preview-close {
+      color: rgba(0,0,0,.62) !important;
+      border-color: rgba(0,0,0,.10) !important;
+      background: rgba(255,255,255,.72) !important;
+    }
+
+    .legal-preview-close:hover {
+      color: #000 !important;
+      border-color: rgba(0,0,0,.18) !important;
+      background: #fff !important;
+    }
+
+    .legal-preview-scroll {
+      padding: 28px 34px 34px !important;
+    }
+
+    .legal-preview-scroll::-webkit-scrollbar-thumb {
+      background: rgba(0,0,0,.18) !important;
+    }
+
+    .legal-preview-section {
+      border-bottom: 1px solid rgba(0,0,0,.08) !important;
+      padding-bottom: 22px !important;
+      margin-bottom: 22px !important;
+    }
+
+    .legal-preview-section h4 {
+      color: rgba(0,0,0,.50) !important;
+      font-weight: 560 !important;
+    }
+
+    .legal-preview-section p,
+    .legal-preview-section li {
+      color: rgba(0,0,0,.76) !important;
+      font-size: 15.5px !important;
+      line-height: 1.72 !important;
+    }
+
+    @media (max-width: 980px) {
+      #product-documents .documents-panel {
+        grid-template-columns: 1fr !important;
+      }
+      .legal-preview-panel {
+        width: min(860px, calc(100vw - 40px)) !important;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .legal-preview-panel {
+        top: auto !important;
+        right: 12px !important;
+        left: 12px !important;
+        bottom: 12px !important;
+        width: auto !important;
+        max-height: min(78vh, 760px) !important;
+        transform: translate3d(0, 18px, 0) !important;
+      }
+
+      .legal-preview-panel.is-active {
+        transform: translate3d(0, 0, 0) !important;
+      }
+    }
+
+  
+    /* ===== Trust preview scroll lock refinement ===== */
+    body.legal-preview-locked {
+      overflow: hidden !important;
+      touch-action: none;
+    }
+
+    body.legal-preview-locked .legal-preview-panel,
+    body.legal-preview-locked .legal-preview-scroll {
+      touch-action: auto;
+    }
+
+    .legal-preview-panel.is-active {
+      pointer-events: auto;
+    }
+
+    .legal-preview-scroll {
+      overscroll-behavior: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+
+  
+    /* ===== Hide right-side section progress navigation, keep section logic intact ===== */
+    .section-progress {
+      display: none !important;
+      opacity: 0 !important;
+      pointer-events: none !important;
+      visibility: hidden !important;
+    }
+
+  
+    /* ===== Trust & Transparency compact layout ===== */
+    .documents-panel {
+      gap: 20px !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      max-width: 1320px;
+    }
+
+    .document-card {
+      min-height: 250px !important;
+      padding: 26px !important;
+      border-radius: 28px !important;
+    }
+
+    .document-top {
+      margin-bottom: 24px !important;
+    }
+
+    .document-icon {
+      width: 72px !important;
+      height: 72px !important;
+      border-radius: 22px !important;
+    }
+
+    .document-icon .al-icon {
+      width: 28px !important;
+      height: 28px !important;
+    }
+
+    .document-copy h3 {
+      font-size: clamp(28px, 2.4vw, 44px) !important;
+      line-height: 1.02 !important;
+      letter-spacing: -0.05em !important;
+      margin-bottom: 10px !important;
+    }
+
+    .document-brief {
+      margin-top: 0 !important;
+      font-size: 14px !important;
+    }
+
+    .document-bottom {
+      margin-top: 22px !important;
+      padding-top: 18px !important;
+    }
+
+    .document-meta,
+    .preview-cta {
+      font-size: 14px !important;
+    }
+
+    .docs-section .section-heading {
+      margin-bottom: 42px !important;
+    }
+
+    @media (max-height: 900px) {
+      .document-card {
+        min-height: 220px !important;
+        padding: 22px !important;
+      }
+
+      .document-copy h3 {
+        font-size: clamp(24px, 2vw, 38px) !important;
+      }
+    }
+
+    @media (max-width: 980px) {
+      .documents-panel {
+        grid-template-columns: 1fr !important;
+      }
+
+      .document-card {
+        min-height: 210px !important;
+      }
+    }
+
+  
+    /* ===== Trust cards: icon + title horizontal compact refinement ===== */
+    #product-documents .document-top {
+      justify-content: flex-start !important;
+      align-items: center !important;
+      gap: 18px !important;
+      margin-bottom: 0 !important;
+    }
+
+    #product-documents .document-card > div:first-child {
+      display: flex !important;
+      align-items: center !important;
+      gap: 22px !important;
+      min-width: 0 !important;
+    }
+
+    #product-documents .document-copy {
+      min-width: 0 !important;
+      flex: 1 1 auto !important;
+    }
+
+    #product-documents .document-icon {
+      flex: 0 0 auto !important;
+    }
+
+    #product-documents .document-copy h3 {
+      margin: 0 0 8px !important;
+      max-width: none !important;
+      white-space: normal !important;
+    }
+
+    #product-documents .document-card {
+      min-height: 210px !important;
+      padding: 24px 28px !important;
+      justify-content: center !important;
+    }
+
+    #product-documents .document-bottom {
+      width: 100% !important;
+      margin-top: 24px !important;
+    }
+
+    #product-documents .document-meta {
+      flex: 0 1 auto !important;
+    }
+
+    #product-documents .preview-cta {
+      margin-left: auto !important;
+      flex: 0 0 auto !important;
+    }
+
+    @media (max-height: 900px) {
+      #product-documents .document-card {
+        min-height: 190px !important;
+        padding: 20px 24px !important;
+      }
+    }
+
+    @media (max-width: 760px) {
+      #product-documents .document-card > div:first-child {
+        gap: 16px !important;
+      }
+
+      #product-documents .document-copy h3 {
+        font-size: clamp(24px, 7vw, 34px) !important;
+      }
+    }
+
+  
+    /* ===== Trust & Transparency document reader refinement ===== */
+    #product-documents .legal-preview-panel {
+      width: min(980px, calc(100vw - 64px)) !important;
+      max-height: min(86vh, 920px) !important;
+      border-radius: 32px !important;
+      border: 1px solid rgba(0,0,0,.10) !important;
+      background:
+        radial-gradient(circle at 85% 0%, rgba(155,255,54,.14), transparent 26%),
+        linear-gradient(180deg, rgba(255,255,255,.98), rgba(248,249,246,.98)) !important;
+      color: #111 !important;
+      box-shadow: 0 48px 140px rgba(0,0,0,.46) !important;
+    }
+
+    #product-documents .legal-preview-header {
+      padding: 30px 34px 24px !important;
+      border-bottom: 1px solid rgba(0,0,0,.08) !important;
+      background: rgba(255,255,255,.72) !important;
+    }
+
+    #product-documents .legal-preview-label {
+      color: rgba(0,0,0,.46) !important;
+    }
+
+    #product-documents .legal-preview-header h3 {
+      color: #0f0f10 !important;
+      font-size: clamp(34px, 3vw, 52px) !important;
+      font-weight: 500 !important;
+      letter-spacing: -.055em !important;
+    }
+
+    #product-documents .legal-preview-intro {
+      color: rgba(0,0,0,.58) !important;
+      max-width: 780px !important;
+      font-size: 16px !important;
+      line-height: 1.55 !important;
+    }
+
+    #product-documents .legal-preview-close {
+      color: rgba(0,0,0,.62) !important;
+      border-color: rgba(0,0,0,.10) !important;
+      background: rgba(0,0,0,.035) !important;
+    }
+
+    #product-documents .legal-preview-close:hover {
+      color: #000 !important;
+      border-color: rgba(0,0,0,.18) !important;
+      background: rgba(0,0,0,.06) !important;
+    }
+
+    #product-documents .legal-preview-scroll {
+      padding: 26px 34px 34px !important;
+      background: transparent !important;
+    }
+
+    #product-documents .legal-preview-scroll::-webkit-scrollbar-thumb {
+      background: rgba(0,0,0,.18) !important;
+    }
+
+    #product-documents .legal-preview-section {
+      padding: 0 0 24px !important;
+      margin: 0 0 24px !important;
+      border-bottom: 1px solid rgba(0,0,0,.08) !important;
+    }
+
+    #product-documents .legal-preview-section h4 {
+      margin-bottom: 14px !important;
+      color: rgba(0,0,0,.46) !important;
+      font-size: 12px !important;
+      letter-spacing: .14em !important;
+      font-weight: 560 !important;
+    }
+
+    #product-documents .legal-preview-section p,
+    #product-documents .legal-preview-section li {
+      color: rgba(0,0,0,.76) !important;
+      font-size: 15.5px !important;
+      line-height: 1.72 !important;
+    }
+
+    #product-documents .legal-preview-section ul {
+      padding-left: 20px !important;
+      gap: 9px !important;
+    }
+
+    #product-documents .doc-callout {
+      margin: 14px 0;
+      padding: 18px 20px;
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 18px;
+      background: rgba(155,255,54,.08);
+      color: rgba(0,0,0,.76);
+      font-size: 15px;
+      line-height: 1.62;
+      letter-spacing: -.015em;
+    }
+
+    #product-documents .doc-table-wrap {
+      margin: 16px 0 4px;
+      border: 1px solid rgba(0,0,0,.09);
+      border-radius: 20px;
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 16px 42px rgba(0,0,0,.045);
+    }
+
+    #product-documents table.doc-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+      line-height: 1.5;
+      color: rgba(0,0,0,.74);
+    }
+
+    #product-documents .doc-table th {
+      padding: 13px 16px;
+      text-align: left;
+      background: #f3f5f0;
+      color: rgba(0,0,0,.62);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 560;
+      border-bottom: 1px solid rgba(0,0,0,.08);
+    }
+
+    #product-documents .doc-table td {
+      padding: 14px 16px;
+      vertical-align: top;
+      border-bottom: 1px solid rgba(0,0,0,.07);
+    }
+
+    #product-documents .doc-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    #product-documents .doc-table td:first-child {
+      color: #111;
+      font-weight: 540;
+      width: 30%;
+    }
+
+    #product-documents .doc-mini-title {
+      display: block;
+      margin: 18px 0 8px;
+      color: #111;
+      font-size: 17px;
+      font-weight: 540;
+      letter-spacing: -.025em;
+    }
+
+    @media (max-width: 760px) {
+      #product-documents .legal-preview-panel {
+        width: auto !important;
+        max-height: min(78vh, 760px) !important;
+        border-radius: 24px !important;
+      }
+
+      #product-documents .legal-preview-header {
+        padding: 22px 22px 18px !important;
+      }
+
+      #product-documents .legal-preview-scroll {
+        padding: 20px 20px 24px !important;
+      }
+
+      #product-documents .legal-preview-header h3 {
+        font-size: 32px !important;
+      }
+
+      #product-documents .doc-table-wrap {
+        overflow-x: auto;
+      }
+
+      #product-documents table.doc-table {
+        min-width: 620px;
+      }
+    }
+
+  
+    /* ===== Final CTA title one-line refinement ===== */
+    #final .title {
+      max-width: none !important;
+      white-space: nowrap !important;
+      font-size: clamp(36px, 4.2vw, 68px) !important;
+      line-height: 1.02 !important;
+      font-weight: 520 !important;
+      letter-spacing: -0.055em !important;
+    }
+
+    @media (max-width: 760px) {
+      #final .title {
+        white-space: normal !important;
+        font-size: clamp(32px, 8vw, 46px) !important;
+      }
+    }
+
+  
+    /* ===== Start Creating My ETP heading one-line light refinement ===== */
+    .create-etp-heading {
+      white-space: nowrap !important;
+      max-width: none !important;
+      width: max-content !important;
+      font-size: clamp(31px, 4vw, 58px) !important;
+      line-height: 1 !important;
+      font-weight: 400 !important;
+      letter-spacing: -0.055em !important;
+    }
+
+    .create-etp-copy {
+      min-width: max-content !important;
+      overflow: visible !important;
+    }
+
+    @media (max-width: 980px) {
+      .create-etp-heading {
+        width: auto !important;
+        white-space: normal !important;
+        font-size: clamp(28px, 6.2vw, 43px) !important;
+      }
+
+      .create-etp-copy {
+        min-width: 0 !important;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -4765,15 +5312,13 @@
         <div class="legal-header-copy">
           <h2>Trust &amp; Transparency</h2>
         </div>
-        <div class="legal-status"><span></span> Document Center</div>
-      </div>
+</div>
 
       <div class="documents-panel">
         <button type="button" class="document-card legal-preview-trigger" data-doc="prospectus" aria-haspopup="dialog" aria-expanded="false">
           <div>
             <div class="document-top">
               <div class="document-icon" aria-hidden="true"><svg class="al-icon"><use href="#al-icon-118"></use></svg></div>
-              <span class="document-type">Preview</span>
             </div>
             <div class="document-copy">
               <h3>Prospectus</h3>
@@ -4782,7 +5327,7 @@
           </div>
           <div class="document-bottom">
             <span class="document-meta">Offering terms</span>
-            <span class="preview-cta">Hover to read <svg class="al-icon" aria-hidden="true"><use href="#al-icon-024"></use></svg></span>
+            <span class="preview-cta">Click to read <svg class="al-icon" aria-hidden="true"><use href="#al-icon-024"></use></svg></span>
           </div>
         </button>
 
@@ -4790,7 +5335,6 @@
           <div>
             <div class="document-top">
               <div class="document-icon" aria-hidden="true"><svg class="al-icon"><use href="#al-icon-030"></use></svg></div>
-              <span class="document-type">Preview</span>
             </div>
             <div class="document-copy">
               <h3>Risk Disclosures</h3>
@@ -4799,7 +5343,7 @@
           </div>
           <div class="document-bottom">
             <span class="document-meta">Material risks</span>
-            <span class="preview-cta">Hover to read <svg class="al-icon" aria-hidden="true"><use href="#al-icon-024"></use></svg></span>
+            <span class="preview-cta">Click to read <svg class="al-icon" aria-hidden="true"><use href="#al-icon-024"></use></svg></span>
           </div>
         </button>
 
@@ -4807,7 +5351,6 @@
           <div>
             <div class="document-top">
               <div class="document-icon" aria-hidden="true"><svg class="al-icon"><use href="#al-icon-040"></use></svg></div>
-              <span class="document-type">Preview</span>
             </div>
             <div class="document-copy">
               <h3>NAV Methodology</h3>
@@ -4816,7 +5359,7 @@
           </div>
           <div class="document-bottom">
             <span class="document-meta">Pricing logic</span>
-            <span class="preview-cta">Hover to read <svg class="al-icon" aria-hidden="true"><use href="#al-icon-024"></use></svg></span>
+            <span class="preview-cta">Click to read <svg class="al-icon" aria-hidden="true"><use href="#al-icon-024"></use></svg></span>
           </div>
         </button>
 
@@ -4824,7 +5367,6 @@
           <div>
             <div class="document-top">
               <div class="document-icon" aria-hidden="true"><svg class="al-icon"><use href="#al-icon-100"></use></svg></div>
-              <span class="document-type">Preview</span>
             </div>
             <div class="document-copy">
               <h3>Custody Overview</h3>
@@ -4833,43 +5375,10 @@
           </div>
           <div class="document-bottom">
             <span class="document-meta">Asset controls</span>
-            <span class="preview-cta">Hover to read <svg class="al-icon" aria-hidden="true"><use href="#al-icon-024"></use></svg></span>
+            <span class="preview-cta">Click to read <svg class="al-icon" aria-hidden="true"><use href="#al-icon-024"></use></svg></span>
           </div>
         </button>
 
-        <button type="button" class="document-card legal-preview-trigger" data-doc="terms" aria-haspopup="dialog" aria-expanded="false">
-          <div>
-            <div class="document-top">
-              <div class="document-icon" aria-hidden="true"><svg class="al-icon"><use href="#al-icon-060"></use></svg></div>
-              <span class="document-type">Preview</span>
-            </div>
-            <div class="document-copy">
-              <h3>Terms of Use</h3>
-              <span class="document-brief">Platform rules</span>
-            </div>
-          </div>
-          <div class="document-bottom">
-            <span class="document-meta">Access rights</span>
-            <span class="preview-cta">Hover to read <svg class="al-icon" aria-hidden="true"><use href="#al-icon-024"></use></svg></span>
-          </div>
-        </button>
-
-        <button type="button" class="document-card legal-preview-trigger" data-doc="privacy" aria-haspopup="dialog" aria-expanded="false">
-          <div>
-            <div class="document-top">
-              <div class="document-icon" aria-hidden="true"><svg class="al-icon"><use href="#al-icon-088"></use></svg></div>
-              <span class="document-type">Preview</span>
-            </div>
-            <div class="document-copy">
-              <h3>Privacy Policy</h3>
-              <span class="document-brief">Data practices</span>
-            </div>
-          </div>
-          <div class="document-bottom">
-            <span class="document-meta">User privacy</span>
-            <span class="preview-cta">Hover to read <svg class="al-icon" aria-hidden="true"><use href="#al-icon-024"></use></svg></span>
-          </div>
-        </button>
       </div>
 
       <div class="legal-preview-panel" id="legalPreviewPanel" aria-hidden="true" role="dialog" aria-modal="false" aria-labelledby="legalPreviewTitle">
@@ -5248,57 +5757,67 @@
     (() => {
       const previewData = {
         prospectus: {
-          title: 'Prospectus',
-          intro: 'A high-level summary of product structure, eligibility, and operating mechanics.',
+          title: "Prospectus",
+          intro: "A public disclosure document for Alloco ETP / ETF-style products. It explains the product scope, structure, access routes, fees, NAV logic, liquidity mechanics, reporting and principal limitations.",
           sections: [
-            { heading: 'Overview', content: '<p>This document outlines the legal wrapper of the product, including issuance format, reference exposure, investor eligibility, subscription flow, redemption conditions, and the role of the platform operator.</p><p>It is intended to help users understand what the product does, how exposure is expressed, and where responsibilities sit across issuance, administration, and distribution.</p>' },
-            { heading: 'Core points', content: '<ul><li>Product objective and reference theme</li><li>Structure, fees, and operating roles</li><li>Creation and redemption workflow</li><li>Portfolio construction boundaries and key assumptions</li></ul>' },
-            { heading: 'Important note', content: '<p>The prospectus is not a guarantee of returns. It is a reference document that explains the intended product design and the conditions under which the product is offered or maintained.</p>' }
+            { heading: "Important Notice", content: `<div class="doc-callout">This document is for product and risk disclosure purposes only. It is not a securities prospectus, fund offering memorandum, investment recommendation, legal advice, tax advice, accounting advice or a promise of return in any jurisdiction. Product prices may fluctuate, and users may lose part or all of their capital.</div><p>Users should review the relevant product page, prospectus, risk disclosures, NAV methodology, custody overview, terms of use, privacy policy and any applicable product supplement before accessing, subscribing for, purchasing, holding, transferring or redeeming any Alloco product.</p>` },
+            { heading: "1. Platform Overview", content: `<p>Alloco is financial product issuance and access infrastructure for internet-native markets. Its objective is to convert market narratives, professional insights, investment themes, asset baskets, quantitative strategies and risk exposures into ETP / ETF-style products with clear rules, valuation, tradability, creation and redemption, and risk disclosure.</p><p>Alloco is not a single fund product and not merely a trading front end. It provides product definition templates, basket and strategy modeling, NAV / iNAV / Risk NAV systems, onchain share records, subscription and redemption flows, DEX / RFQ / AP / MM routing, product-level risk controls, and related legal, custody and disclosure infrastructure.</p>` },
+            { heading: "2. Product Scope", content: `<p>The platform may support multiple types of ETP / ETF-style products. Each product may differ in underlying assets, risk level, liquidity arrangement, user eligibility and legal structure.</p><div class="doc-table-wrap"><table class="doc-table"><thead><tr><th>Product type</th><th>Examples</th></tr></thead><tbody><tr><td>Crypto-native products</td><td>Digital assets, stablecoins, spot exposure, perpetual contracts, basis, funding rates, onchain yield, liquidity premia and market-neutral strategies.</td></tr><tr><td>TradFi-linked products</td><td>Equities, ETFs, bonds, commodities, interest rates, FX, public-market assets or synthetic exposure through broker API, custody account, swap, note or SPV structure.</td></tr><tr><td>Thematic products</td><td>AI power, energy, grids, healthcare, longevity, hard assets, urban growth, supply chains, defense, macro cycles and other real-world themes.</td></tr><tr><td>Structured-risk products</td><td>Volatility, target volatility, rebalancing, risk budget, cash buffer, leverage limit, downside protection or other rule-based risk structures.</td></tr><tr><td>Professional issuer products</td><td>Products proposed by qualified PMs, research teams, professional communities, asset managers, industry experts or partner institutions.</td></tr></tbody></table></div>` },
+            { heading: "3. Product Objectives", content: `<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th>Objective</th><th>Description</th></tr></thead><tbody><tr><td>Understandable</td><td>Clear narrative, underlying asset or strategy description, target exposure and risk boundary.</td></tr><tr><td>Valuable</td><td>Defined NAV methodology, data sources, update frequency and exception-handling rules.</td></tr><tr><td>Tradable</td><td>Accessible through DEX, RFQ, wallet, exchange, aggregator or other distribution channel.</td></tr><tr><td>Redeemable</td><td>Eligible users, APs, MMs or institutions may create / redeem through primary market processes.</td></tr><tr><td>Protected</td><td>Risk-state logic, NAV staleness checks, premium / discount monitoring, redemption limits and suspension mechanisms.</td></tr><tr><td>Disclosed</td><td>Users can review terms, fees, risks, NAV, holdings, strategy logic, custody information and reports.</td></tr></tbody></table></div>` },
+            { heading: "4. Product Structure", content: `<p>A typical product may include the following modules.</p><div class="doc-table-wrap"><table class="doc-table"><thead><tr><th>Module</th><th>Function</th></tr></thead><tbody><tr><td>Product Engine</td><td>Defines name, ticker, objective, eligible users, fees, minimum units, risk limits, rebalance rules, subscription / redemption cycles and suspension conditions.</td></tr><tr><td>Vault / Share Token</td><td>Records product shares and subscription / redemption status. The token should not be read as an unconditional ownership claim, capital guarantee or fixed-income instrument unless expressly stated.</td></tr><tr><td>NAV Engine</td><td>Calculates Official NAV, iNAV and Risk NAV based on assets, cash, liabilities, fees, unsettled trades and risk discounts.</td></tr><tr><td>Liquidity Layer</td><td>Routes orders across DEX, RFQ, MM, AP, broker API, primary create / redeem or other execution paths.</td></tr><tr><td>Legal Wrapper</td><td>May use SPV / SPC / segregated portfolio or similar structures to separate product assets, user economic rights and operating-company assets.</td></tr><tr><td>Disclosure Layer</td><td>Publishes terms, fees, risks, NAV, holdings, custody information, rebalance records, exception events and resource files.</td></tr></tbody></table></div>` },
+            { heading: "5. Access, Creation and Redemption", content: `<p>Users may access products through secondary market trading, RFQ routes or primary market create / redeem processes, depending on user eligibility and product rules.</p><ul><li>Secondary market purchase may occur through DEX, wallet, exchange, aggregator or other front ends. Market price may differ from NAV.</li><li>RFQ routes may be used for medium-size orders, with quotes based on iNAV, execution cost, inventory cost, underlying market condition and risk spread.</li><li>Primary creation or redemption may be available to large users, institutions or authorized participants, subject to KYC, whitelist, market hours, liquidity and compliance limits.</li></ul>` },
+            { heading: "6. NAV and Premium / Discount", content: `<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th>NAV type</th><th>Use case</th><th>Feature</th></tr></thead><tbody><tr><td>Official NAV</td><td>Formal settlement, reporting and primary creation / redemption.</td><td>Highest accuracy; usually lower frequency.</td></tr><tr><td>iNAV</td><td>Secondary trading, RFQ pricing and premium / discount monitoring.</td><td>More real-time; depends on data-source quality.</td></tr><tr><td>Risk NAV</td><td>Risk control, suspension logic, quote protection and emergency mode.</td><td>More conservative; includes haircuts.</td></tr></tbody></table></div><p>Alloco does not guarantee that the secondary market price of a product token will always equal NAV.</p>` },
+            { heading: "7. Fees and Costs", content: `<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th>Fee type</th><th>Description</th></tr></thead><tbody><tr><td>Product management fee</td><td>May be charged based on product net assets or another stated method to cover management, infrastructure, issuance, reporting and operations.</td></tr><tr><td>Creation / redemption fee</td><td>May be charged when product shares are created or redeemed in the primary market.</td></tr><tr><td>Execution cost</td><td>Trading fees, slippage, broker fees, gas, exchange fees and hedging or rebalancing costs.</td></tr><tr><td>Market-making and routing cost</td><td>Costs or spreads related to RFQ, MM, AP, solver, order routing or liquidity aggregation.</td></tr><tr><td>Custody and administration cost</td><td>Custody, fund administration, audit, legal, data source, oracle, NAV calculation and reporting costs.</td></tr></tbody></table></div>` },
+            { heading: "8. Liquidity Arrangements", content: `<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th>Order size</th><th>Recommended route</th><th>User protection</th></tr></thead><tbody><tr><td>Small orders</td><td>DEX / instant swap</td><td>Fast execution with visible slippage and premium / discount.</td></tr><tr><td>Medium orders</td><td>RFQ / MM quote</td><td>Multiple quotes may reduce slippage.</td></tr><tr><td>Large orders</td><td>Primary create / redeem</td><td>NAV or execution-adjusted NAV may reduce AMM market impact.</td></tr></tbody></table></div>` },
+            { heading: "9. Suspension, Termination and Disclaimer", content: `<p>Products may be suspended, restricted, terminated or wound down if underlying assets cannot be valued, trading venues fail, liquidity becomes severely insufficient, counterparties default, regulatory requirements change, product size becomes uneconomic, risk committees or issuers determine a need for action, or technical events require user protection.</p><p>This document does not constitute an offer, recommendation or guarantee. Alloco does not guarantee product performance, returns, liquidity, NAV accuracy, uninterrupted trading, tax results or any specific investment outcome.</p>` }
           ]
         },
         risk: {
-          title: 'Risk Disclosures',
-          intro: 'A consolidated view of the main risks users should understand before using the product.',
+          title: "Risk Disclosures",
+          intro: "A public risk disclosure document for Alloco ETP / ETF-style products. It summarizes major market, liquidity, NAV, custody, counterparty, technology, legal and user-responsibility risks.",
           sections: [
-            { heading: 'Overview', content: '<p>This section groups the major risk dimensions that may affect performance, access, valuation, or settlement. It highlights how market structure, counterparties, technology, and governance assumptions may influence outcomes.</p>' },
-            { heading: 'Risk categories', content: '<ul><li>Market and liquidity risk during stress periods</li><li>Counterparty and venue concentration risk</li><li>Technology, oracle, and execution risk</li><li>Regulatory or jurisdiction-specific limitations</li></ul>' },
-            { heading: 'Important note', content: '<p>Risk disclosures describe known categories of risk, but they may not capture every possible scenario. Users should treat them as a practical framework for due diligence rather than an exhaustive list.</p>' }
+            { heading: "Important Notice", content: `<div class="doc-callout">Alloco products involve multiple risks. Users may lose part or all of their capital. Historical returns, backtests, simulations, target returns, expected returns, strategy descriptions or market narratives do not indicate future results.</div><p>Users should not treat any Alloco product as a deposit, principal-protected product, fixed-income product, risk-free arbitrage product or stable-return product.</p>` },
+            { heading: "1. Market and Strategy Risk", content: `<p>Product value may change due to movements in underlying assets, crypto markets, equities, interest rates, commodities, FX, macroeconomic conditions, geopolitics, regulation, technology cycles and risk appetite.</p><p>Some products may depend on funding capture, basis carry, market-neutral exposure, spot-perp arbitrage, TradFi-DeFi arbitrage, thematic baskets, AI infrastructure, inflation hedge, short volatility, rebalance strategies or relative value strategies. These strategies can fail if market structure changes, correlations break, liquidity disappears, hedges fail or execution costs rise.</p><ul><li>Funding rates may reverse or basis spreads may widen.</li><li>Hedging instruments may fail or become unavailable.</li><li>Liquidity may disappear during stress events.</li><li>Model assumptions or correlations may break.</li><li>Execution costs may erode strategy returns.</li></ul>` },
+            { heading: "2. NAV, Premium / Discount and Liquidity Risk", content: `<p>NAV is an important valuation reference, but it is not a guaranteed trading price. NAV may be distorted by delayed data, incorrect price sources, stale prices, market-hour mismatch, insufficient underlying liquidity, corporate-action delays, unsettled trades, fee errors, oracle failure or delayed onchain updates.</p><p>Product tokens may trade above or below NAV. Even if a create / redeem mechanism exists, the market price is not guaranteed to remain close to NAV.</p><p>Users may be unable to buy, sell or redeem at the expected price or speed because of low DEX depth, AMM slippage, missing RFQ quotes, insufficient MM inventory, AP suspension, broker execution limits, underlying market closure, large order impact, small AUM, low trading volume or stress-market liquidity loss.</p>` },
+            { heading: "3. Redemption Risk", content: `<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th>Risk scenario</th><th>Possible impact</th></tr></thead><tbody><tr><td>Extended redemption cycle</td><td>Users may not receive assets within the expected time frame.</td></tr><tr><td>Execution-adjusted NAV</td><td>Redeemed value may be lower than the reference value at request submission.</td></tr><tr><td>Insufficient cash buffer</td><td>Large redemptions may be queued or settled in batches.</td></tr><tr><td>Emergency Mode</td><td>The system may suspend large creation, redemption or certain trading routes.</td></tr></tbody></table></div><p>Redemption may use T+1, T+N, weekly settlement or strategy-specific epochs. It may be affected by market closure, counterparty settlement delays, execution costs, risk-state pauses, fees and regulatory constraints.</p>` },
+            { heading: "4. Crypto and TradFi-linked Product Risk", content: `<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th>Area</th><th>Examples</th></tr></thead><tbody><tr><td>Crypto-related risks</td><td>High volatility, exchange bankruptcy or freeze, withdrawal limits, stablecoin depeg, smart contract exploits, bridge risk, oracle manipulation, liquidation risk, MEV, gas spikes, governance attack, hacking, private-key risk and widening CEX / DeFi spreads.</td></tr><tr><td>TradFi-linked risks</td><td>Market-hour limits, pre-market or after-hours illiquidity, weekend or holiday stale pricing, broker API failure, custody-account restrictions, corporate actions, trading halts, exchange circuit breakers, settlement mismatch, cross-border capital limits, tax and withholding issues, regulatory limits and synthetic exposure counterparty risk.</td></tr></tbody></table></div>` },
+            { heading: "5. Counterparty, Custody and Technology Risk", content: `<p>Products may rely on issuers, custodians, brokers, prime brokers, exchanges, APs, MMs, solvers, RFQ providers, oracle providers, stablecoin issuers, administrators, auditors, legal advisers and other service providers. Failure, default, bankruptcy, operational error or regulatory restriction affecting any party may impact product value, creation / redemption, liquidity or user rights.</p><p>Custody risks include private-key leakage, multisig error, custodian bankruptcy, account freeze, asset commingling, record error, redemption-priority dispute, unclear legal title, asset recovery difficulty and cross-border enforcement limits.</p><p>Technical risks include smart contract vulnerabilities, front-end errors, API failure, oracle update failure, database errors, chain congestion, gas price anomalies, failed transactions, upgrade errors, permission misconfiguration, hacking, DDoS and third-party service interruption.</p>` },
+            { heading: "6. Execution, Legal, Tax and Information Risk", content: `<p>Order execution may suffer slippage, partial fill, failure, delay, wrong routing, expired RFQ quote, market-maker withdrawal, broker rejection, onchain transaction failure, front-running or state mismatch between offchain and onchain systems.</p><p>Products may be affected by securities, commodities, fund, derivatives, stablecoin, AML, sanctions, tax, cross-border offering, suitability, data-protection and consumer-protection rules. Regulatory changes may restrict, suspend, delist, liquidate or limit access to products.</p><p>Disclosures may be delayed, incorrect, incomplete, inconsistent across sources, affected by translation differences or not comparable across historical periods.</p>` },
+            { heading: "7. Model, Concentration and User Responsibility", content: `<p>Products may rely on models, parameters, rules or algorithms. Risks include overfitting, distorted backtests, parameter failure, uncovered extreme events, broken correlations, incorrect liquidity assumptions, market-structure changes and insufficient data samples.</p><p>Some products may be concentrated in a small number of assets, industries, countries, themes or strategies. Concentration may amplify returns but also amplify losses.</p><p>Users are responsible for understanding products, reading documents, judging risks, confirming eligibility, managing wallets and private keys, complying with laws, handling taxes, evaluating trading prices and bearing investment outcomes.</p>` },
+            { heading: "8. No Guaranteed Return", content: `<p>Product names containing terms such as “Stable,” “Yield,” “Hedge,” “Arbitrage,” “Income,” “Protection” or similar terms do not imply principal protection, guaranteed yield, no risk or fixed return. Neutral strategies may lose money, arbitrage strategies may fail, inflation-hedge products may not offset inflation, and hedging products may fail to hedge.</p>` }
           ]
         },
         nav: {
-          title: 'NAV Methodology',
-          intro: 'A description of how valuation is calculated, checked, and updated across the product.',
+          title: "NAV Methodology",
+          intro: "A methodology document describing calculation logic, data inputs, pricing rules, NAV states, report cadence, risk controls and exception handling for Alloco products.",
           sections: [
-            { heading: 'Overview', content: '<p>The NAV methodology explains how the platform determines portfolio value using pricing sources, fallback rules, observation timing, and tolerance controls. It also clarifies how stale or unavailable data should be handled.</p>' },
-            { heading: 'Methodology components', content: '<ul><li>Primary and secondary pricing sources</li><li>Data hierarchy and fallback sequence</li><li>Update cadence and cut-off rules</li><li>Manual review triggers and tolerance thresholds</li></ul>' },
-            { heading: 'Important note', content: '<p>Valuation procedures aim to improve consistency, but they may still rely on assumptions during exceptional market conditions or when source quality degrades.</p>' }
+            { heading: "Important Notice", content: `<div class="doc-callout">This document is a public disclosure draft explaining valuation and risk-control arrangements. It is not investment advice, legal advice, tax advice or a return commitment. Formal launch materials should be reviewed by legal, tax, fund administration, custody, data-compliance and product advisers.</div>` },
+            { heading: "1. Purpose and Scope", content: `<p>This methodology explains the NAV calculation framework for ETP / ETF-style products on the Alloco platform. NAV is a core reference for issuance, redemption, secondary market anchoring, RFQ pricing, risk control, disclosure reporting and exception handling.</p><p>The methodology may apply to crypto-native products, TradFi-linked products, thematic baskets, quantitative strategy products, RWA exposures and other structured products. Each product may define specific parameters based on underlying assets, market hours, custody structure, data availability and legal requirements.</p>` },
+            { heading: "2. Three-layer NAV System", content: `<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th>NAV type</th><th>Main use</th><th>Update frequency</th><th>Core feature</th></tr></thead><tbody><tr><td>Official NAV</td><td>Formal settlement, primary create / redeem, daily report, audit and investor reporting.</td><td>Usually daily or after the product settlement cycle.</td><td>Highest accuracy; based on full holdings, cash, fees, liabilities and corporate-action checks.</td></tr><tr><td>iNAV</td><td>Secondary market price anchoring, RFQ quote reference and premium / discount monitoring.</td><td>May update every 15–60 seconds during active markets.</td><td>More real-time; depends on data feeds, order books, TWAP, position snapshots and cash estimates.</td></tr><tr><td>Risk NAV</td><td>Risk control, suspension, quote protection, redemption limits and emergency mode.</td><td>Real-time or event-driven.</td><td>More conservative; includes stale-price, liquidity, custody, counterparty and closed-market haircuts.</td></tr></tbody></table></div>` },
+            { heading: "3. Core Calculation Formula", content: `<p>Total NAV is generally calculated as:</p><div class="doc-callout">Total NAV = asset market value + cash + receivables - liabilities - accrued fees - cost reserves - risk discounts</div><p>NAV per Token is generally calculated as:</p><div class="doc-callout">NAV per Token = Total NAV / Total Token Supply</div><p>Asset value may include spot assets, equities, ETFs, derivatives, perpetual-contract margin, swap exposure, stablecoins, treasury bills or cash. Liabilities may include pending redemptions, accrued fees, trading costs, financing costs, taxes, custody expenses, audit fees or other product-level obligations.</p>` },
+            { heading: "4. Data Inputs and Price Sources", content: `<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th>Data type</th><th>Examples</th><th>Recommended validation</th></tr></thead><tbody><tr><td>Price data</td><td>Primary feed, secondary feed, TWAP, broker quote.</td><td>Multi-source deviation checks; if thresholds are exceeded, enter Degraded state.</td></tr><tr><td>Position data</td><td>Onchain balance, CEX position, broker statement.</td><td>Compare with previous snapshot; abnormal changes require manual or multisig confirmation.</td></tr><tr><td>Cash and payables</td><td>USDC, USD, pending trades, fees.</td><td>Onchain balance checks and reconciliation with bank / custodian / administrator reports.</td></tr><tr><td>Corporate actions / events</td><td>Dividends, splits, halts, mergers, liquidations.</td><td>Match event calendars; restrict real-time create / redeem if processing is incomplete.</td></tr><tr><td>Risk parameters</td><td>Haircut, status, confidence.</td><td>Generated by rules engine; material changes should be recorded with approval logs.</td></tr></tbody></table></div>` },
+            { heading: "5. Official NAV and iNAV Process", content: `<p>Official NAV is used for formal settlement and reporting. The process may include locking the valuation time, collecting prices / positions / cash / fees / liabilities / corporate actions, reconciling onchain supply and custody records, calculating assets and liabilities, applying adjustments, generating a NAV report, and publishing summary fields or report hash to the product page or onchain records.</p><p>iNAV is an intraday or active-market reference used for secondary market anchoring and RFQ quotes. It prioritizes tradability, explainability and timely updates rather than audit-level completeness. It may use bid / ask mid, 60-second TWAP, multi-exchange median price, broker quote or other reliable sources.</p>` },
+            { heading: "6. Risk NAV and Haircut Model", content: `<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th>Haircut type</th><th>Trigger condition</th><th>Example range</th></tr></thead><tbody><tr><td>Liquidity Haircut</td><td>Order book thins, AMM depth declines or underlying liquidity deteriorates.</td><td>0–100 bps or higher.</td></tr><tr><td>Stale Price Haircut</td><td>Price update exceeds defined freshness threshold.</td><td>10–100 bps.</td></tr><tr><td>Closed-Market Haircut</td><td>Underlying market is closed, on holiday or not executable.</td><td>Product-specific.</td></tr><tr><td>Counterparty Haircut</td><td>Custodian, broker, CEX or swap counterparty risk rises.</td><td>10–100 bps.</td></tr><tr><td>Event Haircut</td><td>Halt, major announcement, corporate action, onchain attack or stablecoin depeg.</td><td>Case-by-case.</td></tr><tr><td>FX / Settlement Haircut</td><td>Cross-currency, cross-market or cross-time-zone settlement uncertainty.</td><td>10–100 bps.</td></tr></tbody></table></div><p>Risk NAV may be lower than iNAV or Official NAV. Its purpose is to protect users, the product asset pool and system stability during uncertain states.</p>` },
+            { heading: "7. NAV State Machine", content: `<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th>State</th><th>Meaning</th><th>Allowed actions</th><th>Restrictions</th></tr></thead><tbody><tr><td>Fresh</td><td>Data is current, price sources normal and holdings reconciled.</td><td>Normal trading, RFQ, create / redeem.</td><td>Regular limits and fees.</td></tr><tr><td>Stale</td><td>NAV or key price update is delayed.</td><td>Small trades and limited RFQ.</td><td>Restrict large create / redeem and widen spread.</td></tr><tr><td>Frozen</td><td>Underlying market is closed or latest Official NAV is used.</td><td>Small trades or view-only, depending on product.</td><td>Suspend large instant create / redeem.</td></tr><tr><td>Degraded</td><td>Data-source conflict, lower liquidity or abnormal price condition.</td><td>Limited trading and limited redemption.</td><td>Increase haircut and suspend high-risk paths.</td></tr><tr><td>Emergency</td><td>Oracle failure, custody event, extreme deviation or major security event.</td><td>Usually view-only or redeem-only.</td><td>Suspend create, RFQ or secondary routing.</td></tr></tbody></table></div>` },
+            { heading: "8. Pricing Use Across Flows", content: `<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th>Scenario</th><th>Recommended pricing reference</th><th>Protection logic</th></tr></thead><tbody><tr><td>Small secondary buy / sell</td><td>DEX price versus iNAV.</td><td>Display premium / discount and slippage.</td></tr><tr><td>Medium RFQ buy</td><td>iNAV + spread + execution cost.</td><td>Multiple quotes and best execution priority.</td></tr><tr><td>Medium RFQ sell</td><td>iNAV - spread - execution cost.</td><td>Quote based on inventory, market state and risk fees.</td></tr><tr><td>Large create</td><td>Official NAV or execution-adjusted iNAV.</td><td>Settle after underlying execution to avoid dilution of existing users.</td></tr><tr><td>Large redeem</td><td>Official NAV after execution cost.</td><td>T+1 / T+N or batch settlement to avoid run dynamics and stale NAV arbitrage.</td></tr><tr><td>Exception state</td><td>Risk NAV or suspension.</td><td>Protect asset pool and long-term holders.</td></tr></tbody></table></div>` },
+            { heading: "9. Reporting, Governance and Limitations", content: `<p>Important NAV updates should generate traceable reports containing product name, ticker, valuation time, calculation version, Total NAV, NAV per Token, supply, cash, liabilities, fees, haircuts, holdings or summary exposure, data-source quality, NAV state, confidence, create / redeem availability, reportHash, signer and approval records.</p><p>Critical permissions may include NAV Publisher, Risk Admin, Data Admin and Product Committee roles. NAV methodology cannot eliminate market, liquidity, counterparty, data, technology or regulatory risk. NAV may be delayed, estimated, adjusted or wrong.</p>` }
           ]
         },
         custody: {
-          title: 'Custody Overview',
-          intro: 'A summary of how assets are held, approved, and operationally controlled.',
+          title: "Custody Overview",
+          intro: "A public disclosure document explaining possible asset safekeeping, segregation, reconciliation and operational-control arrangements for Alloco products.",
           sections: [
-            { heading: 'Overview', content: '<p>This document summarises the safekeeping framework behind the product, including asset segregation, access rights, operational approvals, and movement controls between connected venues or custody layers.</p>' },
-            { heading: 'Control areas', content: '<ul><li>Asset segregation and wallet policy</li><li>Approval rights and operational workflow</li><li>Venue access, transfers, and reconciliation</li><li>Monitoring, incident handling, and escalation</li></ul>' },
-            { heading: 'Important note', content: '<p>Custody arrangements reduce operational risk but do not eliminate it. Service dependencies, transfer timing, and system access assumptions should still be reviewed carefully.</p>' }
-          ]
-        },
-        terms: {
-          title: 'Terms of Use',
-          intro: 'Platform-level conditions governing access, permitted use, and user responsibilities.',
-          sections: [
-            { heading: 'Overview', content: '<p>The terms of use explain who may access the platform, how accounts and features may be used, what activity is restricted, and what disclaimers or service limitations apply to platform usage.</p>' },
-            { heading: 'Key clauses', content: '<ul><li>Account responsibilities and access conditions</li><li>Permitted use and prohibited conduct</li><li>Service limitations, disclaimers, and suspension rights</li><li>Changes to terms and user notification principles</li></ul>' },
-            { heading: 'Important note', content: '<p>Terms of use govern access to the service itself. They should be read alongside product-specific materials when evaluating any product available through the platform.</p>' }
-          ]
-        },
-        privacy: {
-          title: 'Privacy Policy',
-          intro: 'An overview of how user data may be collected, stored, used, and protected.',
-          sections: [
-            { heading: 'Overview', content: '<p>This document outlines the platform’s approach to collecting operational, account, and usage information. It explains how data may be used to provide services, improve security, and support product experience.</p>' },
-            { heading: 'Key areas', content: '<ul><li>Collection and processing of user information</li><li>Retention periods and security practices</li><li>Analytics, service improvement, and access logging</li><li>User rights relating to data review or deletion</li></ul>' },
-            { heading: 'Important note', content: '<p>Privacy practices may vary depending on jurisdiction, service configuration, and compliance requirements. Users should review current versions for the most applicable details.</p>' }
+            { heading: "Important Notice", content: `<div class="doc-callout">This document explains possible custody, segregation, recordkeeping and operational-control arrangements. It is not legal advice, a custody guarantee, a capital guarantee or a credit guarantee for any third-party service provider.</div><p>Specific asset rights, redemption rights, liquidation priority and user eligibility depend on the relevant product documents, issuance documents, service agreements and applicable law.</p>` },
+            { heading: "1. Purpose and Core Principle", content: `<p>The purpose of this document is to help users, issuers, partners and reviewers understand how product assets may be held, how they may be separated from operating-company assets, how they correspond to product shares, and how user interests may be protected during exceptions.</p><div class="doc-callout">Core principle: product assets should be recorded separately from operating-company assets, other product assets and service-provider proprietary assets wherever possible. Users should rely on legal structure, custody records, NAV reports and reconciliation processes, not only on platform statements.</div>` },
+            { heading: "2. Custody Structure Overview", content: `<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th>Asset / exposure type</th><th>Possible holding method</th><th>Main records</th></tr></thead><tbody><tr><td>Onchain assets</td><td>Smart contract vault, multisig wallet or compliant custody wallet.</td><td>Onchain balance, transaction hash and vault records.</td></tr><tr><td>Stablecoins / cash</td><td>Vault, custody account, bank account or issuer account.</td><td>Onchain balance, bank / custodian report and cash ledger.</td></tr><tr><td>Equities / ETFs / traditional assets</td><td>Brokerage account, custodian, SPV / SPC asset pool.</td><td>Broker statement, custody statement and asset-pool ledger.</td></tr><tr><td>Derivatives / perpetuals / swaps</td><td>Exchange account, prime broker or swap counterparty.</td><td>Position report, margin record and PnL report.</td></tr><tr><td>RWA / other structured assets</td><td>SPV, fund, trust or other legal vehicle.</td><td>Legal register, asset list and manager report.</td></tr></tbody></table></div>` },
+            { heading: "3. SPV / SPC / Asset Pool Structure", content: `<p>Alloco-related products may be supported by SPVs, SPCs, segregated portfolios, fund entities or other applicable legal vehicles. The purpose is to separate a specific product’s underlying assets, cash, receivables, payables and rights / obligations from the Alloco operating company and other products.</p><ul><li>The operating company may provide technology, front end, protocol, data, product operation or service support.</li><li>The SPV / SPC or asset pool may hold or arrange to hold underlying assets, cash and related rights.</li><li>Custodians, brokers, administrators, managers or other service providers may provide custody, execution, valuation and reporting support.</li><li>The product token acts as an operational record and transfer rail. Its legal nature depends on product documents and user eligibility.</li></ul>` },
+            { heading: "4. Asset Types and Holding Methods", content: `<p>Products may use direct holdings, indirect holdings, margin holdings, cash buffers and risk reserves depending on the underlying asset and product design.</p><div class="doc-table-wrap"><table class="doc-table"><thead><tr><th>Holding method</th><th>Description</th></tr></thead><tbody><tr><td>Direct holding</td><td>The asset pool directly holds stablecoins, tokens, equities, ETFs or cash.</td></tr><tr><td>Indirect holding</td><td>The asset pool obtains economic exposure through a fund, SPV, note, swap, synthetic tool or custody arrangement.</td></tr><tr><td>Margin holding</td><td>Strategy products may maintain margin and hedge positions at an exchange, broker or prime broker.</td></tr><tr><td>Cash buffer</td><td>A product may retain cash or short-term liquidity assets for fees, redemptions, slippage and exception states.</td></tr><tr><td>Risk reserve</td><td>Certain products may maintain cost reserves or risk reserves for trading costs, closed-market risk, counterparty risk or redemption processing.</td></tr></tbody></table></div>` },
+            { heading: "5. Onchain and Offchain Custody", content: `<span class="doc-mini-title">Onchain assets</span><p>Onchain assets may be held through vault contracts, multisig wallets, MPC custody wallets, compliant wallets or smart contract structures. Controls should address transparency, permissions, upgrade safety and asset security.</p><ul><li>Vault contracts should limit mint / burn, asset transfer, fee collection and emergency pause permissions.</li><li>Multisig or MPC wallets should use signing thresholds, operation logs, address whitelists and amount limits.</li><li>Major upgrades should use timelock, multisig approval or guardian mechanisms.</li><li>Onchain balances should be reconciled with NAV reports, product supply and user share records.</li></ul><span class="doc-mini-title">Offchain assets</span><p>Equities, ETFs, cash, treasury bills, broker positions, swap exposure or other traditional assets may be recorded and managed through custodians, brokers, administrators or SPV / SPC asset pools.</p><p>When underlying assets trade only during specific market hours, onchain products may still show or offer limited interaction, but execution, NAV updates and large create / redeem flows should respect market hours, stale-price risk and risk-control rules.</p>` },
+            { heading: "6. Segregation and Ledger Records", content: `<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th>Record category</th><th>Content</th><th>Purpose</th></tr></thead><tbody><tr><td>Asset records</td><td>Underlying assets, cash, stablecoins, margin and receivables.</td><td>Calculate NAV and verify the asset pool.</td></tr><tr><td>Liability records</td><td>Payable redemptions, fees, transaction costs, taxes and management fees.</td><td>Avoid overstating net assets.</td></tr><tr><td>Share records</td><td>Token supply, user shares, whitelist and locked shares.</td><td>Subscription, redemption, transfer and user-rights recordkeeping.</td></tr><tr><td>Transaction records</td><td>Subscriptions, redemptions, trades, rebalances, RFQ and broker execution.</td><td>Audit trail and exception replay.</td></tr><tr><td>Risk records</td><td>NAV state, haircut, exception event and suspension record.</td><td>Risk control and user disclosure.</td></tr></tbody></table></div>` },
+            { heading: "7. Subscription, Redemption and Reconciliation", content: `<p>Custody arrangements should cover the complete asset flow for subscriptions and redemptions, including receipt of USDC / cash or other subscription assets, execution of underlying assets or strategies, NAV calculation after execution and fees, minting or recording product shares, locking or burning tokens during redemption, preparing settlement assets and updating product ledgers.</p><p>Alloco should maintain layered reconciliation such as onchain supply versus vault records, vault balance versus blockchain data, broker holdings versus internal ledger, custodian report versus NAV report, cash balance versus pending subscriptions / redemptions, strategy positions versus CEX / broker / perp account statements, fees versus product rules and reportHash versus original NAV report.</p>` },
+            { heading: "8. Permissions and Operational Controls", content: `<p>Custody and operating permissions should follow least-privilege principles. Material operations should require approval, logs and review.</p><ul><li>Multisig or MPC controls for large asset transfers, contract upgrades and emergency pauses.</li><li>Role separation across product operation, NAV publication, risk control, asset transfer and compliance approval.</li><li>Single-transaction, daily, product-level and address-level limits.</li><li>Whitelist controls for custody accounts, brokers, APs, MMs and critical contracts.</li><li>Alerts for abnormal transfers, NAV deviation, redemption spikes and price-source outages.</li><li>Audit logs recording operator, time, reason, approver, transaction hash and report link.</li></ul>` },
+            { heading: "9. Third-party Service Providers", content: `<div class="doc-table-wrap"><table class="doc-table"><thead><tr><th>Service provider</th><th>Possible responsibilities</th><th>Main risks</th></tr></thead><tbody><tr><td>Custodian</td><td>Hold securities, cash, stablecoins or other assets.</td><td>Bankruptcy, freeze, operational error or legal dispute.</td></tr><tr><td>Broker / PB</td><td>Execute equities, ETFs, derivatives or financing trades.</td><td>Order rejection, delay, margin change or settlement failure.</td></tr><tr><td>Exchange / CEX</td><td>Execute crypto trades, perpetual contracts or funding-rate strategies.</td><td>Withdrawal limits, bankruptcy, hacking or liquidation risk.</td></tr><tr><td>Market maker / AP</td><td>Quote, hold inventory, create / redeem and repair premium / discount.</td><td>Insufficient inventory, quote withdrawal or performance failure.</td></tr><tr><td>Oracle / data source</td><td>Provide prices, market state and NAV inputs.</td><td>Delay, error, manipulation or outage.</td></tr><tr><td>Administrator / manager</td><td>Support reporting, registration, reconciliation and wind-down.</td><td>Operational error, delay or file inconsistency.</td></tr></tbody></table></div>` },
+            { heading: "10. Reporting, Exceptions and Wind-down", content: `<p>Custody-related disclosure may include product asset-pool structure, main custody or brokerage arrangements, asset-segregation principles, vault or contract addresses, recent NAV reports and reportHash, holding range or summary exposure, cash buffer, pending redemptions, fees and exception / suspension / wind-down notices.</p><p>Products should predefine exception and wind-down paths for custodian, broker, exchange or stablecoin events; inability to value or trade underlying assets; regulatory restrictions; uneconomic product size; smart contract, key or infrastructure incidents; and redemption pressure.</p><p>Wind-down may include suspending new creation, stopping secondary routing, selling or settling underlying assets, deducting fees and liabilities, distributing remaining assets to eligible holders and publishing final reports.</p>` }
           ]
         }
       };
@@ -5309,17 +5828,9 @@
       const bodyEl = document.getElementById('legalPreviewBody');
       const closeEl = document.getElementById('legalPreviewClose');
       const triggers = [...document.querySelectorAll('.legal-preview-trigger')];
-      const hasHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
-      let hideTimer = 0;
-      let pinned = false;
+      const section = document.getElementById('product-documents');
       let activeTrigger = null;
-
-      const clearHideTimer = () => {
-        if (hideTimer) {
-          window.clearTimeout(hideTimer);
-          hideTimer = 0;
-        }
-      };
+      let savedScrollY = 0;
 
       const renderPreview = (key) => {
         const data = previewData[key];
@@ -5340,63 +5851,117 @@
         activeTrigger = next;
       };
 
-      const openPanel = (key, trigger, shouldPin = false) => {
-        clearHideTimer();
-        renderPreview(key);
-        setActiveTrigger(trigger || null);
-        pinned = shouldPin;
-        panel.classList.add('is-active');
-        panel.setAttribute('aria-hidden', 'false');
+      const lockPageScroll = () => {
+        if (document.body.classList.contains('legal-preview-locked')) return;
+        savedScrollY = window.scrollY || window.pageYOffset || 0;
+        document.body.style.position = 'fixed';
+        document.body.style.top = `-${savedScrollY}px`;
+        document.body.style.left = '0';
+        document.body.style.right = '0';
+        document.body.style.width = '100%';
+        document.body.classList.add('legal-preview-locked');
       };
 
-      const closePanel = (force = false) => {
-        if (!force && pinned) return;
-        clearHideTimer();
-        pinned = false;
+      const unlockPageScroll = () => {
+        if (!document.body.classList.contains('legal-preview-locked')) return;
+        document.body.classList.remove('legal-preview-locked');
+        document.body.style.position = '';
+        document.body.style.top = '';
+        document.body.style.left = '';
+        document.body.style.right = '';
+        document.body.style.width = '';
+        window.scrollTo(0, savedScrollY);
+      };
+
+      const openPanel = (key, trigger) => {
+        renderPreview(key);
+        setActiveTrigger(trigger || null);
+        panel.classList.add('is-active');
+        panel.setAttribute('aria-hidden', 'false');
+        lockPageScroll();
+      };
+
+      const closePanel = () => {
         setActiveTrigger(null);
         panel.classList.remove('is-active');
         panel.setAttribute('aria-hidden', 'true');
-      };
-
-      const scheduleClose = () => {
-        if (pinned) return;
-        clearHideTimer();
-        hideTimer = window.setTimeout(() => closePanel(true), 120);
+        unlockPageScroll();
       };
 
       triggers.forEach((trigger) => {
         const key = trigger.dataset.doc;
-
-        if (hasHover) {
-          trigger.addEventListener('mouseenter', () => openPanel(key, trigger, false));
-          trigger.addEventListener('mouseleave', scheduleClose);
-        }
-
-        trigger.addEventListener('focus', () => openPanel(key, trigger, true));
         trigger.addEventListener('click', (event) => {
           event.preventDefault();
-          const willClose = panel.classList.contains('is-active') && activeTrigger === trigger && pinned;
-          if (willClose) closePanel(true);
-          else openPanel(key, trigger, true);
+          const isSameOpen = panel.classList.contains('is-active') && activeTrigger === trigger;
+          if (isSameOpen) closePanel();
+          else openPanel(key, trigger);
         });
       });
 
-      panel.addEventListener('mouseenter', clearHideTimer);
-      panel.addEventListener('mouseleave', scheduleClose);
-      closeEl.addEventListener('click', () => closePanel(true));
+      closeEl.addEventListener('click', closePanel);
 
       document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape') closePanel(true);
+        if (event.key === 'Escape' && panel.classList.contains('is-active')) closePanel();
       });
 
-      document.addEventListener('click', (event) => {
+      // Keep wheel and touch gestures inside the preview from moving the page or snapping to the next section.
+      const containPreviewScroll = (event) => {
+        if (!panel.classList.contains('is-active')) return;
+
+        const targetInsideScroll = bodyEl.contains(event.target);
+        if (!targetInsideScroll) {
+          event.preventDefault();
+          return;
+        }
+
+        const atTop = bodyEl.scrollTop <= 0;
+        const atBottom = Math.ceil(bodyEl.scrollTop + bodyEl.clientHeight) >= bodyEl.scrollHeight;
+        const deltaY = event.deltaY || 0;
+
+        if ((deltaY < 0 && atTop) || (deltaY > 0 && atBottom)) {
+          event.preventDefault();
+        }
+
+        event.stopPropagation();
+      };
+
+      panel.addEventListener('wheel', containPreviewScroll, { passive: false });
+      bodyEl.addEventListener('wheel', containPreviewScroll, { passive: false });
+
+      let touchStartY = 0;
+      bodyEl.addEventListener('touchstart', (event) => {
+        touchStartY = event.touches && event.touches.length ? event.touches[0].clientY : 0;
+      }, { passive: true });
+
+      bodyEl.addEventListener('touchmove', (event) => {
+        if (!panel.classList.contains('is-active')) return;
+        const currentY = event.touches && event.touches.length ? event.touches[0].clientY : touchStartY;
+        const deltaY = touchStartY - currentY;
+        const atTop = bodyEl.scrollTop <= 0;
+        const atBottom = Math.ceil(bodyEl.scrollTop + bodyEl.clientHeight) >= bodyEl.scrollHeight;
+
+        if ((deltaY < 0 && atTop) || (deltaY > 0 && atBottom)) {
+          event.preventDefault();
+        }
+
+        event.stopPropagation();
+      }, { passive: false });
+
+      // While the preview is open, block wheel gestures outside the preview panel.
+      document.addEventListener('wheel', (event) => {
         if (!panel.classList.contains('is-active')) return;
         if (panel.contains(event.target)) return;
-        if (triggers.some((trigger) => trigger.contains(event.target))) return;
-        closePanel(true);
-      });
-    })();
+        event.preventDefault();
+      }, { passive: false });
 
+      document.addEventListener('touchmove', (event) => {
+        if (!panel.classList.contains('is-active')) return;
+        if (panel.contains(event.target)) return;
+        event.preventDefault();
+      }, { passive: false });
+
+      window.addEventListener('beforeunload', unlockPageScroll);
+    })();
 
     // Cross-page nav transition: keeps homepage and product page feeling connected.
     (() => {
