@@ -4,54 +4,59 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alloco — Resources</title>
+  <meta name="theme-color" content="#ffffff" />
   <style>
     :root {
-      --accent:#9BFF36; --black:#050505; --ink:#111111; --muted:#6E737A; --soft:#F6F7F4;
-      --line:rgba(0,0,0,.10); --line-strong:rgba(0,0,0,.18); --white:#fff;
-      --radius-xl:34px; --radius-lg:22px; --radius-md:14px; --shadow:0 30px 90px rgba(0,0,0,.10);
+      --accent: #9BFF36;
+      --black: #050505;
+      --ink: #111111;
+      --muted: #70757d;
+      --muted-2: #9aa0a6;
+      --soft: #f7f8f5;
+      --panel: #ffffff;
+      --line: rgba(0,0,0,.10);
+      --line-soft: rgba(0,0,0,.06);
+      --radius-xl: 32px;
+      --radius-lg: 22px;
+      --radius-md: 14px;
+      --shadow-soft: 0 18px 60px rgba(0,0,0,.06);
     }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif; color:var(--ink); background:#fff; overflow-x:hidden; }
-    ::selection { background:var(--accent); color:#000; }
-    a { color:inherit; }
 
-    /* ===== Product-page style floating pill navigation ===== */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: #fff;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: geometricPrecision;
+    }
+    ::selection { background: var(--accent); color: #000; }
+    a { color: inherit; }
+    h1, h2, h3, p { margin: 0; }
+
+    /* Product-style floating navigation */
     .nav {
       position: fixed !important;
       top: 24px !important;
       left: 50% !important;
-      right: auto !important;
-      bottom: auto !important;
       width: min(1040px, calc(100vw - 56px)) !important;
       height: 72px !important;
-      min-height: 72px !important;
       transform: translateX(-50%) !important;
-      inset: 24px auto auto 50% !important;
       z-index: 9999 !important;
       display: flex !important;
       align-items: center !important;
       justify-content: center !important;
       border-radius: 18px !important;
       padding: 0 18px 0 26px !important;
-      backdrop-filter: blur(24px) saturate(1.2) !important;
-      -webkit-backdrop-filter: blur(24px) saturate(1.2) !important;
-      transition: background .34s ease, color .34s ease, border-color .34s ease, box-shadow .34s ease !important;
-      opacity: 1 !important;
-      visibility: visible !important;
-      pointer-events: auto !important;
-    }
-    .nav.light {
       background: rgba(255,255,255,.90) !important;
       color: #111 !important;
       border: 1px solid rgba(0,0,0,.10) !important;
-      box-shadow: 0 18px 72px rgba(0,0,0,.14), inset 0 1px 0 rgba(255,255,255,.72) !important;
-    }
-    .nav.dark {
-      background: rgba(16,16,16,.86) !important;
-      color: #fff !important;
-      border: 1px solid rgba(255,255,255,.22) !important;
-      box-shadow: 0 18px 80px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.10) !important;
+      box-shadow: 0 18px 72px rgba(0,0,0,.12), inset 0 1px 0 rgba(255,255,255,.72) !important;
+      backdrop-filter: blur(24px) saturate(1.18) !important;
+      -webkit-backdrop-filter: blur(24px) saturate(1.18) !important;
     }
     .brand {
       position: absolute !important;
@@ -60,33 +65,29 @@
       transform: translateY(-50%) !important;
       display: inline-flex !important;
       align-items: center !important;
-      color: currentColor !important;
       text-decoration: none !important;
-      opacity: 1 !important;
-      visibility: visible !important;
-      transition: opacity .24s ease, transform .24s ease;
-      -webkit-tap-highlight-color: transparent;
+      color: currentColor !important;
+      transition: opacity .22s ease;
     }
-    .brand:hover { opacity: .78 !important; }
-    .brand-logo { width: 28px !important; height: 30px !important; display: block !important; }
+    .brand:hover { opacity: .72; }
+    .brand-logo { width: 28px; height: 30px; display: block; }
     .nav-links {
-      display: flex !important;
-      align-items: center !important;
-      gap: 48px !important;
-      font-size: 14px !important;
-      font-weight: 470 !important;
-      letter-spacing: -.01em !important;
-      opacity: 1 !important;
-      visibility: visible !important;
+      display: flex;
+      gap: 48px;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 440;
+      letter-spacing: -.01em;
     }
     .nav-links a {
-      position: relative;
       color: inherit;
       text-decoration: none;
-      opacity: .72;
-      transition: opacity .22s ease, transform .22s ease, color .22s ease;
-      -webkit-tap-highlight-color: transparent;
+      opacity: .64;
+      position: relative;
+      transition: opacity .2s ease, transform .2s ease;
     }
+    .nav-links a:hover,
+    .nav-links a.active { opacity: 1; transform: translateY(-1px); }
     .nav-links a::after {
       content: "";
       position: absolute;
@@ -97,134 +98,439 @@
       background: currentColor;
       opacity: 0;
       transform: scaleX(.45);
-      transform-origin: center;
       transition: opacity .22s ease, transform .22s ease;
     }
-    .nav-links a:hover,
-    .nav-links a.active { opacity: 1; transform: translateY(-1px); }
     .nav-links a:hover::after,
-    .nav-links a.active::after,
-    .nav-links a.route-clicked::after { opacity: .36; transform: scaleX(1); }
+    .nav-links a.active::after { opacity: .34; transform: scaleX(1); }
     .launch-app-link {
       position: absolute !important;
       right: 18px !important;
       top: 50% !important;
       transform: translateY(-50%) !important;
       height: 44px !important;
-      min-height: 44px !important;
       padding: 0 20px !important;
+      border-radius: 10px !important;
       display: inline-flex !important;
       align-items: center !important;
       justify-content: center !important;
-      border-radius: 10px !important;
+      background: #111 !important;
+      color: #fff !important;
+      border: 1px solid #111 !important;
       text-decoration: none !important;
       font-size: 14px !important;
-      font-weight: 540 !important;
+      font-weight: 520 !important;
       letter-spacing: -.01em !important;
-      opacity: 1 !important;
-      visibility: visible !important;
-      -webkit-tap-highlight-color: transparent;
-      transition: transform .22s ease, background .22s ease, border-color .22s ease !important;
+      transition: transform .22s ease, background .22s ease;
     }
-    .nav.light .launch-app-link { background: #111 !important; color: #fff !important; border: 1px solid #111 !important; }
-    .nav.dark .launch-app-link { background: rgba(255,255,255,.08) !important; color: #fff !important; border: 1px solid rgba(255,255,255,.22) !important; }
-    .nav.light .launch-app-link:hover { background: #242424 !important; border-color: #242424 !important; transform: translateY(-50%) scale(1.018) !important; }
-    .nav.dark .launch-app-link:hover { background: rgba(255,255,255,.15) !important; border-color: rgba(255,255,255,.34) !important; transform: translateY(-50%) scale(1.018) !important; }
-    body.route-ready { animation: routeEnter .46s ease both; transform: none !important; filter: none !important; }
-    body.route-leaving { pointer-events: none; opacity: 0; transform: none !important; filter: none !important; transition: opacity .34s ease; }
-    body.route-leaving .nav { opacity: .72 !important; transition: opacity .42s ease !important; }
-    @keyframes routeEnter { from { opacity: 0; } to { opacity: 1; } }
+    .launch-app-link:hover { background: #242424 !important; transform: translateY(-50%) scale(1.018) !important; }
 
-    .hero { min-height:82svh; padding:146px 48px 78px; background:linear-gradient(180deg,#fff 0%,#F7F8F5 72%,#fff 100%); position:relative; overflow:hidden; }
-    .hero:before { content:""; position:absolute; inset:0; background-image:linear-gradient(rgba(0,0,0,.045) 1px, transparent 1px),linear-gradient(90deg, rgba(0,0,0,.045) 1px, transparent 1px); background-size:42px 42px; mask-image:linear-gradient(to bottom, transparent, #000 22%, #000 70%, transparent); }
-    .hero:after { content:""; position:absolute; width:520px; height:520px; right:-160px; top:110px; border-radius:999px; border:1px solid rgba(0,0,0,.10); box-shadow:inset 0 0 0 70px rgba(255,255,255,.42), inset 0 0 0 71px rgba(0,0,0,.06); }
-    .container { width:min(1220px,100%); margin:0 auto; position:relative; z-index:2; }
-    .eyebrow { display:inline-flex; align-items:center; gap:10px; margin-bottom:22px; font-size:12px; font-weight:720; letter-spacing:.2em; text-transform:uppercase; color:#4f5559; }
-    .eyebrow:before { content:""; width:8px; height:8px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 5px rgba(155,255,54,.14); }
-    h1,h2,h3,p { margin:0; }
-    h1 { font-size:clamp(56px,8vw,118px); line-height:.92; letter-spacing:-.07em; font-weight:500; max-width:1040px; }
-    .hero-copy { margin-top:26px; max-width:740px; color:var(--muted); font-size:clamp(17px,1.45vw,22px); line-height:1.52; letter-spacing:-.025em; }
-    .hero-tools { margin-top:38px; display:flex; gap:12px; flex-wrap:wrap; }
-    .pill { min-height:46px; padding:0 18px; display:inline-flex; align-items:center; gap:10px; border-radius:999px; border:1px solid rgba(0,0,0,.12); background:rgba(255,255,255,.75); font-size:13px; font-weight:620; color:#111; text-decoration:none; }
-    .pill.accent { background:var(--accent); border-color:var(--accent); }
-
-    .layout-section { padding:0 48px 92px; background:#fff; }
-    .resources-layout { display:grid; grid-template-columns:248px minmax(0,1fr); gap:38px; align-items:start; }
-    .sidebar { position:sticky; top:104px; border:1px solid var(--line); border-radius:24px; background:#fbfbfa; padding:18px; box-shadow:0 18px 50px rgba(0,0,0,.04); }
-    .sidebar-title { font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:#777; font-weight:760; margin-bottom:14px; }
-    .sidebar a { display:flex; gap:10px; align-items:flex-start; padding:11px 10px; border-radius:12px; text-decoration:none; font-size:13px; line-height:1.32; color:#303336; border:1px solid transparent; }
-    .sidebar a:hover { background:#fff; border-color:var(--line); }
-    .sidebar span { font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:11px; color:#8b8f93; min-width:22px; }
-    .side-note { margin-top:18px; padding:15px; border-top:1px solid var(--line); color:#74787d; font-size:12px; line-height:1.55; }
-
-    .main-panel { border:1px solid var(--line); border-radius:32px; overflow:hidden; background:#fff; box-shadow:var(--shadow); }
-    .panel-head { min-height:142px; padding:30px 34px; display:flex; align-items:flex-end; justify-content:space-between; gap:24px; background:#050505; color:#fff; position:relative; overflow:hidden; }
-    .panel-head:after { content:""; position:absolute; inset:auto -120px -220px auto; width:420px; height:420px; border-radius:999px; border:1px solid rgba(255,255,255,.18); }
-    .panel-head h2 { font-size:34px; line-height:1; letter-spacing:-.05em; font-weight:520; position:relative; z-index:1; }
-    .panel-head p { max-width:410px; color:rgba(255,255,255,.68); font-size:14px; line-height:1.55; position:relative; z-index:1; }
-    .search-row { padding:20px 24px; display:flex; gap:14px; align-items:center; border-bottom:1px solid var(--line); background:#fafafa; }
-    .search-box { flex:1; height:48px; border:1px solid var(--line); border-radius:999px; padding:0 18px; font-size:14px; outline:none; background:#fff; }
-    .search-box:focus { border-color:#111; }
-    .version-chip { height:48px; padding:0 16px; display:inline-flex; align-items:center; white-space:nowrap; border:1px solid var(--line); border-radius:999px; font-size:12px; font-weight:700; color:#4f5559; background:#fff; }
-
-    .doc-list { padding:0; }
-    .doc-row { display:grid; grid-template-columns:64px minmax(0,1fr) auto; gap:18px; align-items:center; padding:28px 30px; border-bottom:1px solid var(--line); transition:background .2s ease; scroll-margin-top:104px; }
-    .doc-row:hover { background:#fbfcf8; }
-    .doc-row:last-child { border-bottom:0; }
-    .doc-code { width:46px; height:46px; border:1px solid var(--line-strong); border-radius:14px; display:flex; align-items:center; justify-content:center; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:13px; color:#111; background:#fff; }
-    .doc-meta { display:flex; gap:9px; align-items:center; margin-bottom:8px; flex-wrap:wrap; }
-    .doc-meta span { font-size:11px; line-height:1; text-transform:uppercase; letter-spacing:.12em; color:#73777b; border:1px solid var(--line); border-radius:999px; padding:6px 8px; background:#fff; }
-    .doc-main h3 { font-size:22px; letter-spacing:-.035em; font-weight:560; margin-bottom:7px; }
-    .doc-main p { max-width:680px; color:#666b70; line-height:1.55; font-size:14px; }
-    .doc-actions { display:flex; align-items:center; gap:10px; }
-    .text-link { font-size:13px; text-decoration:none; color:#555; padding:10px 8px; }
-    .text-link:hover { color:#000; }
-    .download-btn { min-height:40px; padding:0 15px; display:inline-flex; align-items:center; justify-content:center; border-radius:999px; border:1px solid #111; background:#111; color:#fff; text-decoration:none; font-size:13px; font-weight:650; transition:transform .2s ease, background .2s ease; }
-    .download-btn:hover { transform:translateY(-2px); background:#000; }
-
-    .gitbook-section { padding:80px 48px 100px; background:#F6F7F4; }
-    .gitbook-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px; }
-    .guide-card { border:1px solid var(--line); background:#fff; border-radius:24px; padding:24px; min-height:210px; }
-    .guide-card .num { font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color:#8a8f94; font-size:12px; margin-bottom:34px; }
-    .guide-card h3 { font-size:22px; letter-spacing:-.035em; font-weight:540; margin-bottom:12px; }
-    .guide-card p { color:#686d72; font-size:14px; line-height:1.58; }
-
-    footer { padding:28px 48px; border-top:1px solid var(--line); display:flex; justify-content:space-between; color:#7a7f84; font-size:13px; }
-
-    @media (max-width: 920px) {
-      .hero { padding:130px 24px 58px; } .layout-section,.gitbook-section { padding-left:24px; padding-right:24px; }
-      .resources-layout { grid-template-columns:1fr; } .sidebar { position:relative; top:auto; } .panel-head { align-items:flex-start; flex-direction:column; }
-      .doc-row { grid-template-columns:1fr; } .doc-actions { justify-content:flex-start; } .gitbook-grid { grid-template-columns:1fr; } footer { padding:24px; flex-direction:column; gap:8px; }
+    .page-shell {
+      min-height: 100svh;
+      background:
+        radial-gradient(circle at 80% 0%, rgba(155,255,54,.10), transparent 24%),
+        linear-gradient(180deg, #fff 0%, #f8f9f6 58%, #fff 100%);
     }
-  
+
+    .hero {
+      padding: 164px 48px 56px;
+    }
+    .container {
+      width: min(1220px, 100%);
+      margin: 0 auto;
+      position: relative;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 390px);
+      gap: 56px;
+      align-items: end;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .label {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: #4f5559;
+      font-size: 13px;
+      font-weight: 450;
+      letter-spacing: -.01em;
+      margin-bottom: 26px;
+    }
+    .label::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px rgba(155,255,54,.12);
+    }
+    h1 {
+      max-width: 720px;
+      font-size: clamp(40px, 5.4vw, 76px);
+      line-height: 1.04;
+      letter-spacing: -.052em;
+      font-weight: 440;
+    }
+    .hero-copy {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.55;
+      letter-spacing: -.025em;
+      max-width: 520px;
+    }
+
+    .layout-section { padding: 0 48px 96px; }
+    .resources-layout {
+      display: grid;
+      grid-template-columns: 278px minmax(0, 1fr);
+      gap: 44px;
+      align-items: start;
+    }
+
+    .sidebar {
+      position: sticky;
+      top: 116px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255,255,255,.78);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: var(--shadow-soft);
+    }
+    .search-wrap { position: relative; margin-bottom: 14px; }
+    .search-wrap input {
+      width: 100%;
+      height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: #fff;
+      outline: none;
+      padding: 0 12px 0 34px;
+      color: #111;
+      font-size: 13px;
+      font-weight: 400;
+    }
+    .search-wrap input:focus { border-color: rgba(0,0,0,.28); }
+    .search-icon {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #9aa0a6;
+      font-size: 13px;
+      pointer-events: none;
+    }
+    .side-group-title {
+      padding: 10px 10px 8px;
+      color: var(--muted-2);
+      font-size: 12px;
+      font-weight: 430;
+    }
+    .topic-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      min-height: 40px;
+      padding: 0 10px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #2d3033;
+      font-size: 14px;
+      font-weight: 420;
+      letter-spacing: -.012em;
+      border: 1px solid transparent;
+      transition: background .2s ease, border-color .2s ease, transform .2s ease;
+    }
+    .topic-link:hover,
+    .topic-link.active {
+      background: #fff;
+      border-color: var(--line);
+    }
+    .topic-link small {
+      color: var(--muted-2);
+      font-size: 12px;
+      font-weight: 400;
+    }
+    .side-note {
+      margin-top: 14px;
+      padding: 14px 10px 4px;
+      border-top: 1px solid var(--line-soft);
+      color: #858a90;
+      font-size: 12.5px;
+      line-height: 1.55;
+    }
+
+    .content {
+      display: grid;
+      gap: 22px;
+    }
+    .resource-section {
+      scroll-margin-top: 118px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: rgba(255,255,255,.86);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+    }
+    .section-head {
+      padding: 30px 32px 24px;
+      display: grid;
+      grid-template-columns: minmax(0,1fr) auto;
+      gap: 24px;
+      align-items: start;
+      border-bottom: 1px solid var(--line-soft);
+    }
+    .section-head h2 {
+      font-size: clamp(30px, 3.4vw, 46px);
+      line-height: 1.02;
+      letter-spacing: -.052em;
+      font-weight: 460;
+    }
+    .section-head p {
+      margin-top: 14px;
+      color: var(--muted);
+      max-width: 660px;
+      font-size: 15.5px;
+      line-height: 1.6;
+      letter-spacing: -.018em;
+    }
+    .section-chip {
+      min-height: 34px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      color: #5e646b;
+      font-size: 12px;
+      font-weight: 400;
+      white-space: nowrap;
+      background: #fff;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0;
+    }
+    .article-card {
+      min-height: 210px;
+      padding: 28px 30px;
+      border-right: 1px solid var(--line-soft);
+      border-bottom: 1px solid var(--line-soft);
+      background: #fff;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .article-card:nth-child(2n) { border-right: 0; }
+    .article-card:hover { background: #fbfcf8; }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      color: #8a8f94;
+      font-size: 12px;
+      margin-bottom: 30px;
+      font-weight: 400;
+    }
+    .article-card h3 {
+      font-size: 22px;
+      line-height: 1.14;
+      letter-spacing: -.034em;
+      font-weight: 470;
+      margin-bottom: 12px;
+    }
+    .article-card p {
+      color: #6b7075;
+      font-size: 14.5px;
+      line-height: 1.55;
+      letter-spacing: -.016em;
+    }
+    .soft-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 20px;
+      color: #111;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 430;
+    }
+    .soft-link::after { content: "→"; transition: transform .2s ease; }
+    .soft-link:hover::after { transform: translateX(3px); }
+
+    /* Legal and Compliance keeps the existing black handbook feeling */
+    .legal-panel {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      background: #fff;
+      box-shadow: var(--shadow-soft);
+      scroll-margin-top: 118px;
+    }
+    .legal-head {
+      min-height: 142px;
+      padding: 30px 34px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 24px;
+      background: #050505;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .legal-head::after {
+      content: "";
+      position: absolute;
+      inset: auto -120px -220px auto;
+      width: 420px;
+      height: 420px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.18);
+    }
+    .legal-head h2 {
+      font-size: 34px;
+      line-height: 1;
+      letter-spacing: -.05em;
+      font-weight: 470;
+      position: relative;
+      z-index: 1;
+    }
+    .legal-head p {
+      max-width: 430px;
+      color: rgba(255,255,255,.68);
+      font-size: 14px;
+      line-height: 1.55;
+      position: relative;
+      z-index: 1;
+    }
+    .doc-list { padding: 0; }
+    .doc-row {
+      display: grid;
+      grid-template-columns: 64px minmax(0,1fr) auto;
+      gap: 18px;
+      align-items: center;
+      padding: 28px 30px;
+      border-bottom: 1px solid var(--line);
+      transition: background .2s ease;
+      scroll-margin-top: 118px;
+      background: #fff;
+    }
+    .doc-row:hover { background: #fbfcf8; }
+    .doc-row:last-child { border-bottom: 0; }
+    .doc-code {
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(0,0,0,.18);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+      color: #111;
+      background: #fff;
+    }
+    .doc-meta { display: flex; gap: 9px; align-items: center; margin-bottom: 8px; flex-wrap: wrap; }
+    .doc-meta span {
+      font-size: 11px;
+      line-height: 1;
+      color: #73777b;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 6px 8px;
+      background: #fff;
+      font-weight: 400;
+    }
+    .doc-main h3 { font-size: 22px; letter-spacing: -.035em; font-weight: 470; margin-bottom: 7px; }
+    .doc-main p { max-width: 680px; color: #666b70; line-height: 1.55; font-size: 14px; }
+    .doc-actions { display: flex; align-items: center; gap: 10px; }
+    .text-link { font-size: 13px; text-decoration: none; color: #555; padding: 10px 8px; }
+    .text-link:hover { color: #000; }
+    .download-btn {
+      min-height: 40px;
+      padding: 0 15px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      border: 1px solid #111;
+      background: #111;
+      color: #fff;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 510;
+      transition: transform .2s ease, background .2s ease;
+    }
+    .download-btn:hover { transform: translateY(-2px); background: #000; }
+
+    .empty-state {
+      display: none;
+      padding: 34px;
+      border: 1px dashed var(--line);
+      border-radius: 22px;
+      color: var(--muted);
+      background: #fff;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .hidden-by-search { display: none !important; }
+
+    footer {
+      padding: 30px 48px;
+      border-top: 1px solid var(--line-soft);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: #7a7f84;
+      font-size: 13px;
+      background: #fff;
+    }
+
+    @media (max-width: 980px) {
+      .hero { padding: 134px 24px 44px; }
+      .hero-inner { grid-template-columns: 1fr; gap: 24px; }
+      .layout-section { padding: 0 24px 76px; }
+      .resources-layout { grid-template-columns: 1fr; }
+      .sidebar { position: relative; top: auto; }
+      .content { gap: 18px; }
+      .section-head { grid-template-columns: 1fr; }
+      .card-grid { grid-template-columns: 1fr; }
+      .article-card { border-right: 0; }
+      .legal-head { align-items: flex-start; flex-direction: column; }
+      .doc-row { grid-template-columns: 1fr; }
+      .doc-actions { justify-content: flex-start; }
+      footer { padding: 24px; flex-direction: column; }
+    }
     @media (max-width: 760px) {
-      .nav {
-        top: 14px !important;
-        inset: 14px auto auto 50% !important;
-        width: calc(100vw - 24px) !important;
-        height: 64px !important;
-        min-height: 64px !important;
-        padding: 0 12px 0 16px !important;
-      }
+      .nav { top: 14px !important; width: calc(100vw - 24px) !important; height: 64px !important; padding: 0 12px 0 16px !important; }
       .brand { left: 16px !important; }
-      .brand-logo { width: 24px !important; height: 26px !important; }
-      .nav-links { gap: 18px !important; font-size: 12px !important; }
-      .launch-app-link { right: 12px !important; height: 38px !important; min-height: 38px !important; padding: 0 12px !important; font-size: 12px !important; }
+      .brand-logo { width: 24px; height: 26px; }
+      .nav-links { gap: 18px; font-size: 12px; }
+      .launch-app-link { right: 12px !important; height: 38px !important; padding: 0 12px !important; font-size: 12px !important; }
     }
     @media (max-width: 640px) {
       .launch-app-link { display: none !important; }
-      .nav-links { gap: 20px !important; }
+      h1 { font-size: clamp(44px, 13vw, 64px); }
+      .hero-copy { font-size: 16px; }
+      .section-head { padding: 25px 24px 20px; }
+      .article-card { padding: 24px; }
+      .legal-head { padding: 28px 24px; }
+      .doc-row { padding: 24px; }
     }
-    @media (prefers-reduced-motion: reduce) {
-      body.route-ready, body.route-leaving { animation: none !important; transition: none !important; transform: none !important; filter: none !important; }
-      body.route-leaving .nav { transition: none !important; }
-    }
-
   </style>
 </head>
 <body>
-  <nav class="nav light" id="nav">
-    <a class="brand" href="/" aria-label="Alloco Home"><svg class="brand-logo" viewBox="0 0 220 236" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Alloco"><path d="M1.72854 189.498L110 0L49.683 174.758C49.2281 176.079 50.3299 177.41 51.7249 177.24L86.9629 172.877L0 236V196.013C0 193.731 0.596398 191.49 1.72854 189.498Z" fill="currentColor"/><path d="M218.261 189.498L110 0L170.317 174.758C170.772 176.079 169.67 177.41 168.275 177.24L133.037 172.877L220 236V196.013C220 193.731 219.404 191.49 218.261 189.498Z" fill="currentColor"/></svg></a>
+  <nav class="nav" id="nav">
+    <a class="brand" href="/" aria-label="Alloco Home">
+      <svg class="brand-logo" viewBox="0 0 220 236" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Alloco">
+        <path d="M1.72854 189.498L110 0L49.683 174.758C49.2281 176.079 50.3299 177.41 51.7249 177.24L86.9629 172.877L0 236V196.013C0 193.731 0.596398 191.49 1.72854 189.498Z" fill="currentColor"/>
+        <path d="M218.261 189.498L110 0L170.317 174.758C170.772 176.079 169.67 177.41 168.275 177.24L133.037 172.877L220 236V196.013C220 193.731 219.404 191.49 218.261 189.498Z" fill="currentColor"/>
+      </svg>
+    </a>
     <div class="nav-links">
       <a href="/product">Products</a>
       <a class="active" href="/resources">Resources</a>
@@ -233,183 +539,321 @@
     <a class="launch-app-link" href="https://app.allocofi.com/" target="_blank" rel="noopener noreferrer">Launch App</a>
   </nav>
 
-  <main>
+  <main class="page-shell">
     <section class="hero">
-      <div class="container">
-        <div class="eyebrow">Resources</div>
-        <h1>Legal documents,<br>ready to download</h1>
-        <p class="hero-copy">A GitBook-style resource center for Alloco Limited. Review the legal architecture, token terms, security agency structure, pricing supplements, holder rights, and website legal notices in one place.</p>
-        <div class="hero-tools">
-          <a class="pill accent" href="#documents">View Documents ↓</a>
-          <a class="pill" href="/resources/documents/01_Alloco_Limited_Legal_Architecture_Framework.pdf" download>Download first document</a>
+      <div class="container hero-inner">
+        <div>
+          <h1>Read the ideas behind<br>onchain markets</h1>
         </div>
+        <p class="hero-copy">A simple knowledge base for Alloco. Explore the company story, market views, product notes, trading design, and the legal documents that support the platform.</p>
       </div>
     </section>
 
-    <section class="layout-section" id="documents">
+    <section class="layout-section">
       <div class="container resources-layout">
         <aside class="sidebar" aria-label="Resources navigation">
-          <div class="sidebar-title">Legal Library</div>
-          <a href="#doc-01"><span>01</span>Legal Architecture Framework</a>
-<a href="#doc-02"><span>02</span>Token Terms</a>
-<a href="#doc-03"><span>03</span>Security Agency Agreement</a>
-<a href="#doc-04"><span>04</span>Pricing Supplement and Risk Disclosures</a>
-<a href="#doc-05"><span>05</span>Tokenholder Rights Statement</a>
-<a href="#doc-06"><span>06</span>Website Legal Notice and Disclaimers</a>
-          <div class="side-note">Documents are organized like a public legal handbook. Each file opens in a new tab and can also be downloaded directly.</div>
+          <div class="search-wrap">
+            <span class="search-icon">⌕</span>
+            <input id="resourceSearch" type="search" placeholder="Search resources" autocomplete="off" />
+          </div>
+          <div class="side-group-title">Topics</div>
+          <a class="topic-link active" href="#our-story" data-topic-link="our-story"><span>Our Story</span><small>3</small></a>
+          <a class="topic-link" href="#our-insights" data-topic-link="our-insights"><span>Our Insights</span><small>4</small></a>
+          <a class="topic-link" href="#launcher" data-topic-link="launcher"><span>Launcher</span><small>3</small></a>
+          <a class="topic-link" href="#trade" data-topic-link="trade"><span>Trade</span><small>3</small></a>
+          <a class="topic-link" href="#legal-compliance" data-topic-link="legal-compliance"><span>Legal and Compliance</span><small>6</small></a>
+          <div class="side-note">Use this page as a public handbook. The legal section keeps the current document structure and direct download links.</div>
         </aside>
 
-        <section class="main-panel">
-          <div class="panel-head">
-            <h2>Alloco Limited<br>Document Library</h2>
-            <p>Six black-and-white long-form legal documents prepared for the resources page of allocofi.com.</p>
-          </div>
-          <div class="search-row">
-            <input class="search-box" id="docSearch" type="search" placeholder="Search documents by title, type, or keyword" />
-            <div class="version-chip">V4 · Longform PDF</div>
-          </div>
-          <div class="doc-list" id="docList">
-            
-          <article id="doc-01" class="doc-row" data-title="legal architecture framework framework" data-type="Framework">
-            <div class="doc-code">01</div>
-            <div class="doc-main">
-              <div class="doc-meta"><span>Framework</span><span>6 pages</span><span>PDF</span></div>
-              <h3>Legal Architecture Framework</h3>
-              <p>Entity structure, issuer perimeter, bankruptcy-remoteness, custody architecture and governing-law hierarchy.</p>
-            </div>
-            <div class="doc-actions">
-              <a class="text-link" href="/resources/documents/01_Alloco_Limited_Legal_Architecture_Framework.pdf" target="_blank" rel="noopener">Open</a>
-              <a class="download-btn" href="/resources/documents/01_Alloco_Limited_Legal_Architecture_Framework.pdf" download>Download</a>
-            </div>
-          </article>
+        <div class="content" id="resourceContent">
+          <div class="empty-state" id="emptyState">No matching resources found. Try a simpler keyword such as legal, launcher, trade, yield, token, or market.</div>
 
-          <article id="doc-02" class="doc-row" data-title="token terms terms" data-type="Terms">
-            <div class="doc-code">02</div>
-            <div class="doc-main">
-              <div class="doc-meta"><span>Terms</span><span>6 pages</span><span>PDF</span></div>
-              <h3>Token Terms</h3>
-              <p>Core terms governing tokenized notes, subscriptions, transfers, redemption mechanics and holder limitations.</p>
+          <section class="resource-section" id="our-story" data-section="Our Story">
+            <div class="section-head">
+              <div>
+                <h2>Our Story</h2>
+                <p>Alloco is built around a simple belief: financial products should be easier to create, easier to understand, and easier to move across onchain markets.</p>
+              </div>
+              <span class="section-chip">Company</span>
             </div>
-            <div class="doc-actions">
-              <a class="text-link" href="/resources/documents/02_Alloco_Limited_Token_Terms.pdf" target="_blank" rel="noopener">Open</a>
-              <a class="download-btn" href="/resources/documents/02_Alloco_Limited_Token_Terms.pdf" download>Download</a>
+            <div class="card-grid">
+              <article class="article-card" data-search="our story company mission finance closer onchain etp all assets">
+                <div class="article-meta"><span>Company note</span><span>4 min read</span></div>
+                <h3>Finance, closer</h3>
+                <p>Why Alloco focuses on turning financial ideas into onchain products that feel simple, transparent, and usable from day one.</p>
+                <a class="soft-link" href="#">Read note</a>
+              </article>
+              <article class="article-card" data-search="our story rwa structured products tokenized markets">
+                <div class="article-meta"><span>Framework</span><span>6 min read</span></div>
+                <h3>From asset exposure to product expression</h3>
+                <p>A short explanation of how Alloco thinks about packaging real world asset exposure into product formats that can live onchain.</p>
+                <a class="soft-link" href="#">Read note</a>
+              </article>
+              <article class="article-card" data-search="our story philosophy creator market idea deserves">
+                <div class="article-meta"><span>Philosophy</span><span>5 min read</span></div>
+                <h3>Every idea deserves a market</h3>
+                <p>Markets should not only be built by large issuers. They should also be shaped by creators, analysts, communities, and capital allocators.</p>
+                <a class="soft-link" href="#">Read note</a>
+              </article>
+              <article class="article-card" data-search="our story roadmap distribution trust transparency">
+                <div class="article-meta"><span>Roadmap</span><span>5 min read</span></div>
+                <h3>Trust through structure</h3>
+                <p>The operating principle behind Alloco: clean product design, clear documentation, transparent risk boundaries, and simple user flows.</p>
+                <a class="soft-link" href="#">Read note</a>
+              </article>
             </div>
-          </article>
+          </section>
 
-          <article id="doc-03" class="doc-row" data-title="security agency agreement agency" data-type="Agency">
-            <div class="doc-code">03</div>
-            <div class="doc-main">
-              <div class="doc-meta"><span>Agency</span><span>6 pages</span><span>PDF</span></div>
-              <h3>Security Agency Agreement</h3>
-              <p>Security agent appointment, collateral coverage, enforcement waterfall and holder representation model.</p>
+          <section class="resource-section" id="our-insights" data-section="Our Insights">
+            <div class="section-head">
+              <div>
+                <h2>Our Insights</h2>
+                <p>Market notes on themes that may become onchain products: AI infrastructure, inflation exposure, stable yield, cross market arbitrage, and liquidity design.</p>
+              </div>
+              <span class="section-chip">Research</span>
             </div>
-            <div class="doc-actions">
-              <a class="text-link" href="/resources/documents/03_Alloco_Limited_Security_Agency_Agreement.pdf" target="_blank" rel="noopener">Open</a>
-              <a class="download-btn" href="/resources/documents/03_Alloco_Limited_Security_Agency_Agreement.pdf" download>Download</a>
+            <div class="card-grid">
+              <article class="article-card" data-search="our insights ai inflation hedge infrastructure power grid cooling compute supply chain">
+                <div class="article-meta"><span>Market view</span><span>7 min read</span></div>
+                <h3>AI infrastructure as an inflation hedge</h3>
+                <p>Compute, power, grid equipment, cooling, and hard assets are becoming a new basket of real economy demand.</p>
+                <a class="soft-link" href="#">Read insight</a>
+              </article>
+              <article class="article-card" data-search="our insights tradfi defi arbitrage equity perpetual pricing dislocation">
+                <div class="article-meta"><span>Market view</span><span>8 min read</span></div>
+                <h3>Where TradFi and DeFi prices meet</h3>
+                <p>Cross market products can capture dislocations between regulated market exposure and crypto native perpetual liquidity.</p>
+                <a class="soft-link" href="#">Read insight</a>
+              </article>
+              <article class="article-card" data-search="our insights stable yield funding basis liquidity premium btc eth market neutral">
+                <div class="article-meta"><span>Yield note</span><span>6 min read</span></div>
+                <h3>The shape of stable yield</h3>
+                <p>Funding, basis, and liquidity premiums can be packaged as a cleaner market neutral exposure when risk controls are visible.</p>
+                <a class="soft-link" href="#">Read insight</a>
+              </article>
+              <article class="article-card" data-search="our insights product market demand creator distribution onchain etp">
+                <div class="article-meta"><span>Product note</span><span>5 min read</span></div>
+                <h3>Why onchain products need better packaging</h3>
+                <p>Many strong market ideas never become investable products because launch, liquidity, disclosure, and distribution remain fragmented.</p>
+                <a class="soft-link" href="#">Read insight</a>
+              </article>
             </div>
-          </article>
+          </section>
 
-          <article id="doc-04" class="doc-row" data-title="pricing supplement and risk disclosures risk" data-type="Risk">
-            <div class="doc-code">04</div>
-            <div class="doc-main">
-              <div class="doc-meta"><span>Risk</span><span>7 pages</span><span>PDF</span></div>
-              <h3>Pricing Supplement and Risk Disclosures</h3>
-              <p>Product-specific pricing, NAV references, risk factors, liquidity assumptions and market disruption events.</p>
+          <section class="resource-section" id="launcher" data-section="Launcher">
+            <div class="section-head">
+              <div>
+                <h2>Launcher</h2>
+                <p>The Launcher helps users define a product idea, shape its risk profile, and prepare it for market presentation without turning the process into a complex form.</p>
+              </div>
+              <span class="section-chip">Product creation</span>
             </div>
-            <div class="doc-actions">
-              <a class="text-link" href="/resources/documents/04_Alloco_Limited_Pricing_Supplement_and_Risk_Disclosures.pdf" target="_blank" rel="noopener">Open</a>
-              <a class="download-btn" href="/resources/documents/04_Alloco_Limited_Pricing_Supplement_and_Risk_Disclosures.pdf" download>Download</a>
+            <div class="card-grid">
+              <article class="article-card" data-search="launcher create etp product idea theme basket design">
+                <div class="article-meta"><span>Guide</span><span>6 min read</span></div>
+                <h3>How to create an ETP concept</h3>
+                <p>Start with the market story, define the target exposure, add risk boundaries, and translate the idea into a product page.</p>
+                <a class="soft-link" href="#">Open guide</a>
+              </article>
+              <article class="article-card" data-search="launcher issuer asset basket weights rules rebalance">
+                <div class="article-meta"><span>Guide</span><span>5 min read</span></div>
+                <h3>From basket to rules</h3>
+                <p>A simple framework for turning assets, weights, rebalancing rules, and constraints into a product structure users can understand.</p>
+                <a class="soft-link" href="#">Open guide</a>
+              </article>
+              <article class="article-card" data-search="launcher disclosure product page risk data launch workflow">
+                <div class="article-meta"><span>Workflow</span><span>4 min read</span></div>
+                <h3>Preparing a launch page</h3>
+                <p>What a product page needs before launch: short thesis, exposure logic, risk notes, data modules, and distribution ready copy.</p>
+                <a class="soft-link" href="#">Open guide</a>
+              </article>
+              <article class="article-card" data-search="launcher governance review compliance market readiness">
+                <div class="article-meta"><span>Checklist</span><span>4 min read</span></div>
+                <h3>Market readiness checklist</h3>
+                <p>A lightweight review path for product clarity, risk disclosure, operational feasibility, and community facing communication.</p>
+                <a class="soft-link" href="#">Open checklist</a>
+              </article>
             </div>
-          </article>
+          </section>
 
-          <article id="doc-05" class="doc-row" data-title="tokenholder rights statement rights" data-type="Rights">
-            <div class="doc-code">05</div>
-            <div class="doc-main">
-              <div class="doc-meta"><span>Rights</span><span>6 pages</span><span>PDF</span></div>
-              <h3>Tokenholder Rights Statement</h3>
-              <p>Plain-language statement of economic exposure, redemption rights, security interests and non-shareholder limitations.</p>
+          <section class="resource-section" id="trade" data-section="Trade">
+            <div class="section-head">
+              <div>
+                <h2>Trade</h2>
+                <p>Trade resources explain the user side of Alloco products: how prices form, how liquidity is routed, and how risk should be read before entering a position.</p>
+              </div>
+              <span class="section-chip">Markets</span>
             </div>
-            <div class="doc-actions">
-              <a class="text-link" href="/resources/documents/05_Alloco_Limited_Tokenholder_Rights_Statement.pdf" target="_blank" rel="noopener">Open</a>
-              <a class="download-btn" href="/resources/documents/05_Alloco_Limited_Tokenholder_Rights_Statement.pdf" download>Download</a>
+            <div class="card-grid">
+              <article class="article-card" data-search="trade pricing nav order execution liquidity spread market">
+                <div class="article-meta"><span>Guide</span><span>5 min read</span></div>
+                <h3>Understanding price and liquidity</h3>
+                <p>A simple explanation of indicative value, trading price, spread, depth, and why onchain markets need clear liquidity design.</p>
+                <a class="soft-link" href="#">Open guide</a>
+              </article>
+              <article class="article-card" data-search="trade nav anchor creation redemption basket market making">
+                <div class="article-meta"><span>Mechanism</span><span>6 min read</span></div>
+                <h3>How NAV anchoring works</h3>
+                <p>Creation, redemption, and arbitrage logic help keep product prices close to underlying value when market structure is designed correctly.</p>
+                <a class="soft-link" href="#">Open guide</a>
+              </article>
+              <article class="article-card" data-search="trade risk before trading volatility drawdown leverage counterparty">
+                <div class="article-meta"><span>Risk note</span><span>5 min read</span></div>
+                <h3>Risk before trading</h3>
+                <p>Every product carries different market, liquidity, execution, counterparty, and mechanism risks. The goal is to show them clearly.</p>
+                <a class="soft-link" href="#">Open risk note</a>
+              </article>
+              <article class="article-card" data-search="trade portfolio allocation rebalance exposure stable yield hedging">
+                <div class="article-meta"><span>Guide</span><span>5 min read</span></div>
+                <h3>Using products in a portfolio</h3>
+                <p>How users may think about themes, hedges, yield exposure, and position sizing when combining multiple onchain products.</p>
+                <a class="soft-link" href="#">Open guide</a>
+              </article>
             </div>
-          </article>
+          </section>
 
-          <article id="doc-06" class="doc-row" data-title="website legal notice and disclaimers notice" data-type="Notice">
-            <div class="doc-code">06</div>
-            <div class="doc-main">
-              <div class="doc-meta"><span>Notice</span><span>6 pages</span><span>PDF</span></div>
-              <h3>Website Legal Notice and Disclaimers</h3>
-              <p>Website terms, jurisdictional restrictions, no-offer language, risk notice and prohibited-user disclosures.</p>
+          <section class="legal-panel" id="legal-compliance" data-section="Legal and Compliance">
+            <div class="legal-head">
+              <div>
+                <h2>Legal and Compliance</h2>
+              </div>
             </div>
-            <div class="doc-actions">
-              <a class="text-link" href="/resources/documents/06_Alloco_Limited_Website_Legal_Notice_and_Disclaimers.pdf" target="_blank" rel="noopener">Open</a>
-              <a class="download-btn" href="/resources/documents/06_Alloco_Limited_Website_Legal_Notice_and_Disclaimers.pdf" download>Download</a>
+            <div class="doc-list">
+              <article class="doc-row" id="doc-01" data-search="legal compliance architecture framework spv bankruptcy remote bvi swiss law debt instruments alloco limited">
+                <div class="doc-code">01</div>
+                <div class="doc-main">
+                  <div class="doc-meta"><span>Framework</span><span>PDF</span><span>Long form</span></div>
+                  <h3>Legal Architecture Framework</h3>
+                  <p>Overview of the Alloco Limited structured note architecture, issuer perimeter, bankruptcy remoteness, custody arrangement, governing law and holder protection model.</p>
+                </div>
+                <div class="doc-actions">
+                  <a class="text-link" href="/resources/documents/01_Alloco_Limited_Legal_Architecture_Framework.pdf" target="_blank" rel="noopener">Open</a>
+                  <a class="download-btn" href="/resources/documents/01_Alloco_Limited_Legal_Architecture_Framework.pdf" download>Download</a>
+                </div>
+              </article>
+              <article class="doc-row" id="doc-02" data-search="legal compliance token terms structured tokenized notes redemption payment holder rights swiss law">
+                <div class="doc-code">02</div>
+                <div class="doc-main">
+                  <div class="doc-meta"><span>Terms</span><span>PDF</span><span>Token</span></div>
+                  <h3>Token Terms</h3>
+                  <p>Terms governing tokenized structured notes, eligible holders, economic exposure, payment mechanics, redemption procedures, transfer restrictions and operational controls.</p>
+                </div>
+                <div class="doc-actions">
+                  <a class="text-link" href="/resources/documents/02_Alloco_Limited_Token_Terms.pdf" target="_blank" rel="noopener">Open</a>
+                  <a class="download-btn" href="/resources/documents/02_Alloco_Limited_Token_Terms.pdf" download>Download</a>
+                </div>
+              </article>
+              <article class="doc-row" id="doc-03" data-search="legal compliance security agency agreement collateral first priority security interest enforcement agent tokenholders">
+                <div class="doc-code">03</div>
+                <div class="doc-main">
+                  <div class="doc-meta"><span>Security</span><span>PDF</span><span>Agency</span></div>
+                  <h3>Security Agency Agreement</h3>
+                  <p>Agreement framework for a security agent acting for tokenholders in respect of secured collateral, enforcement mechanics, priority of claims and recovery waterfall.</p>
+                </div>
+                <div class="doc-actions">
+                  <a class="text-link" href="/resources/documents/03_Alloco_Limited_Security_Agency_Agreement.pdf" target="_blank" rel="noopener">Open</a>
+                  <a class="download-btn" href="/resources/documents/03_Alloco_Limited_Security_Agency_Agreement.pdf" download>Download</a>
+                </div>
+              </article>
+              <article class="doc-row" id="doc-04" data-search="legal compliance pricing supplement risk disclosures liquidity custody code review underlying asset etf">
+                <div class="doc-code">04</div>
+                <div class="doc-main">
+                  <div class="doc-meta"><span>Disclosure</span><span>PDF</span><span>Risk</span></div>
+                  <h3>Pricing Supplement and Risk Disclosures</h3>
+                  <p>Template for product-level pricing supplements, underlying reference assets, risk factors, liquidity controls, custody routes, valuation methods and code-related disclosures.</p>
+                </div>
+                <div class="doc-actions">
+                  <a class="text-link" href="/resources/documents/04_Alloco_Limited_Pricing_Supplement_and_Risk_Disclosures.pdf" target="_blank" rel="noopener">Open</a>
+                  <a class="download-btn" href="/resources/documents/04_Alloco_Limited_Pricing_Supplement_and_Risk_Disclosures.pdf" download>Download</a>
+                </div>
+              </article>
+              <article class="doc-row" id="doc-05" data-search="legal compliance tokenholder rights statement asset ownership redemption no shareholder rights beneficial exposure">
+                <div class="doc-code">05</div>
+                <div class="doc-main">
+                  <div class="doc-meta"><span>Rights</span><span>PDF</span><span>Holders</span></div>
+                  <h3>Tokenholder Rights Statement</h3>
+                  <p>Plain-English holder rights statement explaining economic exposure, redemption rights, absence of direct ownership, no shareholder voting rights and secured claim protections.</p>
+                </div>
+                <div class="doc-actions">
+                  <a class="text-link" href="/resources/documents/05_Alloco_Limited_Tokenholder_Rights_Statement.pdf" target="_blank" rel="noopener">Open</a>
+                  <a class="download-btn" href="/resources/documents/05_Alloco_Limited_Tokenholder_Rights_Statement.pdf" download>Download</a>
+                </div>
+              </article>
+              <article class="doc-row" id="doc-06" data-search="legal compliance website legal notice disclaimers no offer restricted jurisdictions investment risk">
+                <div class="doc-code">06</div>
+                <div class="doc-main">
+                  <div class="doc-meta"><span>Notice</span><span>PDF</span><span>Website</span></div>
+                  <h3>Website Legal Notice and Disclaimers</h3>
+                  <p>Website-level legal notice covering no-offer language, restricted jurisdictions, risk acknowledgements, information limitations and user responsibility.</p>
+                </div>
+                <div class="doc-actions">
+                  <a class="text-link" href="/resources/documents/06_Alloco_Limited_Website_Legal_Notice_and_Disclaimers.pdf" target="_blank" rel="noopener">Open</a>
+                  <a class="download-btn" href="/resources/documents/06_Alloco_Limited_Website_Legal_Notice_and_Disclaimers.pdf" download>Download</a>
+                </div>
+              </article>
             </div>
-          </article>
-          </div>
-        </section>
-      </div>
-    </section>
-
-    <section class="gitbook-section">
-      <div class="container">
-        <div class="eyebrow">How to read</div>
-        <div class="gitbook-grid">
-          <article class="guide-card"><div class="num">01</div><h3>Start with the framework</h3><p>Use the architecture paper to understand the issuer, collateral perimeter, custody flow, governing law and bankruptcy-remoteness logic.</p></article>
-          <article class="guide-card"><div class="num">02</div><h3>Then read the terms</h3><p>The token terms define the economic instrument, subscription and redemption rights, transfer restrictions and holder limitations.</p></article>
-          <article class="guide-card"><div class="num">03</div><h3>Finish with risk</h3><p>The pricing supplement and disclosures explain NAV, market disruption events, liquidity assumptions, operational risks and regulatory limits.</p></article>
+          </section>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div>Every Insight Deserves a Market</div>
-    <div>© 2026 Alloco</div>
+    <span>© 2026 Alloco Limited</span>
+    <span>Resources for product education, market insight, and legal documentation.</span>
   </footer>
 
   <script>
-    const search = document.getElementById('docSearch');
-    const docs = Array.from(document.querySelectorAll('.doc-row'));
-    search?.addEventListener('input', () => {
-      const q = search.value.trim().toLowerCase();
-      docs.forEach(row => {
-        const text = row.innerText.toLowerCase() + ' ' + (row.dataset.title || '') + ' ' + (row.dataset.type || '');
-        row.style.display = text.includes(q) ? 'grid' : 'none';
+    const searchInput = document.getElementById('resourceSearch');
+    const searchableItems = Array.from(document.querySelectorAll('[data-search]'));
+    const sections = Array.from(document.querySelectorAll('[data-section]'));
+    const emptyState = document.getElementById('emptyState');
+    const topicLinks = Array.from(document.querySelectorAll('[data-topic-link]'));
+
+    function applySearch() {
+      const q = (searchInput.value || '').trim().toLowerCase();
+      let visibleCount = 0;
+
+      searchableItems.forEach((item) => {
+        const text = (item.textContent + ' ' + (item.dataset.search || '')).toLowerCase();
+        const match = !q || text.includes(q);
+        item.classList.toggle('hidden-by-search', !match);
+        if (match) visibleCount += 1;
+      });
+
+      sections.forEach((section) => {
+        const hasVisible = Array.from(section.querySelectorAll('[data-search]')).some((item) => !item.classList.contains('hidden-by-search'));
+        section.classList.toggle('hidden-by-search', q && !hasVisible);
+      });
+
+      emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+    searchInput.addEventListener('input', applySearch);
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.id;
+        topicLinks.forEach((link) => link.classList.toggle('active', link.getAttribute('href') === '#' + id));
+      });
+    }, { rootMargin: '-35% 0px -55% 0px', threshold: 0.01 });
+    sections.forEach((section) => observer.observe(section));
+
+    document.body.classList.add('route-ready');
+    window.setTimeout(() => document.body.classList.remove('route-ready'), 520);
+
+    document.querySelectorAll('a[href]').forEach((link) => {
+      const href = link.getAttribute('href');
+      if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || link.target === '_blank' || link.hasAttribute('download')) return;
+      link.addEventListener('click', (event) => {
+        const url = new URL(href, window.location.href);
+        if (url.origin !== window.location.origin) return;
+        event.preventDefault();
+        document.body.classList.add('route-leaving');
+        window.setTimeout(() => { window.location.href = url.pathname + url.search + url.hash; }, 220);
       });
     });
   </script>
-
-  <script>
-    (() => {
-      document.body.classList.add('route-ready');
-      window.setTimeout(() => document.body.classList.remove('route-ready'), 520);
-      const isModifiedClick = (event) => event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0;
-      const samePage = (url) => url.origin === window.location.origin && url.pathname === window.location.pathname;
-      document.querySelectorAll('a[href]').forEach((link) => {
-        link.addEventListener('click', (event) => {
-          if (isModifiedClick(event)) return;
-          if (link.target === '_blank' || link.hasAttribute('download')) return;
-          const rawHref = link.getAttribute('href');
-          if (!rawHref || rawHref.startsWith('mailto:') || rawHref.startsWith('tel:')) return;
-          const url = new URL(rawHref, window.location.href);
-          if (url.origin !== window.location.origin) return;
-          if (samePage(url)) {
-            if (!url.hash) {
-              event.preventDefault();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
-            return;
-          }
-          event.preventDefault();
-          link.classList.add('route-clicked');
-          document.body.classList.add('route-leaving');
-          window.setTimeout(() => { window.location.href = url.href; }, 360);
-        });
-      });
-    })();
-  </script>
-
 </body>
 </html>
+
