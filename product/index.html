@@ -4,6 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alloco — Products</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20220%20236%22%3E%3Crect%20width%3D%22220%22%20height%3D%22236%22%20rx%3D%2244%22%20fill%3D%22%23050505%22%2F%3E%3Cpath%20d%3D%22M1.72854%20189.498L110%200L49.683%20174.758C49.2281%20176.079%2050.3299%20177.41%2051.7249%20177.24L86.9629%20172.877L0%20236V196.013C0%20193.731%200.596398%20191.49%201.72854%20189.498Z%22%20fill%3D%22%239BFF36%22%2F%3E%3Cpath%20d%3D%22M218.261%20189.498L110%200L170.317%20174.758C170.772%20176.079%20169.67%20177.41%20168.275%20177.24L133.037%20172.877L220%20236V196.013C220%20193.731%20219.404%20191.49%20218.261%20189.498Z%22%20fill%3D%22%239BFF36%22%2F%3E%3C%2Fsvg%3E" />
+  <link rel="shortcut icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20220%20236%22%3E%3Crect%20width%3D%22220%22%20height%3D%22236%22%20rx%3D%2244%22%20fill%3D%22%23050505%22%2F%3E%3Cpath%20d%3D%22M1.72854%20189.498L110%200L49.683%20174.758C49.2281%20176.079%2050.3299%20177.41%2051.7249%20177.24L86.9629%20172.877L0%20236V196.013C0%20193.731%200.596398%20191.49%201.72854%20189.498Z%22%20fill%3D%22%239BFF36%22%2F%3E%3Cpath%20d%3D%22M218.261%20189.498L110%200L170.317%20174.758C170.772%20176.079%20169.67%20177.41%20168.275%20177.24L133.037%20172.877L220%20236V196.013C220%20193.731%20219.404%20191.49%20218.261%20189.498Z%22%20fill%3D%22%239BFF36%22%2F%3E%3C%2Fsvg%3E" />
+  <link rel="mask-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20220%20236%22%3E%3Cpath%20d%3D%22M1.72854%20189.498L110%200L49.683%20174.758C49.2281%20176.079%2050.3299%20177.41%2051.7249%20177.24L86.9629%20172.877L0%20236V196.013C0%20193.731%200.596398%20191.49%201.72854%20189.498Z%22%20fill%3D%22black%22%2F%3E%3Cpath%20d%3D%22M218.261%20189.498L110%200L170.317%20174.758C170.772%20176.079%20169.67%20177.41%20168.275%20177.24L133.037%20172.877L220%20236V196.013C220%20193.731%20219.404%20191.49%20218.261%20189.498Z%22%20fill%3D%22black%22%2F%3E%3C%2Fsvg%3E" color="#9BFF36" />
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20220%20236%22%3E%3Crect%20width%3D%22220%22%20height%3D%22236%22%20rx%3D%2244%22%20fill%3D%22%23050505%22%2F%3E%3Cpath%20d%3D%22M1.72854%20189.498L110%200L49.683%20174.758C49.2281%20176.079%2050.3299%20177.41%2051.7249%20177.24L86.9629%20172.877L0%20236V196.013C0%20193.731%200.596398%20191.49%201.72854%20189.498Z%22%20fill%3D%22%239BFF36%22%2F%3E%3Cpath%20d%3D%22M218.261%20189.498L110%200L170.317%20174.758C170.772%20176.079%20169.67%20177.41%20168.275%20177.24L133.037%20172.877L220%20236V196.013C220%20193.731%20219.404%20191.49%20218.261%20189.498Z%22%20fill%3D%22%239BFF36%22%2F%3E%3C%2Fsvg%3E" />
+  <meta name="theme-color" content="#050505" />
   <style>
     :root {
       --accent: #9BFF36;
@@ -26,9 +31,9 @@
       background: var(--black);
       color: var(--ink);
       overflow-x: hidden;
-      scroll-behavior: smooth;
+      scroll-behavior: auto;
     }
-    body { scroll-snap-type: y mandatory; }
+    body { scroll-snap-type: none; }
     ::selection { background: var(--accent); color: #000; }
 
     .nav {
@@ -114,7 +119,7 @@
     .section {
       position: relative;
       min-height: 100svh;
-      scroll-snap-align: start;
+      scroll-snap-align: none;
       display: flex;
       align-items: center;
       overflow: hidden;
@@ -3680,6 +3685,25 @@
       max-width: 720px !important;
     }
 
+
+
+    /* Performance tuning: JS controls section movement; native snap is disabled to avoid double-smoothing in Chrome. */
+    @media (min-width: 980px) {
+      .section, .reveal, .visual-card, .product-row, .step, .anchor-stat, .flow-visual, .create-etp-card {
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+      }
+      .visual-card, .reveal, .flow-line, .product-row { will-change: transform, opacity; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .001ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
 </style>
 </head>
 <body>
@@ -4020,6 +4044,7 @@
         if (!entry.isIntersecting) return;
         const section = entry.target;
         const idx = sections.indexOf(section);
+        activeIndex = idx;
         const theme = section.dataset.theme;
         nav.classList.toggle('light', theme === 'light');
         nav.classList.toggle('dark', theme !== 'light');
@@ -4038,8 +4063,18 @@
       nav.classList.toggle('dark', theme !== 'light');
     }
 
-    window.addEventListener('scroll', updateFloatingNavTheme, { passive: true });
-    window.addEventListener('resize', updateFloatingNavTheme);
+    let floatingNavQueued = false;
+    function scheduleFloatingNavTheme() {
+      if (floatingNavQueued) return;
+      floatingNavQueued = true;
+      requestAnimationFrame(() => {
+        floatingNavQueued = false;
+        updateFloatingNavTheme();
+      });
+    }
+
+    window.addEventListener('scroll', scheduleFloatingNavTheme, { passive: true });
+    window.addEventListener('resize', scheduleFloatingNavTheme, { passive: true });
     updateFloatingNavTheme();
 
 
@@ -4095,7 +4130,6 @@
       if (abs < 18) return;
       e.preventDefault();
       lastWheelAt = now;
-      activeIndex = nearestSectionIndex();
       const direction = e.deltaY > 0 ? 1 : -1;
       goToSection(activeIndex + direction);
     }, { passive: false });
@@ -4151,7 +4185,7 @@
 
       const ctx = canvas.getContext('2d');
       let dpr = Math.min(window.devicePixelRatio || 1, 2);
-      let w = 0, h = 0, raf = 0, particles = [];
+      let w = 0, h = 0, raf = 0, particles = [], particleFieldVisible = false;
       let pointer = { x: 0, y: 0, active: false };
       let tick = 0;
 
@@ -4169,7 +4203,7 @@
       }
 
       function createParticles() {
-        const density = Math.max(140, Math.min(280, Math.floor((w * h) / 4800)));
+        const density = Math.max(90, Math.min(190, Math.floor((w * h) / 7200)));
         particles = Array.from({ length: density }, (_, i) => {
           const base = 1.6 + Math.random() * 2.8;
           return {
@@ -4229,6 +4263,7 @@
       }, { passive: true });
 
       function draw() {
+        if (!particleFieldVisible) { raf = 0; return; }
         tick += 0.0065;
         ctx.clearRect(0, 0, w, h);
 
@@ -4285,11 +4320,43 @@
         raf = requestAnimationFrame(draw);
       }
 
-      resizeCanvas();
-      draw();
+      function startParticles() {
+        particleFieldVisible = true;
+        if (!raf) raf = requestAnimationFrame(draw);
+      }
 
-      window.addEventListener('resize', resizeCanvas);
-      window.addEventListener('beforeunload', () => cancelAnimationFrame(raf));
+      function stopParticles() {
+        particleFieldVisible = false;
+        if (raf) {
+          cancelAnimationFrame(raf);
+          raf = 0;
+        }
+      }
+
+      resizeCanvas();
+
+      const particleObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && document.visibilityState === 'visible') startParticles();
+          else stopParticles();
+        });
+      }, { threshold: 0.08 });
+      particleObserver.observe(section);
+
+      const resizeParticles = () => {
+        resizeCanvas();
+        if (particleFieldVisible && !raf) startParticles();
+      };
+      window.addEventListener('resize', resizeParticles, { passive: true });
+      document.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'visible') {
+          const rect = section.getBoundingClientRect();
+          if (rect.top < window.innerHeight && rect.bottom > 0) startParticles();
+        } else {
+          stopParticles();
+        }
+      });
+      window.addEventListener('beforeunload', stopParticles);
     })();
 
 
