@@ -2917,7 +2917,7 @@
       }
 
       .create-etp-heading {
-        font-size: clamp(38px, 10vw, 58px) !important;
+        font-size: clamp(30px, 8.6vw, 46px) !important;
       }
     }
 
@@ -3489,7 +3489,7 @@
         min-height: 320px !important;
       }
       .create-etp-heading {
-        font-size: clamp(38px, 10vw, 58px) !important;
+        font-size: clamp(30px, 8.6vw, 46px) !important;
       }
     }
 
@@ -3978,7 +3978,40 @@
       .legal-status { display: none; }
     }
 
-</style>
+
+
+    /* ===== Final subtitle: three-line compact copy ===== */
+    #final .final-subline {
+      max-width: 720px !important;
+      font-size: clamp(18px, 2.1vw, 30px) !important;
+      line-height: 1.32 !important;
+      letter-spacing: -.035em !important;
+      font-weight: 400 !important;
+      color: rgba(255,255,255,.66) !important;
+      margin-top: 24px !important;
+    }
+
+
+    /* ===== Hero title refinement: one line, lighter weight ===== */
+    .product-hero .display {
+      white-space: nowrap !important;
+      max-width: none !important;
+      width: auto !important;
+      font-weight: 420 !important;
+      font-size: clamp(32px, 4.8vw, 68px) !important;
+      letter-spacing: -.045em !important;
+      line-height: 1 !important;
+    }
+
+    @media (max-width: 760px) {
+      .product-hero .display {
+        white-space: normal !important;
+        max-width: 92vw !important;
+        font-size: clamp(30px, 8.6vw, 46px) !important;
+      }
+    }
+
+  </style>
 </head>
 <body>
 <svg class="al-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><symbol id="al-icon-002" viewBox="0 0 24 24"><g transform="translate(-46.16 -0.00)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
@@ -4589,7 +4622,7 @@
     <div class="final-particle-overlay" id="finalParticleOverlay"></div>
     <div class="container reveal final-content">
       <h2 class="title">Launch the market your idea deserves</h2>
-      <p class="lead">Start from a thesis. Shape the structure. Let the product become accessible.</p>
+      <p class="lead final-subline">Start from a thesis.<br>Shape the structure.<br>Let the product become accessible.</p>
       <div class="cta-row" style="justify-content:center;">
         <a class="btn" href="https://app.allocofi.com/" target="_blank" rel="noopener noreferrer">Launch App</a>
         <a class="btn" href="/">Back Home</a>
