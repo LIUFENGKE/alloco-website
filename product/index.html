@@ -840,15 +840,17 @@
     }
 
     body.route-ready {
-      animation: routeEnter .62s cubic-bezier(.22,.72,.18,1) both;
+      animation: routeEnter .46s ease both;
+      transform: none !important;
+      filter: none !important;
     }
 
     body.route-leaving {
       pointer-events: none;
       opacity: 0;
-      transform: translate3d(0,-10px,0) scale(.992);
-      filter: blur(3px);
-      transition: opacity .42s ease, transform .42s cubic-bezier(.22,.72,.18,1), filter .42s ease;
+      transform: none !important;
+      filter: none !important;
+      transition: opacity .34s ease;
       transform-origin: top center;
     }
 
@@ -858,8 +860,8 @@
     }
 
     @keyframes routeEnter {
-      from { opacity: 0; transform: translate3d(0,14px,0) scale(.992); filter: blur(4px); }
-      to { opacity: 1; transform: translate3d(0,0,0) scale(1); filter: blur(0); }
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -867,7 +869,146 @@
       body.route-leaving { animation: none; transition: none; transform: none; filter: none; }
       body.route-leaving .nav { transition: none; }
     }
-</style>
+
+
+    /* ===== Persistent adaptive floating pill nav ===== */
+    .nav {
+      position: fixed !important;
+      top: 24px !important;
+      left: 50% !important;
+      right: auto !important;
+      bottom: auto !important;
+      width: min(1040px, calc(100vw - 56px)) !important;
+      height: 72px !important;
+      min-height: 72px !important;
+      transform: translateX(-50%) !important;
+      inset: 24px auto auto 50% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      border-radius: 18px !important;
+      padding: 0 18px 0 26px !important;
+      box-shadow: 0 18px 70px rgba(0,0,0,.11) !important;
+      backdrop-filter: blur(22px) !important;
+      -webkit-backdrop-filter: blur(22px) !important;
+      will-change: background, color, border-color, box-shadow;
+      transition: background .34s ease, color .34s ease, border-color .34s ease, box-shadow .34s ease, transform .34s ease !important;
+    }
+
+    .nav.light {
+      background: rgba(255,255,255,.88) !important;
+      color: #111 !important;
+      border: 1px solid rgba(0,0,0,.08) !important;
+      box-shadow: 0 18px 70px rgba(0,0,0,.11) !important;
+    }
+
+    .nav.dark {
+      background: rgba(5,5,5,.66) !important;
+      color: #fff !important;
+      border: 1px solid rgba(255,255,255,.13) !important;
+      box-shadow: 0 18px 72px rgba(0,0,0,.30) !important;
+    }
+
+    .nav .brand {
+      position: absolute !important;
+      left: 28px !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      color: currentColor !important;
+      text-decoration: none !important;
+    }
+
+    .nav .brand svg {
+      width: 28px !important;
+      height: 30px !important;
+      display: block !important;
+    }
+
+    .nav .launch-app-link {
+      position: absolute !important;
+      right: 18px !important;
+      top: 50% !important;
+      transform: translateY(-50%) !important;
+      height: 44px !important;
+      padding: 0 20px !important;
+      border-radius: 10px !important;
+    }
+
+    .nav.light .launch-app-link {
+      background: #111 !important;
+      color: #fff !important;
+      border-color: #111 !important;
+    }
+
+    .nav.dark .launch-app-link {
+      background: rgba(255,255,255,.08) !important;
+      color: #fff !important;
+      border-color: rgba(255,255,255,.22) !important;
+    }
+
+    .nav.light .launch-app-link:hover {
+      background: #242424 !important;
+      border-color: #242424 !important;
+    }
+
+    .nav.dark .launch-app-link:hover {
+      background: rgba(255,255,255,.15) !important;
+      border-color: rgba(255,255,255,.34) !important;
+    }
+
+    @media (max-width: 760px) {
+      .nav {
+        top: 14px !important;
+        inset: 14px auto auto 50% !important;
+        width: calc(100vw - 24px) !important;
+        height: 64px !important;
+        min-height: 64px !important;
+        padding: 0 12px 0 16px !important;
+      }
+      .nav .brand { left: 16px !important; }
+      .nav .brand svg { width: 24px !important; height: 26px !important; }
+      .nav-links { gap: 18px !important; font-size: 12px !important; }
+      .nav .launch-app-link { right: 12px !important; height: 38px !important; padding: 0 12px !important; font-size: 12px !important; }
+    }
+
+
+    /* ===== Visibility fix: keep product floating nav visible while scrolling ===== */
+    .nav {
+      z-index: 9999 !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: auto !important;
+      backdrop-filter: blur(24px) saturate(1.2) !important;
+      -webkit-backdrop-filter: blur(24px) saturate(1.2) !important;
+    }
+
+    .nav.dark {
+      background: rgba(16,16,16,.86) !important;
+      color: #fff !important;
+      border-color: rgba(255,255,255,.22) !important;
+      box-shadow: 0 18px 80px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.10) !important;
+    }
+
+    .nav.light {
+      background: rgba(255,255,255,.90) !important;
+      color: #111 !important;
+      border-color: rgba(0,0,0,.10) !important;
+      box-shadow: 0 18px 72px rgba(0,0,0,.14), inset 0 1px 0 rgba(255,255,255,.72) !important;
+    }
+
+    .nav .brand,
+    .nav .nav-links,
+    .nav .launch-app-link {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+
+  
+
+    /* Fixed-nav guard: do not leave transform/filter on body after route transitions, otherwise fixed nav scrolls with the document in Chrome/Safari. */
+    body.route-ready { transform: none !important; filter: none !important; }
+    body:not(.route-leaving) { transform: none !important; filter: none !important; }
+  </style>
 </head>
 <body>
   <nav class="nav dark" id="nav">
@@ -1002,6 +1143,8 @@
     const sections = [...document.querySelectorAll('.section')];
     const nav = document.getElementById('nav');
     const progress = document.getElementById('progress');
+    nav.classList.add('light');
+    nav.classList.remove('dark');
 
     sections.forEach((_, idx) => {
       const dot = document.createElement('button');
@@ -1033,6 +1176,20 @@
     }, { threshold: 0.58 });
 
     sections.forEach(section => sectionObserver.observe(section));
+
+    function updateFloatingNavTheme() {
+      const probeX = Math.round(window.innerWidth / 2);
+      const probeY = 112;
+      const activeSection = document.elementFromPoint(probeX, probeY)?.closest('.section');
+      const theme = activeSection?.dataset?.theme || 'dark';
+      nav.classList.toggle('light', theme === 'light');
+      nav.classList.toggle('dark', theme !== 'light');
+    }
+
+    window.addEventListener('scroll', updateFloatingNavTheme, { passive: true });
+    window.addEventListener('resize', updateFloatingNavTheme);
+    updateFloatingNavTheme();
+
 
     let locked = false;
     let activeIndex = 0;
@@ -1095,6 +1252,7 @@
     // Cross-page nav transition: keeps homepage and product page feeling connected.
     (() => {
       document.body.classList.add('route-ready');
+      window.setTimeout(() => document.body.classList.remove('route-ready'), 520);
 
       const isModifiedClick = (event) => event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.button !== 0;
       const samePage = (url) => url.origin === window.location.origin && url.pathname === window.location.pathname;
