@@ -3704,9 +3704,480 @@
         scroll-behavior: auto !important;
       }
     }
+
+
+/* Alloco inline SVG icon library */
+.al-sprite{position:absolute;width:0;height:0;overflow:hidden;visibility:hidden;}
+.al-icon{display:block;width:1em;height:1em;fill:none;stroke:currentColor;color:inherit;}
+.al-icon *{vector-effect:non-scaling-stroke;}
+.flow-icon .al-icon{width:32px;height:32px;}
+.product-art .al-icon{width:64px;height:64px;}
+.doc-icon .al-icon{width:22px;height:22px;}
+.send .al-icon{width:18px;height:18px;}
+
+
+    /* Product legal and compliance section */
+    .docs-section {
+      padding-top: 112px;
+      padding-bottom: 112px;
+      align-items: center;
+      background:
+        radial-gradient(circle at 74% 20%, rgba(155,255,54,.055), transparent 28%),
+        radial-gradient(circle at 16% 76%, rgba(255,255,255,.05), transparent 30%),
+        #050505;
+    }
+
+    .legal-header {
+      width: min(1120px, 100%);
+      margin: 0 auto 34px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 28px;
+    }
+
+    .legal-header-copy {
+      max-width: 1040px;
+    }
+
+    .legal-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 18px;
+      font-size: 12px;
+      line-height: 1;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.48);
+      font-weight: 560;
+    }
+
+    .legal-kicker::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px rgba(155,255,54,.12);
+    }
+
+    .legal-header h2 {
+      margin: 0;
+      font-size: clamp(34px, 4vw, 58px);
+      line-height: 1.05;
+      letter-spacing: -.045em;
+      font-weight: 400;
+      color: #fff;
+      white-space: nowrap;
+    }
+
+    .legal-header p {
+      margin: 18px 0 0;
+      max-width: 620px;
+      font-size: clamp(16px, 1.35vw, 20px);
+      line-height: 1.45;
+      color: rgba(255,255,255,.58);
+      letter-spacing: -.025em;
+    }
+
+    .legal-status {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      height: 42px;
+      padding: 0 16px;
+      border-radius: 999px;
+      color: rgba(255,255,255,.72);
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.045);
+      font-size: 13px;
+      letter-spacing: -.01em;
+    }
+
+    .legal-status span {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--accent);
+    }
+
+    .documents-panel {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .document-card {
+      position: relative;
+      min-height: 250px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 26px;
+      border-radius: 30px;
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,.13);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.075), rgba(255,255,255,.026)),
+        rgba(255,255,255,.018);
+      box-shadow: 0 28px 82px rgba(0,0,0,.28);
+      overflow: hidden;
+      transition:
+        transform .24s cubic-bezier(.22,.72,.18,1),
+        border-color .24s ease,
+        background .24s ease,
+        box-shadow .24s ease;
+    }
+
+    .document-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background:
+        radial-gradient(circle at 76% 18%, rgba(155,255,54,.13), transparent 32%),
+        linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,0) 48%);
+      opacity: 0;
+      transition: opacity .24s ease;
+      pointer-events: none;
+    }
+
+    .document-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255,255,255,.24);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.105), rgba(255,255,255,.038)),
+        rgba(255,255,255,.025);
+      box-shadow: 0 34px 94px rgba(0,0,0,.34);
+    }
+
+    .document-card:hover::before {
+      opacity: 1;
+    }
+
+    .document-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .document-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+
+    .document-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: rgba(255,255,255,.78);
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.045);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+    }
+
+    .document-icon .al-icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    .document-icon .al-icon * {
+      stroke-width: 1.1;
+    }
+
+    .document-type {
+      display: inline-flex;
+      align-items: center;
+      height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      color: rgba(255,255,255,.54);
+      border: 1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.035);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .document-copy h3 {
+      font-size: clamp(22px, 1.9vw, 28px);
+      line-height: 1.05;
+      letter-spacing: -.035em;
+      font-weight: 540;
+      margin: 0 0 12px;
+    }
+
+    .document-copy p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.45;
+      color: rgba(255,255,255,.56);
+      letter-spacing: -.018em;
+      max-width: 280px;
+    }
+
+    .document-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-top: 24px;
+      margin-top: 26px;
+      border-top: 1px solid rgba(255,255,255,.09);
+    }
+
+    .document-meta {
+      font-size: 12px;
+      color: rgba(255,255,255,.42);
+      letter-spacing: .02em;
+    }
+
+    .download-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,.82);
+      font-size: 13px;
+      font-weight: 520;
+      letter-spacing: -.01em;
+    }
+
+    .download-cta .al-icon {
+      width: 15px;
+      height: 15px;
+    }
+
+    .download-cta .al-icon * {
+      stroke-width: 1.1;
+    }
+
+    @media (max-width: 980px) {
+      .documents-panel {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .legal-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .docs-section { padding-top: 88px; padding-bottom: 88px; }
+      .documents-panel { grid-template-columns: 1fr; }
+      .document-card { min-height: 220px; border-radius: 24px; padding: 22px; }
+      .document-icon { width: 52px; height: 52px; border-radius: 16px; }
+      .document-icon .al-icon { width: 22px; height: 22px; }
+      .legal-status { display: none; }
+    }
+
 </style>
 </head>
 <body>
+<svg class="al-sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><symbol id="al-icon-002" viewBox="0 0 24 24"><g transform="translate(-46.16 -0.00)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M56.9201 4.98926L64.2601 9.18926V17.5793L56.9201 21.7793L49.5801 17.5793V9.18926L56.9201 4.98926Z" />
+  <path d="M56.9199 1.84961V4.99961" />
+  <path d="M49.5693 9.18945L56.9093 13.3895L64.2493 9.18945" />
+  <path d="M64.2598 17.5801L67.4098 19.1501" />
+  <path d="M46.4297 19.1598L49.5797 17.5898" />
+  <path d="M56.9199 13.3896V21.7796" />
+  <path d="M60.5893 7.08984L64.2593 9.18984V13.3898M53.2393 7.09984L49.5693 9.19984V13.3998M53.2393 19.6898L56.9093 21.7898L60.5793 19.6898" />
+  </g>
+</symbol><symbol id="al-icon-003" viewBox="0 0 24 24"><g transform="translate(-92.32 -0.00)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M103.08 2.89941L92.5898 19.6894H113.57L103.08 2.89941Z" />
+  <path d="M106.23 15.4896L103.08 13.3896L99.9297 15.4896" />
+  <path d="M103.08 13.3893V10.2393" />
+  </g>
+</symbol><symbol id="al-icon-004" viewBox="0 0 24 24"><g transform="translate(-138.48 -0.00)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M149.24 1.31934H139.8V18.1093H149.24V1.31934Z" />
+  <path d="M158.69 4.46973H149.25V21.2597H158.69V4.46973Z" />
+  <path d="M145.57 7.61914L143.47 9.60914L145.39 11.8191" />
+  <path d="M155.01 10.7598L152.91 12.7498L154.83 14.9598" />
+  </g>
+</symbol><symbol id="al-icon-005" viewBox="0 0 24 24"><g transform="translate(-184.64 -0.00)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M191.74 4.98934L195.41 1.31934L199.08 4.98934L195.41 8.65934L191.74 4.98934Z" />
+  <path d="M191.74 17.5792L195.41 13.9092L199.08 17.5792L195.41 21.2492L191.74 17.5792Z" />
+  <path d="M198.03 11.2891L201.7 7.61914L205.37 11.2891L201.7 14.9591L198.03 11.2891Z" />
+  <path d="M185.44 11.2891L189.11 7.61914L192.78 11.2891L189.11 14.9591L185.44 11.2891Z" />
+  </g>
+</symbol><symbol id="al-icon-006" viewBox="0 0 24 24"><g transform="translate(-230.80 -0.00)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M241.57 22.2998C243.26 22.2998 246.15 20.0998 246.15 11.2798C246.15 2.45977 243.26 0.259766 241.57 0.259766C239.88 0.259766 236.99 2.60977 236.99 11.2798C236.99 19.9498 239.88 22.2998 241.57 22.2998Z" />
+  <path d="M231.661 17.0597C232.501 18.5397 235.931 19.8997 243.861 15.2897C251.791 10.6697 252.331 6.99969 251.481 5.51969C250.641 4.03969 247.081 2.74969 239.281 7.28969C231.481 11.8297 230.811 15.5797 231.661 17.0597Z" />
+  <path d="M231.66 5.51969C230.82 6.99969 231.35 10.6697 239.28 15.2897C247.21 19.9097 250.64 18.5397 251.48 17.0597C252.33 15.5797 251.65 11.8297 243.86 7.28969C236.06 2.74969 232.5 4.03969 231.66 5.51969Z" />
+  </g>
+</symbol><symbol id="al-icon-009" viewBox="0 0 24 24"><g transform="translate(-369.28 -0.00)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M380.06 11.29L385.31 6.04004C385.31 3.14004 382.96 0.790039 380.06 0.790039C377.16 0.790039 374.81 3.14004 374.81 6.04004L380.06 11.29Z" />
+  <path d="M374.81 16.5303L380.06 11.2803L374.81 6.03027C371.91 6.03027 369.56 8.38027 369.56 11.2803C369.56 14.1803 371.91 16.5303 374.81 16.5303Z" />
+  <path d="M385.31 16.5303C388.21 16.5303 390.56 14.1803 390.56 11.2803C390.56 8.38027 388.21 6.03027 385.31 6.03027L380.06 11.2803L385.31 16.5303Z" />
+  <path d="M380.06 21.7803C382.96 21.7803 385.31 19.4303 385.31 16.5303L380.06 11.2803L374.81 16.5303C374.81 19.4303 377.16 21.7803 380.06 21.7803Z" />
+  </g>
+</symbol><symbol id="al-icon-012" viewBox="0 0 24 24"><g transform="translate(-0.00 -46.16)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M10.7498 67.94C16.5398 67.94 21.2398 63.24 21.2398 57.45C21.2398 51.66 16.5398 46.96 10.7498 46.96C4.95977 46.96 0.259766 51.66 0.259766 57.45C0.259766 63.24 4.95977 67.94 10.7498 67.94Z" />
+  <path d="M10.7502 67.9396C15.4502 67.9396 19.4202 64.8496 20.7602 60.5996H0.740234C2.08023 64.8596 6.05023 67.9396 10.7502 67.9396Z" />
+  </g>
+</symbol><symbol id="al-icon-030" viewBox="0 0 24 24"><g transform="translate(-323.12 -92.32)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M340.191 112.02C338.441 113.33 336.261 114.11 333.901 114.11C330.021 114.11 326.631 112 324.811 108.86H329.181" />
+  <path d="M338.09 94C341.8 95.62 344.38 99.32 344.38 103.62C344.38 105.53 343.87 107.32 342.98 108.87L340.86 105.2" />
+  <path d="M323.46 104.66C323.43 104.31 323.41 103.96 323.41 103.61C323.41 97.8201 328.11 93.1201 333.9 93.1201L331.78 96.7901" />
+  <path d="M333.9 106.76C335.64 106.76 337.05 105.35 337.05 103.61C337.05 101.87 335.64 100.46 333.9 100.46C332.16 100.46 330.75 101.87 330.75 103.61C330.75 105.35 332.16 106.76 333.9 106.76Z" />
+  </g>
+</symbol><symbol id="al-icon-040" viewBox="0 0 24 24"><g transform="translate(-276.96 -138.48)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M296.13 139.289H279.34C278.18 139.289 277.24 140.229 277.24 141.389V158.179C277.24 159.339 278.18 160.279 279.34 160.279H296.13C297.29 160.279 298.23 159.339 298.23 158.179V141.389C298.23 140.229 297.29 139.289 296.13 139.289Z" />
+  <path d="M281.44 143.479V147.679" />
+  <path d="M289.83 151.879V156.079" />
+  <path d="M285.641 143.479V147.679" />
+  <path d="M289.83 143.479H294.03" />
+  <path d="M281.44 151.879H285.64" />
+  <path d="M289.83 147.68H294.03" />
+  <path d="M281.44 156.068H285.64" />
+  <path d="M294.03 151.879V156.079" />
+  <path d="M291.411 192.27C291.411 192.27 293.871 194.19 296.131 192.79C299.171 190.91 298.231 185.45 298.231 185.45C298.231 185.45 292.771 184.51 290.891 187.55C289.491 189.81 291.411 192.27 291.411 192.27ZM298.231 185.45L291.411 192.27M291.411 192.27L289.841 193.84" />
+  </g>
+</symbol><symbol id="al-icon-050" viewBox="0 0 24 24"><g transform="translate(-230.80 -184.64)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M251.21 187.549H231.94C231.47 187.549 231.08 187.929 231.08 188.409V203.479C231.08 203.949 231.46 204.339 231.94 204.339H251.21C251.68 204.339 252.07 203.959 252.07 203.479V188.409C252.07 187.939 251.69 187.549 251.21 187.549Z" />
+  <path d="M237.37 193.288C236.32 191.738 234.48 192.758 234.62 194.348C234.75 195.938 236.85 195.938 236.98 197.528C237.11 199.118 235.28 200.138 234.23 198.588" />
+  <path d="M242.62 192.789H240.521V199.609H242.62" />
+  <path d="M240.521 196.469H242.62" />
+  <path d="M248.911 194.369C248.911 193.499 248.21 192.799 247.34 192.799C246.47 192.799 245.771 193.499 245.771 194.369V198.039C245.771 198.909 246.47 199.609 247.34 199.609C248.21 199.609 248.911 198.909 248.911 198.039V194.369Z" />
+  <path d="M284.2 199.609L285.77 198.039M277.38 206.429C277.38 206.429 276.44 200.969 279.48 199.089C281.74 197.679 284.2 199.609 284.2 199.609C284.2 199.609 286.13 202.069 284.72 204.329C282.84 207.369 277.38 206.429 277.38 206.429ZM284.2 199.609L277.38 206.429" />
+  </g>
+</symbol><symbol id="al-icon-060" viewBox="0 0 24 24"><g transform="translate(-184.64 -230.80)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M193.31 244.729H185.97V252.069H193.31V244.729Z" />
+  <path d="M195.41 231.609L200.66 240.529H190.17L195.42 231.609H195.41Z" />
+  <path d="M201.7 252.599C204.02 252.599 205.9 250.719 205.9 248.399C205.9 246.079 204.02 244.199 201.7 244.199C199.38 244.199 197.5 246.079 197.5 248.399C197.5 250.719 199.38 252.599 201.7 252.599Z" />
+  </g>
+</symbol><symbol id="al-icon-070" viewBox="0 0 24 24"><g transform="translate(-138.48 -276.96)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M149.24 278.299H139.8V295.089H149.24V278.299Z" />
+  <path d="M158.69 281.449H149.25V298.239H158.69V281.449Z" />
+  <path d="M145.57 284.6L143.47 286.59L145.39 288.8" />
+  <path d="M152.92 287.738L155.02 289.728L153.1 291.938" />
+  </g>
+</symbol><symbol id="al-icon-080" viewBox="0 0 24 24"><g transform="translate(-92.32 -323.12)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M103.08 334.429V328.139M103.08 334.429L97.5703 337.609M103.08 334.429L108.59 337.609" />
+  <path d="M97.8299 330.229C97.8299 331.389 96.8899 332.329 95.7299 332.329C94.5699 332.329 93.6299 331.389 93.6299 330.229C93.6299 329.069 94.5699 328.129 95.7299 328.129C96.8899 328.129 97.8299 329.069 97.8299 330.229Z" />
+  <path d="M97.8299 338.629C97.8299 339.789 96.8899 340.729 95.7299 340.729C94.5699 340.729 93.6299 339.789 93.6299 338.629C93.6299 337.469 94.5699 336.529 95.7299 336.529C96.8899 336.529 97.8299 337.469 97.8299 338.629Z" />
+  <path d="M105.179 342.819C105.179 343.979 104.239 344.919 103.079 344.919C101.919 344.919 100.979 343.979 100.979 342.819C100.979 341.659 101.919 340.719 103.079 340.719C104.239 340.719 105.179 341.659 105.179 342.819Z" />
+  <path d="M112.52 338.629C112.52 339.789 111.58 340.729 110.42 340.729C109.26 340.729 108.32 339.789 108.32 338.629C108.32 337.469 109.26 336.529 110.42 336.529C111.58 336.529 112.52 337.469 112.52 338.629Z" />
+  <path d="M112.52 330.229C112.52 331.389 111.58 332.329 110.42 332.329C109.26 332.329 108.32 331.389 108.32 330.229C108.32 329.069 109.26 328.129 110.42 328.129C111.58 328.129 112.52 329.069 112.52 330.229Z" />
+  <path d="M105.179 326.039C105.179 327.199 104.239 328.139 103.079 328.139C101.919 328.139 100.979 327.199 100.979 326.039C100.979 324.879 101.919 323.939 103.079 323.939C104.239 323.939 105.179 324.879 105.179 326.039Z" />
+  </g>
+</symbol><symbol id="al-icon-100" viewBox="0 0 24 24"><g transform="translate(-0.00 -415.44)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M21.25 437.25V416.27H10.75V423.09L15.47 427.81V437.25H21.24H21.25Z" />
+  <path d="M0.259766 416.27V437.25H11.2798V429.91L6.55977 425.19V416.27H0.259766Z" />
+  </g>
+</symbol><symbol id="al-icon-110" viewBox="0 0 24 24"><g transform="translate(-461.60 -415.44)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M461.9 422.041L472.39 418.891V434.631L461.9 431.481V422.041Z" />
+  <path d="M472.39 418.891L482.88 422.041V431.481L472.39 434.631V418.891Z" />
+  <path d="M472.39 416.27V437.25" />
+  </g>
+</symbol><symbol id="al-icon-120" viewBox="0 0 24 24"><g transform="translate(-415.44 -461.60)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M425.59 462.54L415.95 472.18C415.54 472.59 415.54 473.25 415.95 473.66L425.59 483.3C426 483.71 426.66 483.71 427.07 483.3L436.71 473.66C437.12 473.25 437.12 472.59 436.71 472.18L427.07 462.54C426.66 462.13 426 462.13 425.59 462.54Z" />
+  <path d="M426.221 477.121C428.541 477.121 430.421 475.241 430.421 472.921C430.421 470.601 428.541 468.721 426.221 468.721C423.901 468.721 422.021 470.601 422.021 472.921C422.021 475.241 423.901 477.121 426.221 477.121Z" />
+  </g>
+</symbol><symbol id="al-icon-103" viewBox="0 0 24 24">
+  <title>alloco-icon-103</title>
+  <g transform="translate(-138.48 -415.44)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M152.39 419.41C152.39 417.67 150.98 416.26 149.24 416.26C147.5 416.26 146.09 417.67 146.09 419.41V426.75C146.09 428.49 147.5 429.9 149.24 429.9C150.98 429.9 152.39 428.49 152.39 426.75V419.41Z" />
+  <path d="M156.66 423.79C157.89 422.56 157.89 420.57 156.66 419.34C155.43 418.11 153.44 418.11 152.21 419.34L147.02 424.53C145.79 425.76 145.79 427.75 147.02 428.98C148.25 430.21 150.24 430.21 151.47 428.98L156.66 423.79Z" />
+  <path d="M156.59 429.909C158.33 429.909 159.74 428.499 159.74 426.759C159.74 425.019 158.33 423.609 156.59 423.609H149.25C147.51 423.609 146.1 425.019 146.1 426.759C146.1 428.499 147.51 429.909 149.25 429.909H156.59Z" />
+  <path d="M152.21 434.18C153.44 435.41 155.43 435.41 156.66 434.18C157.89 432.95 157.89 430.96 156.66 429.73L151.47 424.54C150.24 423.31 148.25 423.31 147.02 424.54C145.79 425.77 145.79 427.76 147.02 428.99L152.21 434.18Z" />
+  <path d="M146.1 434.099C146.1 435.839 147.51 437.249 149.25 437.249C150.99 437.249 152.4 435.839 152.4 434.099V426.759C152.4 425.019 150.99 423.609 149.25 423.609C147.51 423.609 146.1 425.019 146.1 426.759V434.099Z" />
+  <path d="M141.83 429.73C140.6 430.96 140.6 432.95 141.83 434.18C143.06 435.41 145.05 435.41 146.28 434.18L151.47 428.99C152.7 427.76 152.7 425.77 151.47 424.54C150.24 423.31 148.25 423.31 147.02 424.54L141.83 429.73Z" />
+  <path d="M141.9 423.609C140.16 423.609 138.75 425.019 138.75 426.759C138.75 428.499 140.16 429.909 141.9 429.909H149.24C150.98 429.909 152.39 428.499 152.39 426.759C152.39 425.019 150.98 423.609 149.24 423.609H141.9Z" />
+  <path d="M146.28 419.34C145.05 418.11 143.06 418.11 141.83 419.34C140.6 420.57 140.6 422.56 141.83 423.79L147.02 428.98C148.25 430.21 150.24 430.21 151.47 428.98C152.7 427.75 152.7 425.76 151.47 424.53L146.28 419.34Z" />
+  </g>
+</symbol><symbol id="al-icon-072" viewBox="0 0 24 24">
+  <title>alloco-icon-072</title>
+  <g transform="translate(-230.80 -276.96)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M251.01 288.791H244.72" />
+  <path d="M247.87 285.65L244.72 288.8L247.87 291.95" />
+  <path d="M240 278.83V289.32C240 292.86 236.77 296.44 233.71 297.71" />
+  <path d="M251.01 283.02V280.4C251.01 279.53 250.31 278.83 249.44 278.83H233.7C232.83 278.83 232.13 279.53 232.13 280.4V296.14C232.13 297.01 232.83 297.71 233.7 297.71H249.44C250.31 297.71 251.01 297.01 251.01 296.14V294.3" />
+  </g>
+</symbol><symbol id="al-icon-073" viewBox="0 0 24 24">
+  <title>alloco-icon-073</title>
+  <g transform="translate(-276.96 -276.96)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M283.27 280.399L278.81 283.019V293.509L283.27 296.129L287.73 298.749L292.19 296.129L296.65 293.509V283.019L292.19 280.399L287.73 277.779L283.27 280.399Z" />
+  <path d="M296.649 283.02L287.729 288.27" />
+  <path d="M278.819 283.02L287.739 288.27" />
+  <path d="M287.729 298.76V288.27" />
+  <path d="M291.93 285.648V296.138" />
+  <path d="M296.649 288.27L287.729 293.52" />
+  <path d="M287.73 293.51L278.81 288.26" />
+  <path d="M283.54 296.138V285.648" />
+  <path d="M291.93 280.398L283.54 285.648" />
+  <path d="M291.93 285.648L283.54 280.398" />
+  </g>
+</symbol><symbol id="al-icon-115" viewBox="0 0 24 24">
+  <title>alloco-icon-115</title>
+  <g transform="translate(-184.64 -461.60)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M203.8 472.92H195.41" />
+  <path d="M200.65 469.77L203.8 472.92L200.65 476.07" />
+  <path d="M193.31 475.02C194.47 475.02 195.41 474.08 195.41 472.92C195.41 471.76 194.47 470.82 193.31 470.82C192.15 470.82 191.21 471.76 191.21 472.92C191.21 474.08 192.15 475.02 193.31 475.02Z" />
+  <path d="M204.17 467.15C203.76 466.53 203.28 465.95 202.75 465.43C200.86 463.58 198.27 462.43 195.41 462.43C189.62 462.43 184.92 467.13 184.92 472.92C184.92 478.71 189.62 483.41 195.41 483.41C198.27 483.41 200.86 482.27 202.75 480.41C203.28 479.89 203.76 479.31 204.17 478.69" />
+  </g>
+</symbol><symbol id="al-icon-116" viewBox="0 0 24 24">
+  <title>alloco-icon-116</title>
+  <g transform="translate(-230.80 -461.60)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M240.94 462.54L231.3 472.18C230.89 472.59 230.89 473.25 231.3 473.66L240.94 483.3C241.35 483.71 242.01 483.71 242.42 483.3L252.06 473.66C252.47 473.25 252.47 472.59 252.06 472.18L242.42 462.54C242.01 462.13 241.35 462.13 240.94 462.54Z" />
+  <path d="M241.59 468.48V477.37" />
+  <path d="M237.149 472.92H246.039" />
+  </g>
+</symbol><symbol id="al-icon-118" viewBox="0 0 24 24">
+  <title>alloco-icon-118</title>
+  <g transform="translate(-323.12 -461.60)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M323.93 464C323.93 463.13 324.63 462.43 325.5 462.43H338.09C338.96 462.43 339.66 463.13 339.66 464V483.41H325.5C324.63 483.41 323.93 482.71 323.93 481.84V464Z" />
+  <path d="M339.67 472.919C339.67 472.339 340.14 471.869 340.72 471.869H342.82C343.4 471.869 343.87 472.339 343.87 472.919V481.839C343.87 482.709 343.17 483.409 342.3 483.409H339.68V472.919H339.67Z" />
+  <path d="M327.08 466.629H331.28" />
+  <path d="M327.08 470.299H333.37" />
+  </g>
+</symbol><symbol id="al-icon-119" viewBox="0 0 24 24">
+  <title>alloco-icon-119</title>
+  <g transform="translate(-369.28 -461.60)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M389.5 462.43H370.62C370.04 462.43 369.57 462.9 369.57 463.48V482.36C369.57 482.94 370.04 483.41 370.62 483.41H389.5C390.08 483.41 390.55 482.94 390.55 482.36V463.48C390.55 462.9 390.08 462.43 389.5 462.43Z" />
+  <path d="M369.57 472.92H376.39" />
+  <path d="M383.73 472.92H390.55" />
+  <path d="M380.061 476.59C382.091 476.59 383.731 474.95 383.731 472.92C383.731 470.89 382.091 469.25 380.061 469.25C378.031 469.25 376.391 470.89 376.391 472.92C376.391 474.95 378.031 476.59 380.061 476.59Z" />
+  </g>
+</symbol><symbol id="al-icon-024" viewBox="0 0 24 24">
+  <title>alloco-icon-024</title>
+  <g transform="translate(-46.16 -92.32)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M56.9197 107.81C62.7097 107.81 67.4097 105.93 67.4097 103.61C67.4097 101.29 62.7097 99.4102 56.9197 99.4102C51.1297 99.4102 46.4297 101.29 46.4297 103.61C46.4297 105.93 51.1297 107.81 56.9197 107.81Z" />
+  <path d="M61.11 103.62C61.11 109.41 59.23 114.11 56.91 114.11C54.59 114.11 52.71 109.41 52.71 103.62C52.71 97.8299 54.59 93.1299 56.91 93.1299C59.23 93.1299 61.11 97.8299 61.11 103.62Z" />
+  <path d="M56.9197 114.11C62.7097 114.11 67.4097 109.41 67.4097 103.62C67.4097 97.8299 62.7097 93.1299 56.9197 93.1299C51.1297 93.1299 46.4297 97.8299 46.4297 103.62C46.4297 109.41 51.1297 114.11 56.9197 114.11Z" />
+  </g>
+</symbol><symbol id="al-icon-058" viewBox="0 0 24 24">
+  <title>alloco-icon-058</title>
+  <g transform="translate(-92.32 -230.80)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M93.6396 234.759L112.52 231.609V235.279L93.6396 238.429V234.759Z" />
+  <path d="M93.6396 242.109L112.52 238.959V242.629L93.6396 245.779V242.109Z" />
+  <path d="M93.6396 249.449L112.52 246.299V249.969L93.6396 253.119V249.449Z" />
+  </g>
+</symbol><symbol id="al-icon-088" viewBox="0 0 24 24">
+  <title>alloco-icon-088</title>
+  <g transform="translate(-461.60 -323.12)" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M473.869 341.34L479.299 335.91" />
+  <path d="M470.9 335.92L465.47 341.35" />
+  <path d="M473.869 332.95L479.299 327.52" />
+  <path d="M465.479 332.95L470.909 327.52" />
+  <path d="M466.09 326.039C466.09 327.199 465.15 328.139 463.99 328.139C462.83 328.139 461.89 327.199 461.89 326.039C461.89 324.879 462.83 323.939 463.99 323.939C465.15 323.939 466.09 324.879 466.09 326.039Z" />
+  <path d="M474.49 326.039C474.49 327.199 473.55 328.139 472.39 328.139C471.23 328.139 470.29 327.199 470.29 326.039C470.29 324.879 471.23 323.939 472.39 323.939C473.55 323.939 474.49 324.879 474.49 326.039Z" />
+  <path d="M482.88 326.039C482.88 327.199 481.94 328.139 480.78 328.139C479.62 328.139 478.68 327.199 478.68 326.039C478.68 324.879 479.62 323.939 480.78 323.939C481.94 323.939 482.88 324.879 482.88 326.039Z" />
+  <path d="M482.88 334.43C482.88 335.59 481.94 336.53 480.78 336.53C479.62 336.53 478.68 335.59 478.68 334.43C478.68 333.27 479.62 332.33 480.78 332.33C481.94 332.33 482.88 333.27 482.88 334.43Z" />
+  <path d="M482.88 342.819C482.88 343.979 481.94 344.919 480.78 344.919C479.62 344.919 478.68 343.979 478.68 342.819C478.68 341.659 479.62 340.719 480.78 340.719C481.94 340.719 482.88 341.659 482.88 342.819Z" />
+  <path d="M474.49 342.819C474.49 343.979 473.55 344.919 472.39 344.919C471.23 344.919 470.29 343.979 470.29 342.819C470.29 341.659 471.23 340.719 472.39 340.719C473.55 340.719 474.49 341.659 474.49 342.819Z" />
+  <path d="M466.09 342.819C466.09 343.979 465.15 344.919 463.99 344.919C462.83 344.919 461.89 343.979 461.89 342.819C461.89 341.659 462.83 340.719 463.99 340.719C465.15 340.719 466.09 341.659 466.09 342.819Z" />
+  <path d="M466.09 334.43C466.09 335.59 465.15 336.53 463.99 336.53C462.83 336.53 461.89 335.59 461.89 334.43C461.89 333.27 462.83 332.33 463.99 332.33C465.15 332.33 466.09 333.27 466.09 334.43Z" />
+  <path d="M474.49 334.43C474.49 335.59 473.55 336.53 472.39 336.53C471.23 336.53 470.29 335.59 470.29 334.43C470.29 333.27 471.23 332.33 472.39 332.33C473.55 332.33 474.49 333.27 474.49 334.43Z" />
+  </g>
+</symbol></svg>
   <nav class="nav dark" id="nav">
     <a class="brand" href="/" aria-label="Alloco Home">
       <svg viewBox="0 0 220 236" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -3772,7 +4243,7 @@
           <div class="flow-card fc-1">
             <div class="flow-card-head">
               <span class="flow-icon" aria-hidden="true">
-                <svg viewBox="0 0 32 32"><circle cx="11" cy="16" r="3"/><path d="M11 8v5M11 19v5M16 11l3-2M16 21l3 2M20.5 9.5l4 2.5-4 2.5M20.5 19.5l4 2.5"/><path d="M22 9.8c1.4 1.1 2.5 2.4 3.4 3.9" opacity="0"/></svg>
+                <svg class="al-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#al-icon-024"></use></svg>
               </span>
               <h4>Crypto-Native Backing</h4>
             </div>
@@ -3782,7 +4253,7 @@
           <div class="flow-card fc-2">
             <div class="flow-card-head">
               <span class="flow-icon" aria-hidden="true">
-                <svg viewBox="0 0 32 32"><path d="M16 6a10 10 0 0 1 8.4 4.6"/><path d="M25 6v6h-6"/><path d="M16 26a10 10 0 0 1-8.4-4.6"/><path d="M7 26v-6h6"/><path d="M6.6 15.2A10 10 0 0 1 11 7.6"/><path d="M20.9 24.3A10 10 0 0 0 25.4 16"/></svg>
+                <svg class="al-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#al-icon-115"></use></svg>
               </span>
               <h4>Strategy Cycle</h4>
             </div>
@@ -3792,7 +4263,7 @@
           <div class="flow-card fc-3">
             <div class="flow-card-head">
               <span class="flow-icon" aria-hidden="true">
-                <svg viewBox="0 0 32 32"><path d="M6 24h20"/><path d="M10 24V17"/><path d="M16 24V12"/><path d="M22 24V8"/><path d="M8 11l4 4 6-6 6-2"/><path d="M21 7h3v3"/></svg>
+                <svg class="al-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#al-icon-088"></use></svg>
               </span>
               <h4>Professional Flow</h4>
             </div>
@@ -3802,7 +4273,7 @@
           <div class="flow-card fc-4">
             <div class="flow-card-head">
               <span class="flow-icon" aria-hidden="true">
-                <svg viewBox="0 0 32 32"><path d="M7 24h18"/><path d="M9 24V13h14v11"/><path d="M7 13h18"/><path d="M12 13V9h8v4"/><path d="M10 17h.01M16 17h.01M22 17h.01"/></svg>
+                <svg class="al-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#al-icon-118"></use></svg>
               </span>
               <h4>US Equity Backing</h4>
             </div>
@@ -3812,7 +4283,7 @@
           <div class="flow-card fc-5">
             <div class="flow-card-head">
               <span class="flow-icon" aria-hidden="true">
-                <svg viewBox="0 0 32 32"><circle cx="16" cy="7" r="2.5"/><circle cx="9" cy="24" r="2.5"/><circle cx="23" cy="24" r="2.5"/><path d="M16 9.5v7"/><path d="M16 16.5 9 21.5"/><path d="M16 16.5 23 21.5"/></svg>
+                <svg class="al-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#al-icon-072"></use></svg>
               </span>
               <h4>Broker / API Routing</h4>
             </div>
@@ -3822,7 +4293,7 @@
           <div class="flow-card fc-6">
             <div class="flow-card-head">
               <span class="flow-icon" aria-hidden="true">
-                <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="10"/><circle cx="16" cy="16" r="4"/><path d="M16 6v3M16 23v3M6 16h3M23 16h3"/></svg>
+                <svg class="al-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="#al-icon-119"></use></svg>
               </span>
               <h4>Deeper Quotes</h4>
             </div>
@@ -4001,6 +4472,118 @@
   </section>
 
   
+
+  <section class="section dark docs-section" data-theme="dark" id="product-documents">
+    <div class="container reveal">
+      <div class="legal-header">
+        <div class="legal-header-copy">
+          <h2>Legal documents, ready to download</h2>
+          <p>Review the core documents behind each product, including offering terms, risk disclosures, NAV rules, custody controls, platform terms, and privacy practices.</p>
+        </div>
+        <div class="legal-status"><span></span> Document Center</div>
+      </div>
+
+      <div class="documents-panel">
+        <a class="document-card" href="data:text/plain;charset=utf-8,Prospectus%0A%0AOffering%20terms%2C%20structure%2C%20fees%2C%20and%20core%20product%20information.%0A%0APlaceholder%20document%20for%20Alloco%20website%20prototype." download="alloco-prospectus.pdf">
+          <div>
+            <div class="document-top">
+              <div class="document-icon" aria-hidden="true"><svg class="al-icon"><use href="#al-icon-118"></use></svg></div>
+              <span class="document-type">PDF</span>
+            </div>
+            <div class="document-copy">
+              <h3>Prospectus</h3>
+              <p>Offering terms, structure, fees, and core product information.</p>
+            </div>
+          </div>
+          <div class="document-bottom">
+            <span class="document-meta">2.4 MB · Updated 2026</span>
+            <span class="download-cta">Download <svg class="al-icon" aria-hidden="true"><use href="#al-icon-024"></use></svg></span>
+          </div>
+        </a>
+        <a class="document-card" href="data:text/plain;charset=utf-8,Risk%20Disclosures%0A%0AMaterial%20risks%2C%20assumptions%2C%20market%20events%2C%20and%20product%20limitations.%0A%0APlaceholder%20document%20for%20Alloco%20website%20prototype." download="alloco-risk-disclosures.pdf">
+          <div>
+            <div class="document-top">
+              <div class="document-icon" aria-hidden="true"><svg class="al-icon"><use href="#al-icon-030"></use></svg></div>
+              <span class="document-type">PDF</span>
+            </div>
+            <div class="document-copy">
+              <h3>Risk Disclosures</h3>
+              <p>Material risks, assumptions, market events, and product limitations.</p>
+            </div>
+          </div>
+          <div class="document-bottom">
+            <span class="document-meta">1.8 MB · Updated 2026</span>
+            <span class="download-cta">Download <svg class="al-icon" aria-hidden="true"><use href="#al-icon-024"></use></svg></span>
+          </div>
+        </a>
+        <a class="document-card" href="data:text/plain;charset=utf-8,NAV%20Methodology%0A%0ACalculation%20logic%2C%20data%20inputs%2C%20pricing%20rules%2C%20and%20update%20cadence.%0A%0APlaceholder%20document%20for%20Alloco%20website%20prototype." download="alloco-nav-methodology.pdf">
+          <div>
+            <div class="document-top">
+              <div class="document-icon" aria-hidden="true"><svg class="al-icon"><use href="#al-icon-040"></use></svg></div>
+              <span class="document-type">PDF</span>
+            </div>
+            <div class="document-copy">
+              <h3>NAV Methodology</h3>
+              <p>Calculation logic, data inputs, pricing rules, and update cadence.</p>
+            </div>
+          </div>
+          <div class="document-bottom">
+            <span class="document-meta">1.2 MB · Updated 2026</span>
+            <span class="download-cta">Download <svg class="al-icon" aria-hidden="true"><use href="#al-icon-024"></use></svg></span>
+          </div>
+        </a>
+        <a class="document-card" href="data:text/plain;charset=utf-8,Custody%20Overview%0A%0ASafekeeping%20model%2C%20asset%20segregation%2C%20and%20operational%20controls.%0A%0APlaceholder%20document%20for%20Alloco%20website%20prototype." download="alloco-custody-overview.pdf">
+          <div>
+            <div class="document-top">
+              <div class="document-icon" aria-hidden="true"><svg class="al-icon"><use href="#al-icon-100"></use></svg></div>
+              <span class="document-type">PDF</span>
+            </div>
+            <div class="document-copy">
+              <h3>Custody Overview</h3>
+              <p>Safekeeping model, asset segregation, and operational controls.</p>
+            </div>
+          </div>
+          <div class="document-bottom">
+            <span class="document-meta">1.5 MB · Updated 2026</span>
+            <span class="download-cta">Download <svg class="al-icon" aria-hidden="true"><use href="#al-icon-024"></use></svg></span>
+          </div>
+        </a>
+        <a class="document-card" href="data:text/plain;charset=utf-8,Terms%20of%20Use%0A%0AUser%20responsibilities%2C%20platform%20rules%2C%20access%20rights%2C%20and%20restrictions.%0A%0APlaceholder%20document%20for%20Alloco%20website%20prototype." download="alloco-terms-of-use.pdf">
+          <div>
+            <div class="document-top">
+              <div class="document-icon" aria-hidden="true"><svg class="al-icon"><use href="#al-icon-060"></use></svg></div>
+              <span class="document-type">PDF</span>
+            </div>
+            <div class="document-copy">
+              <h3>Terms of Use</h3>
+              <p>User responsibilities, platform rules, access rights, and restrictions.</p>
+            </div>
+          </div>
+          <div class="document-bottom">
+            <span class="document-meta">980 KB · Updated 2026</span>
+            <span class="download-cta">Download <svg class="al-icon" aria-hidden="true"><use href="#al-icon-024"></use></svg></span>
+          </div>
+        </a>
+        <a class="document-card" href="data:text/plain;charset=utf-8,Privacy%20Policy%0A%0AData%20handling%2C%20retention%2C%20user%20rights%2C%20and%20security%20practices.%0A%0APlaceholder%20document%20for%20Alloco%20website%20prototype." download="alloco-privacy-policy.pdf">
+          <div>
+            <div class="document-top">
+              <div class="document-icon" aria-hidden="true"><svg class="al-icon"><use href="#al-icon-088"></use></svg></div>
+              <span class="document-type">PDF</span>
+            </div>
+            <div class="document-copy">
+              <h3>Privacy Policy</h3>
+              <p>Data handling, retention, user rights, and security practices.</p>
+            </div>
+          </div>
+          <div class="document-bottom">
+            <span class="document-meta">860 KB · Updated 2026</span>
+            <span class="download-cta">Download <svg class="al-icon" aria-hidden="true"><use href="#al-icon-024"></use></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <section class="section dark center" data-theme="dark" id="final">
     <canvas class="final-particle-canvas" id="finalParticleCanvas" aria-hidden="true"></canvas>
     <div class="final-particle-overlay" id="finalParticleOverlay"></div>
