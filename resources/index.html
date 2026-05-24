@@ -369,6 +369,199 @@
     .featured-insight h3 { max-width: 720px; }
     @media (max-width: 820px) { .featured-insight { grid-column: auto; } }
 
+    /* Our Story full-text hover card */
+    .story-grid {
+      display: block;
+      padding: 0;
+    }
+    .story-card {
+      position: relative;
+      min-height: 620px;
+      padding: clamp(28px, 4vw, 54px);
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 88% 18%, rgba(155,255,54,.18), transparent 28%),
+        linear-gradient(135deg, #ffffff 0%, #fbfcf8 54%, #f4f6f0 100%);
+      border-bottom: 0;
+      border-right: 0;
+      cursor: default;
+      isolation: isolate;
+    }
+    .story-card::before {
+      content: "";
+      position: absolute;
+      inset: 26px;
+      border: 1px solid rgba(0,0,0,.07);
+      border-radius: 28px;
+      pointer-events: none;
+      z-index: 1;
+    }
+    .story-card::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -180px;
+      width: 520px;
+      height: 520px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,.08);
+      box-shadow: inset 0 0 0 42px rgba(255,255,255,.35);
+      transform: scale(.96);
+      transition: transform .55s cubic-bezier(.22,.72,.18,1), opacity .35s ease;
+      opacity: .82;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .story-card:hover::after,
+    .story-card:focus-within::after {
+      transform: scale(1.04) translate(-12px, -10px);
+      opacity: 1;
+    }
+    .story-card-inner {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: minmax(260px, .72fr) minmax(360px, 1fr);
+      gap: clamp(28px, 4vw, 58px);
+      align-items: stretch;
+      min-height: 510px;
+    }
+    .story-intro {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 32px;
+      padding: 8px 0;
+    }
+    .story-kicker {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      gap: 9px;
+      min-height: 34px;
+      padding: 0 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(0,0,0,.10);
+      background: rgba(255,255,255,.78);
+      color: #555b60;
+      font-size: 12px;
+      letter-spacing: -.01em;
+    }
+    .story-kicker::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 5px rgba(155,255,54,.14);
+    }
+    .story-title {
+      max-width: 430px;
+      margin-top: 28px;
+      font-size: clamp(44px, 5vw, 78px);
+      line-height: .98;
+      letter-spacing: -.065em;
+      font-weight: 460;
+    }
+    .story-deck {
+      max-width: 440px;
+      color: #5f656b;
+      font-size: 16px;
+      line-height: 1.65;
+      letter-spacing: -.02em;
+    }
+    .story-hover-hint {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      min-height: 40px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: #111;
+      color: #fff;
+      font-size: 13px;
+      letter-spacing: -.01em;
+      box-shadow: 0 18px 42px rgba(0,0,0,.10);
+      transition: transform .25s ease, background .25s ease;
+    }
+    .story-card:hover .story-hover-hint,
+    .story-card:focus-within .story-hover-hint {
+      transform: translateY(-2px);
+      background: #000;
+    }
+    .story-reading-panel {
+      position: relative;
+      max-height: 520px;
+      overflow: auto;
+      padding: clamp(24px, 3vw, 36px);
+      border-radius: 26px;
+      border: 1px solid rgba(0,0,0,.09);
+      background: rgba(255,255,255,.84);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 26px 82px rgba(0,0,0,.08);
+      transform: translateY(10px) scale(.985);
+      opacity: .72;
+      transition: opacity .36s ease, transform .36s cubic-bezier(.22,.72,.18,1), box-shadow .36s ease;
+      scrollbar-width: thin;
+    }
+    .story-card:hover .story-reading-panel,
+    .story-card:focus-within .story-reading-panel {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      box-shadow: 0 32px 90px rgba(0,0,0,.10);
+    }
+    .story-reading-panel h3 {
+      margin: 0 0 22px;
+      font-size: 30px;
+      line-height: 1.06;
+      letter-spacing: -.045em;
+      font-weight: 470;
+    }
+    .story-reading-panel p {
+      color: #33383d;
+      font-size: 15.2px;
+      line-height: 1.72;
+      letter-spacing: -.018em;
+      margin: 0 0 18px;
+      max-width: 760px;
+    }
+    .story-reading-panel p:last-child { margin-bottom: 0; }
+    .story-emphasis {
+      padding: 18px 20px;
+      margin: 22px 0;
+      border-radius: 18px;
+      background: #050505;
+      color: #fff !important;
+      line-height: 1.6 !important;
+    }
+    .story-roles {
+      display: grid;
+      gap: 10px;
+      margin: 22px 0;
+    }
+    .story-roles p {
+      margin: 0;
+      padding: 14px 16px;
+      border: 1px solid rgba(0,0,0,.08);
+      border-radius: 16px;
+      background: rgba(247,248,245,.82);
+    }
+    @media (max-width: 980px) {
+      .story-card { min-height: 0; }
+      .story-card-inner { grid-template-columns: 1fr; min-height: 0; }
+      .story-reading-panel { max-height: none; opacity: 1; transform: none; }
+      .story-hover-hint { display: none; }
+    }
+    @media (max-width: 640px) {
+      .story-card { padding: 24px; }
+      .story-card::before { inset: 14px; border-radius: 24px; }
+      .story-reading-panel { padding: 22px; border-radius: 22px; }
+      .story-title { font-size: clamp(42px, 14vw, 62px); }
+    }
+
+
     /* Insight hover preview */
     .insight-hover-card {
       position: relative;
@@ -659,6 +852,121 @@
         max-width: 96px !important;
       }
     }
+
+
+    /* ===== Our Story: direct full article card ===== */
+    .story-card {
+      min-height: 0 !important;
+      padding: clamp(26px, 4vw, 46px) !important;
+      background:
+        radial-gradient(circle at 88% 8%, rgba(155,255,54,.12), transparent 26%),
+        linear-gradient(180deg, #ffffff 0%, #fbfcf8 100%) !important;
+    }
+    .story-card::after { display: none !important; }
+    .story-card-inner {
+      display: block !important;
+      min-height: 0 !important;
+      max-width: 880px !important;
+      margin: 0 auto !important;
+    }
+    .story-intro { display: none !important; }
+    .story-reading-panel {
+      max-height: none !important;
+      overflow: visible !important;
+      padding: 0 !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      backdrop-filter: none !important;
+      -webkit-backdrop-filter: none !important;
+      box-shadow: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+    .story-reading-panel h3 {
+      margin-bottom: 24px !important;
+      font-size: clamp(30px, 3.8vw, 54px) !important;
+      line-height: 1.02 !important;
+      letter-spacing: -.05em !important;
+      font-weight: 460 !important;
+    }
+    .story-reading-panel p {
+      max-width: 820px !important;
+      color: #2e3338 !important;
+      font-size: clamp(16px, 1.45vw, 19px) !important;
+      line-height: 1.78 !important;
+      letter-spacing: -.022em !important;
+      margin-bottom: 18px !important;
+    }
+    .story-emphasis {
+      max-width: 820px !important;
+      margin: 22px 0 !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+      font-size: clamp(16px, 1.45vw, 19px) !important;
+      line-height: 1.78 !important;
+      letter-spacing: -.022em !important;
+      color: #2e3338 !important;
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
+    }
+    .story-roles {
+      max-width: 820px !important;
+      margin: 30px 0 !important;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      gap: 12px !important;
+    }
+    .story-roles p {
+      font-size: 14.5px !important;
+      line-height: 1.55 !important;
+      margin: 0 !important;
+      padding: 18px !important;
+      background: rgba(255,255,255,.68) !important;
+      border-color: rgba(0,0,0,.09) !important;
+    }
+    @media (max-width: 760px) {
+      .story-card-inner { max-width: 100% !important; }
+      .story-roles { grid-template-columns: 1fr !important; }
+    }
+
+
+    /* ===== Our Story: compact scrollable reading window ===== */
+    #our-story .story-card {
+      max-height: 620px !important;
+      overflow: hidden !important;
+    }
+    #our-story .story-reading-panel {
+      max-height: 520px !important;
+      overflow-y: auto !important;
+      padding-right: 18px !important;
+      scrollbar-width: thin !important;
+      scrollbar-color: rgba(0,0,0,.28) rgba(0,0,0,.06) !important;
+    }
+    #our-story .story-reading-panel::-webkit-scrollbar {
+      width: 6px !important;
+    }
+    #our-story .story-reading-panel::-webkit-scrollbar-track {
+      background: rgba(0,0,0,.06) !important;
+      border-radius: 999px !important;
+    }
+    #our-story .story-reading-panel::-webkit-scrollbar-thumb {
+      background: rgba(0,0,0,.28) !important;
+      border-radius: 999px !important;
+    }
+    #our-story .story-reading-panel::-webkit-scrollbar-thumb:hover {
+      background: rgba(0,0,0,.42) !important;
+    }
+    @media (max-width: 760px) {
+      #our-story .story-card {
+        max-height: 660px !important;
+      }
+      #our-story .story-reading-panel {
+        max-height: 560px !important;
+        padding-right: 12px !important;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -692,8 +1000,8 @@
             <input id="resourceSearch" type="search" placeholder="Search resources" autocomplete="off" />
           </div>
           <div class="side-group-title">Topics</div>
-          <a class="topic-link active" href="#our-story" data-topic-link="our-story"><span>Our Story</span><small>3</small></a>
-          <a class="topic-link" href="#our-insights" data-topic-link="our-insights"><span>Our Insights</span><small>5</small></a>
+          <a class="topic-link active" href="#our-story" data-topic-link="our-story"><span>Our Story</span><small>1</small></a>
+          <a class="topic-link" href="#our-insights" data-topic-link="our-insights"><span>Our Insights</span><small>1</small></a>
           <a class="topic-link" href="#launcher" data-topic-link="launcher"><span>Launcher</span><small>3</small></a>
           <a class="topic-link" href="#trade" data-topic-link="trade"><span>Trade</span><small>3</small></a>
           <a class="topic-link" href="#legal-compliance" data-topic-link="legal-compliance"><span>Legal and Compliance</span><small>6</small></a>
@@ -707,34 +1015,34 @@
             <div class="section-head">
               <div>
                 <h2>Our Story</h2>
-                <p>Alloco is built around a simple belief: financial products should be easier to create, easier to understand, and easier to move across onchain markets.</p>
-              </div>
+                              </div>
               <span class="section-chip">Company</span>
             </div>
-            <div class="card-grid">
-              <article class="article-card" data-search="our story company mission finance closer onchain etp all assets">
-                <div class="article-meta"><span>Company note</span><span>4 min read</span></div>
-                <h3>Finance, closer</h3>
-                <p>Why Alloco focuses on turning financial ideas into onchain products that feel simple, transparent, and usable from day one.</p>
-                <a class="soft-link" href="#">Read note</a>
-              </article>
-              <article class="article-card" data-search="our story rwa structured products tokenized markets">
-                <div class="article-meta"><span>Framework</span><span>6 min read</span></div>
-                <h3>From asset exposure to product expression</h3>
-                <p>A short explanation of how Alloco thinks about packaging real world asset exposure into product formats that can live onchain.</p>
-                <a class="soft-link" href="#">Read note</a>
-              </article>
-              <article class="article-card" data-search="our story philosophy creator market idea deserves">
-                <div class="article-meta"><span>Philosophy</span><span>5 min read</span></div>
-                <h3>Every idea deserves a market</h3>
-                <p>Markets should not only be built by large issuers. They should also be shaped by creators, analysts, communities, and capital allocators.</p>
-                <a class="soft-link" href="#">Read note</a>
-              </article>
-              <article class="article-card" data-search="our story roadmap distribution trust transparency">
-                <div class="article-meta"><span>Roadmap</span><span>5 min read</span></div>
-                <h3>Trust through structure</h3>
-                <p>The operating principle behind Alloco: clean product design, clear documentation, transparent risk boundaries, and simple user flows.</p>
-                <a class="soft-link" href="#">Read note</a>
+            <div class="story-grid">
+              <article class="article-card story-card" data-search="our story company mission finance closer internet native capital markets ETP onchain tokenization financial products ownership OS issuers institutions investors markets">
+                <div class="story-card-inner">
+                  <div class="story-reading-panel" aria-label="Finance, Closer full story">
+                    <h3>Finance, Closer</h3>
+                    <p>The internet changed how information moves.</p>
+                    <p>It changed how people communicate, build communities, and make payments.</p>
+                    <p>But capital markets never truly became internet native.</p>
+                    <p>Financial products are still locked inside brokerage accounts, geographic borders, legacy infrastructure, and closed distribution networks. For decades, the power to create and distribute investable products has remained concentrated in the hands of a few large financial institutions.</p>
+                    <p>Alloco was built to change that.</p>
+                    <p>We are redefining how ETPs and financial assets can exist, move, and be issued in a digital, global, and internet-native world.</p>
+                    <p>ETPs became one of the most important inventions in modern finance because they made investing simple. They turned complex baskets, themes, and strategies into products that people could actually understand and access. Alloco brings that same product logic onchain, where assets become programmable, composable, globally reachable, and available 24/7.</p>
+                    <p class="story-emphasis">This is not just tokenization.<br>Tokenization turns assets into digital units.<br>Alloco turns assets into financial products.</p>
+                    <p>A real product needs more than a token. It needs structure, rules, NAV, custody, liquidity, redemption, compliance, and distribution. That is why Alloco is building the Onchain ETP OS: a product layer that helps institutions, platforms, and asset issuers create and distribute financial products as easily as internet companies launch applications.</p>
+                    <p>The creator captures the insight.<br>Alloco engineers the reality.</p>
+                    <div class="story-roles">
+                      <p>For investors: Simpler access to global assets, without gatekeepers or borders.</p>
+                      <p>For issuers: A faster, seamless path from idea to product.</p>
+                      <p>For institutions: A cleaner, transparent wrapper for custody, compliance, and distribution.</p>
+                      <p>For markets: The long-awaited migration from closed financial systems to open, digital networks.</p>
+                    </div>
+                    <p>Alloco is not building another token platform.</p>
+                    <p>We are building the infrastructure for financial ownership in the internet age.</p>
+                  </div>
+                </div>
               </article>
             </div>
           </section>
