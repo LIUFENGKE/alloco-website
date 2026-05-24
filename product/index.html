@@ -4844,6 +4844,28 @@
         max-width: 96px !important;
       }
     }
+
+    /* ===== Natural continuous scrolling after the second product section =====
+       Keep the opening launch-to-trade handoff, but remove PPT-like full-page
+       snapping for liquidity, design, documents, and final sections. */
+    @media (min-width: 981px) {
+      .section:nth-of-type(n+3) {
+        height: auto !important;
+        min-height: 88svh !important;
+        overflow: hidden !important;
+        scroll-snap-align: none !important;
+        scroll-snap-stop: normal !important;
+      }
+
+      .section:nth-of-type(n+3) .container {
+        transform: none;
+      }
+
+      body.is-wheel-snapping {
+        cursor: default;
+      }
+    }
+
 </style>
 </head>
 <body>
@@ -5545,17 +5567,36 @@
 
     window.addEventListener('wheel', (e) => {
       if (window.innerWidth < 980) return;
+      if (e.ctrlKey) return;
+
+      const abs = Math.abs(e.deltaY);
+      if (abs < 18) return;
+
       const now = performance.now();
+      const direction = e.deltaY > 0 ? 1 : -1;
+      const currentIndex = nearestSectionIndex();
+
+      /*
+        Keep the product page's opening handoff only:
+        - Section 1 → Section 2 still feels like a designed full-screen transition.
+        - Section 2 → later sections, and all later sections, scroll naturally.
+        This removes the PPT-like one-wheel-step-per-section behavior after the
+        second screen.
+      */
+      const shouldSnapOpening =
+        (currentIndex === 0 && direction > 0) ||
+        (currentIndex === 1 && direction < 0 && window.scrollY <= sections[1].offsetTop + window.innerHeight * 0.28);
+
+      if (!shouldSnapOpening) return;
+
       if (locked || now - lastWheelAt < 500) {
         e.preventDefault();
         return;
       }
-      const abs = Math.abs(e.deltaY);
-      if (abs < 18) return;
+
       e.preventDefault();
       lastWheelAt = now;
-      const direction = e.deltaY > 0 ? 1 : -1;
-      goToSection(activeIndex + direction);
+      goToSection(currentIndex + direction);
     }, { passive: false });
   
 
